@@ -25,7 +25,7 @@ export default function Home() {
       {/* Brand Logo on the Left */}
       <div className="fixed top-5 left-4 sm:left-8 md:left-10 z-50 flex items-center">
         <a href="#" className="group cursor-pointer">
-          <span className="text-xl sm:text-2xl font-black tracking-tight text-[#121A50] dark:text-white select-none hover:text-[#EE461F] transition-colors">
+          <span className="text-xl sm:text-2xl font-black tracking-tight text-white select-none hover:text-[#F59E0B] transition-colors drop-shadow-md">
             AYYATECH
           </span>
         </a>

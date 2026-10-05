@@ -10,12 +10,12 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
-  --color-navy-dark: #121A50;
+  --color-navy-dark: #121D50;
   --color-navy-surface: #182368;
   --color-navy-card: #151F5C;
   --color-navy-border: #223287;
-  --color-blue-royal: #1433D1;
-  --color-blue-electric: #1F49E4;
+  --color-blue-royal: #0E33D1;
+  --color-blue-electric: #1F45E4;
   --color-blue-subtle: #EEF3FF;
   --color-light-grey: #EDF0F3;
   --color-light-border: #DFE4EA;

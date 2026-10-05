@@ -52,6 +52,16 @@ function FloatingGeometry() {
 }
 
 export function Hero3DBackground() {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden" />;
+  }
+
   return (
     <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
       <Canvas
