@@ -17,6 +17,9 @@ const oswald = Oswald({
 export const metadata: Metadata = {
   title: "Ayyatech | Enterprise Software Engineering & Digital Transformation",
   description: "Ayyatech empowers global enterprises with cutting-edge software development, cloud infrastructure, AI architecture, and digital consultancy.",
+  icons: {
+    icon: "/images/ayya-logo.png",
+  },
 };
 
 export default function RootLayout({

@@ -8,15 +8,20 @@ interface ContactSectionProps {
 }
 
 export function ContactSection({ onOpenModal }: ContactSectionProps) {
-  const [selectedService, setSelectedService] = useState('Full-Stack Web');
+  const [selectedService, setSelectedService] = useState('IT Consultancy Services');
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const services = [
-    'Full-Stack Web',
-    'Cloud Infrastructure',
-    'AI & Data Systems',
-    'Branding & Growth',
+    'IT Consultancy Services',
+    'Software Development',
+    'Low-Code / No-Code',
+    'Cloud-Native Architecture',
+    'IoT (Internet of Things)',
+    'Mobile Development',
+    'Website Development',
+    'AI-Powered Software',
+    'IT Resources & Staffing',
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -246,11 +251,15 @@ export function ContactSection({ onOpenModal }: ContactSectionProps) {
       {/* Integrated Unified Footer */}
       <footer className="border-t border-[#1C2766] py-12 px-6 sm:px-10 lg:px-14 bg-[#080D2B]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo with Clean Branding (No square box) */}
+          {/* Logo with Clean Branding */}
           <div className="flex items-center gap-3">
-            <span className="text-xl font-black text-white tracking-tight select-none">
-              AYYATECH
-            </span>
+            <div className="bg-white px-3.5 py-1.5 rounded-lg flex items-center justify-center border border-white/20 shadow-md">
+              <img
+                src="/images/ayya-logo.png"
+                alt="AYYA Technology Logo"
+                className="h-8 sm:h-10 w-auto object-contain"
+              />
+            </div>
             <span className="text-xs font-mono text-[#64748B]">
               / Engineering &amp; Systems
             </span>

@@ -1,13 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, Check, Mail, Phone, MapPin, X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { AppleStyleDock } from "@/components/apple-style-dock";
 import HeroSection from "@/components/ui/dynamic-animated-hero-section-with-gradient";
 import { AgencyServicesSection } from "@/components/agency-services-section";
 import { ScrollingFeatureShowcase } from "@/components/ui/interactive-scrolling-story-component";
+import { AboutAgencyBannerSection } from "@/components/about-agency-banner-section";
+import { ProvenDeliveryProcessSection } from "@/components/proven-delivery-process-section";
+import { AgencyStatsAndFeaturesSection } from "@/components/agency-stats-and-features-section";
 import { FlowArtDefaultDemo } from "@/components/ui/story-scroll-demo";
+import { ClientReviewsSection } from "@/components/client-reviews-section";
 import ContactWithGlobe from "@/components/ui/contact-with-globe";
+import { AgencyFaqSection } from "@/components/faq-section";
 import { CinematicFooter } from "@/components/ui/motion-footer";
 
 export default function Home() {
@@ -22,14 +27,8 @@ export default function Home() {
 
   return (
     <div id="home" className="min-h-screen bg-white text-[#121A50] font-sans flex flex-col scroll-smooth">
-      {/* Brand Logo on the Left */}
-      <div className="fixed top-5 left-4 sm:left-8 md:left-10 z-50 flex items-center">
-        <a href="#" className="group cursor-pointer">
-          <span className="text-xl sm:text-2xl font-black tracking-tight text-white select-none hover:text-[#F59E0B] transition-colors drop-shadow-md">
-            AYYATECH
-          </span>
-        </a>
-      </div>
+      {/* Top Glassmorphism Navigation Bar */}
+      <AppleStyleDock onContactClick={() => setModalOpen(true)} />
 
       {/* Dynamic Animated Hero Section with Gradient */}
       <HeroSection onCtaClick={() => setModalOpen(true)} />
@@ -45,10 +44,23 @@ export default function Home() {
       {/* Interactive Scrolling Case Studies / Story Showcase */}
       <ScrollingFeatureShowcase onCtaClick={() => setModalOpen(true)} />
 
+      {/* About Agency Banner Section (1:1 Screenshot Design) */}
+      <AboutAgencyBannerSection onCtaClick={() => setModalOpen(true)} />
+
+      {/* Proven Delivery Process Section ("How We Work") */}
+      <ProvenDeliveryProcessSection />
+
+      {/* Fixed Parallax Stats & Features Section (1500+ Clients & Core Capabilities) */}
+      <AgencyStatsAndFeaturesSection />
+
       {/* Story Scroll Section */}
       <FlowArtDefaultDemo />
 
+      {/* Interactive Agency FAQ Section */}
+      <AgencyFaqSection onContactClick={() => setModalOpen(true)} />
 
+      {/* 3D Overlapping Client Reviews Carousel Section */}
+      <ClientReviewsSection />
 
       {/* Interactive Contact With Globe Section */}
       <ContactWithGlobe />
@@ -157,9 +169,6 @@ export default function Home() {
           </div>
         </div>
       )}
-
-      {/* Floating Apple Style Dock */}
-      <AppleStyleDock onContactClick={() => setModalOpen(true)} />
     </div>
   );
 }

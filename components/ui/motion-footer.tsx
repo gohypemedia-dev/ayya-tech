@@ -146,7 +146,6 @@ export interface MagneticButtonProps extends React.HTMLAttributes<HTMLElement> {
 const MagneticButton = React.forwardRef<HTMLElement, MagneticButtonProps>(
   ({ className, children, as: Component = "button", ...props }, forwardedRef) => {
     const localRef = useRef<HTMLElement>(null);
-    const Tag = Component as any;
 
     useEffect(() => {
       if (typeof window === "undefined") return;
@@ -184,11 +183,11 @@ const MagneticButton = React.forwardRef<HTMLElement, MagneticButtonProps>(
           });
         };
 
-        element.addEventListener("mousemove", handleMouseMove as any);
+        element.addEventListener("mousemove", handleMouseMove as EventListener);
         element.addEventListener("mouseleave", handleMouseLeave);
 
         return () => {
-          element.removeEventListener("mousemove", handleMouseMove as any);
+          element.removeEventListener("mousemove", handleMouseMove as EventListener);
           element.removeEventListener("mouseleave", handleMouseLeave);
         };
       }, element);
@@ -196,18 +195,18 @@ const MagneticButton = React.forwardRef<HTMLElement, MagneticButtonProps>(
       return () => ctx.revert();
     }, []);
 
-    return (
-      <Tag
-        ref={(node: HTMLElement | null) => {
-          (localRef as any).current = node;
-          if (typeof forwardedRef === "function") forwardedRef(node as any);
-          else if (forwardedRef) (forwardedRef as any).current = node;
-        }}
-        className={cn("cursor-pointer", className)}
-        {...props}
-      >
-        {children}
-      </Tag>
+    return React.createElement(
+      Component,
+      {
+        ref: (node: HTMLElement | null) => {
+          if (localRef) localRef.current = node;
+          if (typeof forwardedRef === "function") forwardedRef(node);
+          else if (forwardedRef) (forwardedRef as React.MutableRefObject<HTMLElement | null>).current = node;
+        },
+        className: cn("cursor-pointer", className),
+        ...props,
+      },
+      children
     );
   }
 );

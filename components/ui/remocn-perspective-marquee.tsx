@@ -21,14 +21,15 @@ const FONT_FAMILY =
   "var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif";
 
 const DEFAULT_ITEMS = [
-  "Website Development",
+  "IT Consultancy Services",
   "Software Development",
-  "Graphic Design",
-  "Meta Ads",
-  "SEO & Organic Growth",
-  "Digital Marketing",
-  "Cloud Architecture",
-  "UI/UX Design",
+  "Low-Code / No-Code Apps",
+  "Cloud-Native Architecture",
+  "IoT Systems & Connectivity",
+  "Mobile App Development",
+  "Website Development",
+  "AI-Powered Software",
+  "IT Resources & Staffing",
 ];
 
 export function PerspectiveMarquee({

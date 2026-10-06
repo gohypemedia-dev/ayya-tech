@@ -111,22 +111,9 @@ export function HeroSection({ onCtaClick }: HeroSectionProps) {
       </motion.div>
 
       {/* 3. Main Center Content with Kinetic Motion Entrance Effects */}
-      <div className="relative z-20 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16 flex-1 flex flex-col justify-center">
-        <div className="max-w-4xl text-left xl:ml-20">
+      <div className="relative z-20 max-w-[1540px] w-full mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 py-8 lg:py-16 flex-1 flex flex-col justify-center">
+        <div className="max-w-5xl text-left">
           
-          {/* Subheading Badge with Blur & Fade Effect */}
-          <motion.div
-            initial={{ opacity: 0, y: -20, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-6 shadow-lg"
-          >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#EE461F] animate-ping" />
-            <p className="text-xs sm:text-sm font-extrabold tracking-widest text-white uppercase">
-              WELCOME TO AYYATECH IT & DIGITAL AGENCY
-            </p>
-          </motion.div>
-
           {/* Headline Line 1 Effect: Soft Blur & Upward Slide Reveal */}
           <div className="overflow-hidden">
             <motion.h1
@@ -135,7 +122,7 @@ export function HeroSection({ onCtaClick }: HeroSectionProps) {
               transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[0.92] font-[family-name:var(--font-heading)] drop-shadow-2xl"
             >
-              DIGITAL MARKETING &
+              ENGINEERING NEXT-GEN
             </motion.h1>
           </div>
 
@@ -148,20 +135,10 @@ export function HeroSection({ onCtaClick }: HeroSectionProps) {
               className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[0.92] font-[family-name:var(--font-heading)] drop-shadow-2xl"
             >
               <span className="text-white relative inline-block">
-                SOFTWARE AGENCY IN DELHI
+                ENTERPRISE ECOSYSTEMS
               </span>
             </motion.h1>
           </div>
-
-          {/* Subtitle Description Effect */}
-          <motion.p
-            initial={{ opacity: 0, y: 25, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.8, delay: 0.65, ease: "easeOut" }}
-            className="mt-6 text-sm sm:text-lg md:text-xl text-neutral-200 max-w-2xl leading-relaxed font-normal drop-shadow-md"
-          >
-            Empowering global enterprises with high-performance software engineering, cloud architecture, AI solutions, and digital growth marketing.
-          </motion.p>
 
           {/* Call To Action Buttons Effect */}
           <motion.div
@@ -208,31 +185,6 @@ export function HeroSection({ onCtaClick }: HeroSectionProps) {
           </motion.div>
         </div>
       </div>
-
-      {/* Left Vertical Marginal Labels (Desktop) */}
-      <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 0.9 }}
-        className="hidden xl:flex absolute left-4 top-1/2 -translate-y-1/2 flex-col gap-24 text-[11px] font-bold tracking-widest text-neutral-400 uppercase pointer-events-auto z-30"
-      >
-        <div className="transform -rotate-90 origin-left whitespace-nowrap text-neutral-300">
-          MON - FRI &nbsp;|&nbsp; 10AM - 7PM
-        </div>
-        <div className="transform -rotate-90 origin-left whitespace-nowrap flex items-center gap-4 text-neutral-300">
-          <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#EE461F] transition-colors">
-            INSTAGRAM
-          </a>
-          <span>•</span>
-          <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-[#EE461F] transition-colors">
-            FACEBOOK
-          </a>
-          <span>•</span>
-          <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-[#EE461F] transition-colors">
-            TWITTER
-          </a>
-        </div>
-      </motion.div>
 
       {/* Floating Animated Scroll Down Indicator */}
       <motion.div

@@ -3,14 +3,15 @@
 import { PerspectiveMarquee } from "@/components/ui/remocn-perspective-marquee";
 
 const servicesItems = [
-  "Website Development",
+  "IT Consultancy Services",
   "Software Development",
-  "Graphic Design",
-  "Meta Ads",
-  "SEO & Organic Growth",
-  "Digital Marketing",
-  "Cloud Architecture",
-  "Brand Identity",
+  "Low-Code / No-Code Apps",
+  "Cloud-Native Architecture",
+  "IoT Systems & Connectivity",
+  "Mobile App Development",
+  "Website Development",
+  "AI-Powered Software",
+  "IT Resources & Staffing",
 ];
 
 export function ServicesPerspectiveMarquee() {

@@ -19,7 +19,7 @@ export default function Demo(props: Partial<typeof settings>) {
     <div className="h-screen w-screen">
       <Player
         acknowledgeRemotionLicense
-        component={PerspectiveMarquee as any}
+        component={PerspectiveMarquee as React.ComponentType<typeof s>}
         inputProps={s}
         durationInFrames={100000}
         compositionWidth={1200}

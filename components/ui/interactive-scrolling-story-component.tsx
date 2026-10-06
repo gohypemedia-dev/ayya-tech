@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowUpRight, ChevronRight, Activity, Server, Cpu, Globe } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, ChevronRight } from 'lucide-react';
 
 export interface StorySlide {
   tag: string;
@@ -23,13 +24,13 @@ const defaultSlidesData: StorySlide[] = [
     category: 'FINTECH INFRASTRUCTURE',
     tag: 'Case Study 01',
     client: 'Global Payments Provider',
-    title: 'Scaling High-Throughput Payment Gateways',
+    title: 'Enterprise High-Throughput Payment Engine',
     description:
-      'Re-architected distributed microservices handling 25M+ daily transactions with 99.99% uptime and sub-50ms latency across global endpoints.',
+      'Re-architected distributed microservices handling 25M+ daily transactions with 99.99% uptime SLA and sub-50ms latency across global banking endpoints.',
     metrics: '25M+ Daily Transactions • Sub-50ms Latency',
     metricValue: '99.99%',
     metricLabel: 'Platform Availability SLA',
-    impact: 'Zero packet drop during 15x peak holiday load surge',
+    impact: 'Handled 25M+ daily transactions with zero packet drop',
     stack: ['AWS EKS', 'PostgreSQL', 'Kafka', 'Go', 'Redis'],
     image:
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80',
@@ -37,44 +38,44 @@ const defaultSlidesData: StorySlide[] = [
   {
     category: 'CLOUD MODERNIZATION',
     tag: 'Case Study 02',
-    client: 'Enterprise Enterprise SaaS',
-    title: 'Global SaaS Multi-Region Migration',
+    client: 'Enterprise SaaS Provider',
+    title: 'Multi-Region Enterprise Cloud Architecture & Migration',
     description:
-      'Automated continuous zero-downtime database replication and Terraform IaC deployments across EU and US regions for enterprise compliance and low-latency delivery.',
+      'Automated zero-downtime multi-region database replication and infrastructure-as-code deployments across AWS & GCP for low-latency global delivery.',
     metrics: 'Multi-Region Replication • Zero Downtime Cutover',
     metricValue: '100%',
-    metricLabel: 'Zero-Downtime Data Migration',
-    impact: 'Saved $180k/yr in redundant cloud compute spend',
+    metricLabel: 'Zero-Downtime Migration',
+    impact: 'Reduced cloud infrastructure spend by $180,000/year',
     stack: ['GCP Cloud Run', 'Terraform', 'BigQuery', 'Docker', 'PostgreSQL'],
     image:
       'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80',
   },
   {
-    category: 'AI & EVENT-DRIVEN SYSTEMS',
+    category: 'AI & STREAMING SYSTEMS',
     tag: 'Case Study 03',
     client: 'Algorithmic Risk Platform',
-    title: 'Real-Time Fraud & Anomaly Detection',
+    title: 'Real-Time AI Fraud Detection & Event Streaming Pipeline',
     description:
-      'Engineered an ultra-low latency streaming inference pipeline processing 100,000 events/sec with sub-second ML decisioning and automated threat isolation.',
+      'Engineered an ultra-low latency event processing engine processing 100,000 events/sec with real-time machine learning anomaly isolation.',
     metrics: '100,000 Events/sec • 99.4% Model Precision',
     metricValue: '<12ms',
     metricLabel: 'End-to-End Decision Latency',
-    impact: '$4.2M prevented fraud losses within first 90 days',
+    impact: 'Prevented $4.2M in fraudulent transactions in 90 days',
     stack: ['Apache Flink', 'Python ML', 'Kubernetes', 'ClickHouse', 'gRPC'],
     image:
-      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80',
   },
   {
     category: 'HIGH-CONCURRENCY COMMERCE',
     tag: 'Case Study 04',
     client: 'D2C Retail Unicorn',
-    title: 'Next-Gen Headless E-Commerce Platform',
+    title: 'Next-Gen Headless E-Commerce & Checkout Engine',
     description:
-      'Modernized core commerce architecture to withstand 10x traffic surges during flash sales with sub-second page loads and instantaneous checkouts.',
+      'Modernized core e-commerce architecture to withstand 10x peak traffic surges during flash sales with sub-second page loads and instant checkouts.',
     metrics: '3.4x Faster Checkout • 40% Lower Infra Costs',
     metricValue: '3.4x',
     metricLabel: 'Checkout Speed Improvement',
-    impact: 'Handled 1.2M concurrent shoppers without degradation',
+    impact: 'Handled 1.2M concurrent shoppers during peak flash sales',
     stack: ['Next.js', 'GraphQL', 'Stripe API', 'Cloudflare Workers', 'Redis'],
     image:
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80',
@@ -93,7 +94,6 @@ export function ScrollingFeatureShowcase({
   slides = defaultSlidesData,
   onCtaClick,
   ctaText = 'Discuss Your Architecture',
-  badgeText = 'PROVEN RESULTS',
   className = '',
 }: ScrollingFeatureShowcaseProps) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -151,61 +151,12 @@ export function ScrollingFeatureShowcase({
       <div className="sticky top-0 h-screen w-full flex flex-col justify-center bg-white overflow-hidden pt-20 pb-8 sm:py-16">
         <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 flex flex-col h-full justify-between">
           
-          {/* Section Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-5 border-b border-[#E2E6EB] gap-4 shrink-0">
-            <div>
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#EE461F]" />
-                <span className="text-xs font-mono font-bold tracking-[0.22em] uppercase text-[#EE461F]">
-                  {badgeText}
-                </span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#121A50]">
-                Featured Case Studies
-              </h2>
-            </div>
-
-            {/* Interactive Progress Indicators / Tabs */}
-            <div className="flex items-center gap-2 self-start sm:self-end">
-              <span className="text-xs font-mono font-bold text-[#121A50] mr-2">
-                0{activeIndex + 1} <span className="text-[#8C98A9]">/ 0{slides.length}</span>
-              </span>
-              <div className="flex items-center gap-1.5 bg-[#EDF0F3] p-1.5 rounded-full border border-[#DFE4EA]">
-                {slides.map((slide, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => scrollToSlide(idx)}
-                    className={`px-3 py-1 text-[11px] font-mono font-bold rounded-full transition-all duration-300 cursor-pointer ${
-                      idx === activeIndex
-                        ? 'bg-[#EE461F] text-white shadow-xs'
-                        : 'text-[#4B5565] hover:text-[#121A50] hover:bg-white/70'
-                    }`}
-                  >
-                    0{idx + 1}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
           {/* Main Content Showcase Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center flex-1 my-auto py-4">
             
             {/* Left Column: Narrative & Metrics */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              {/* Category Pill & Client */}
-              <div className="flex items-center gap-3 mb-4">
-                <span className="px-3 py-1 bg-[#FDEAE4] text-[#EE461F] text-xs font-mono font-bold uppercase tracking-wider rounded-md border border-[#FAD2C7]">
-                  {activeSlide.category}
-                </span>
-                {activeSlide.client && (
-                  <span className="text-xs font-semibold text-[#717E91]">
-                    • {activeSlide.client}
-                  </span>
-                )}
-              </div>
-
+              
               {/* Title */}
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#121A50] leading-tight mb-4 min-h-[50px] sm:min-h-[70px] flex items-center">
                 {activeSlide.title}
@@ -272,74 +223,25 @@ export function ScrollingFeatureShowcase({
               </div>
             </div>
 
-            {/* Right Column: Visual Showcase Device Mockup */}
+            {/* Right Column: Clean Bright Image Showcase with Ultra-Smooth Ease-In-Out Transition */}
             <div className="lg:col-span-5 hidden lg:flex items-center justify-center">
-              <div className="relative w-full max-w-[460px] bg-white rounded-2xl shadow-xl border border-[#DFE4EA] overflow-hidden">
-                {/* Mockup Header Bar */}
-                <div className="flex items-center justify-between px-4 py-3 bg-[#F4F6F8] border-b border-[#DFE4EA]">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
-                  </div>
-                  <span className="text-[11px] font-mono text-[#8C98A9]">
-                    ayyatech.com/cases/0{activeIndex + 1}
-                  </span>
-                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-white text-[#EE461F] border border-[#DFE4EA]">
-                    LIVE
-                  </span>
-                </div>
-
-                {/* Sliding Viewport */}
-                <div className="relative h-[340px] sm:h-[380px] w-full overflow-hidden bg-[#121A50]">
-                  <div
-                    className="w-full transition-transform duration-700 ease-in-out"
-                    style={{
-                      height: `${slides.length * 100}%`,
-                      transform: `translateY(-${(activeIndex * 100) / slides.length}%)`,
-                    }}
-                  >
-                    {slides.map((slide, idx) => (
-                      <div
-                        key={idx}
-                        className="w-full relative group overflow-hidden"
-                        style={{ height: `${100 / slides.length}%` }}
-                      >
-                        <img
-                          src={slide.image}
-                          alt={slide.title}
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          onError={(e) => {
-                            const target = e.currentTarget as HTMLImageElement;
-                            target.onerror = null;
-                            target.src =
-                              'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80';
-                          }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-6 text-white">
-                          <span className="text-[11px] font-mono uppercase tracking-wider text-[#EE461F] font-bold">
-                            {slide.category}
-                          </span>
-                          <h4 className="text-lg font-bold leading-snug text-white mt-1">
-                            {slide.title}
-                          </h4>
-                          <p className="text-xs text-slate-300 mt-1 line-clamp-1">
-                            {slide.metrics}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <div className="relative w-full max-w-[500px] h-[392px] sm:h-[436px] bg-white rounded-2xl shadow-xl border border-[#DFE4EA] overflow-hidden p-2.5 flex items-center justify-center">
+                <motion.img
+                  key={`case-study-img-${activeIndex}`}
+                  src={activeSlide.image}
+                  alt={activeSlide.title}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80';
+                  }}
+                  className="h-full w-full object-cover object-center rounded-[8px] absolute inset-2.5 transform-gpu"
+                />
               </div>
             </div>
 
-          </div>
-
-          {/* Footer of the sticky panel */}
-          <div className="flex items-center justify-between pt-3 border-t border-[#E2E6EB]/60 text-xs text-[#8C98A9] font-mono shrink-0">
-            <span>SCROLL TO ADVANCE STORIES</span>
-            <span>END-TO-END PRODUCTION SYSTEMS</span>
           </div>
 
         </div>
