@@ -103,55 +103,14 @@ export function AgencyFaqSection({ onContactClick }: FaqSectionProps) {
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EE461F]/10 border border-[#EE461F]/20 text-[#EE461F] text-xs font-bold uppercase tracking-wider mb-4">
-            <span>Got Questions? We Have Answers</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#121A50] leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#121A50] leading-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-base sm:text-lg text-[#4B5565] leading-relaxed max-w-2xl">
-            Everything you need to know about our enterprise technology services, engagement processes, security standards, and delivery timelines.
-          </p>
-
-          {/* Search Bar Input */}
-          <div className="w-full max-w-md mt-6 relative">
-            <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search questions or keywords..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 bg-white border border-[#DFE4EA] rounded-full text-sm text-[#121A50] placeholder-gray-400 shadow-xs focus:outline-none focus:ring-2 focus:ring-[#EE461F]/30 focus:border-[#EE461F] transition-all"
-            />
-          </div>
-        </div>
-
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-          {categories.map((cat) => {
-            const isActive = activeCategory === cat;
-            return (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-all cursor-pointer ${
-                  isActive
-                    ? 'bg-[#121A50] text-white shadow-md'
-                    : 'bg-white text-[#4B5565] border border-[#DFE4EA] hover:border-[#121A50] hover:text-[#121A50]'
-                }`}
-              >
-                {cat}
-              </button>
-            );
-          })}
         </div>
 
         {/* Accordion FAQ List */}
         <div className="max-w-4xl mx-auto space-y-4">
-          {filteredFaqs.length > 0 ? (
-            filteredFaqs.map((faq) => {
+          {faqData.map((faq) => {
               const isOpen = openFaqId === faq.id;
               return (
                 <div
@@ -196,14 +155,7 @@ export function AgencyFaqSection({ onContactClick }: FaqSectionProps) {
                   </AnimatePresence>
                 </div>
               );
-            })
-          ) : (
-            <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-[#DFE4EA]">
-              <HelpCircle className="w-10 h-10 text-gray-300 mx-auto mb-3" />
-              <p className="text-base font-semibold text-[#121A50]">No matching questions found</p>
-              <p className="text-xs text-[#4B5565] mt-1">Try searching with a different term or browse categories above.</p>
-            </div>
-          )}
+            })}
         </div>
 
         {/* Bottom Contact CTA Box */}

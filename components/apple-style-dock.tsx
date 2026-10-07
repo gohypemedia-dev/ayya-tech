@@ -90,7 +90,7 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
   ];
 
   return (
-    <header className={`fixed top-3 sm:top-5 left-0 right-0 z-50 px-3 sm:px-6 transition-all duration-300 ${className || ''}`}>
+    <header className={`fixed top-3 sm:top-5 left-0 right-0 z-[100] px-3 sm:px-6 transition-all duration-300 ${className || ''}`}>
       <div className="max-w-6xl mx-auto">
         <nav className={`relative flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300 bg-white/95 backdrop-blur-xl border border-gray-200/90 shadow-xl shadow-black/10 ${
           scrolled ? 'shadow-2xl shadow-black/15 border-gray-300/90' : ''

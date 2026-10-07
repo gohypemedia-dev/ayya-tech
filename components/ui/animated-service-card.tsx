@@ -260,7 +260,7 @@ const ServiceBannerCard = ({ service }: { service: Service; index: number }) => 
   const IconComp = service.icon;
 
   return (
-    <div className="relative w-full h-[400px] sm:h-[450px] md:h-[480px] rounded-none overflow-hidden border border-white/15 shadow-2xl group bg-[#090D28]">
+    <div className="relative w-full h-[400px] sm:h-[450px] md:h-[480px] rounded-lg overflow-hidden border border-white/15 shadow-2xl group bg-[#090D28]">
       {/* Background Image */}
       {service.image && (
         <img

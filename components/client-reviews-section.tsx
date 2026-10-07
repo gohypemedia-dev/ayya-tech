@@ -120,16 +120,9 @@ export function ClientReviewsSection() {
         
         {/* Section Heading */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EE461F]/10 border border-[#EE461F]/20 text-[#EE461F] text-xs font-bold uppercase tracking-wider mb-4">
-            <span>Client Testimonials &amp; Success Stories</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#121A50] leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#121A50] leading-tight">
             Trusted by Global Enterprise Leaders
           </h2>
-          <p className="text-base sm:text-lg text-[#4B5565] leading-relaxed max-w-2xl">
-            See how our engineering squads and digital transformation solutions empower high-growth startups and Fortune 500 enterprises.
-          </p>
         </div>
 
         {/* 3D Overlapping Carousel Stage */}
@@ -212,42 +205,7 @@ export function ClientReviewsSection() {
               );
             })}
           </div>
-
-          {/* Navigation Arrow Controls */}
-          <button
-            type="button"
-            onClick={handlePrev}
-            className="absolute left-2 sm:left-4 z-40 w-11 h-11 rounded-full bg-white border border-[#DFE4EA] shadow-xl flex items-center justify-center text-[#121A50] hover:bg-[#EE461F] hover:text-white hover:border-[#EE461F] transition-all cursor-pointer"
-            aria-label="Previous Review"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-
-          <button
-            type="button"
-            onClick={handleNext}
-            className="absolute right-2 sm:right-4 z-40 w-11 h-11 rounded-full bg-white border border-[#DFE4EA] shadow-xl flex items-center justify-center text-[#121A50] hover:bg-[#EE461F] hover:text-white hover:border-[#EE461F] transition-all cursor-pointer"
-            aria-label="Next Review"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
         </div>
-
-        {/* Carousel Pagination Dots */}
-        <div className="flex items-center justify-center gap-2 mt-8">
-          {reviews.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => setCurrentIndex(idx)}
-              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                currentIndex === idx ? 'w-8 bg-[#EE461F]' : 'w-2.5 bg-gray-300 hover:bg-gray-400'
-              }`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
-        </div>
-
       </div>
     </section>
   );

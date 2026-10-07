@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, ChevronRight } from 'lucide-react';
+import { ArrowUpRight, ChevronRight, Box, Image as ImageIcon } from 'lucide-react';
+import { ThreeWireframeGradientShape } from '@/components/three-wireframe-gradient-shape';
 
 export interface StorySlide {
   tag: string;
@@ -97,6 +98,7 @@ export function ScrollingFeatureShowcase({
   className = '',
 }: ScrollingFeatureShowcaseProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [viewMode, setViewMode] = useState<'3d' | 'image'>('3d');
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -223,22 +225,59 @@ export function ScrollingFeatureShowcase({
               </div>
             </div>
 
-            {/* Right Column: Clean Bright Image Showcase with Ultra-Smooth Ease-In-Out Transition */}
+            {/* Right Column: Clean 3D Model Canvas & Image Showcase with Ultra-Smooth Transition */}
             <div className="lg:col-span-5 hidden lg:flex items-center justify-center">
-              <div className="relative w-full max-w-[500px] h-[392px] sm:h-[436px] bg-white rounded-2xl shadow-xl border border-[#DFE4EA] overflow-hidden p-2.5 flex items-center justify-center">
-                <motion.img
-                  key={`case-study-img-${activeIndex}`}
-                  src={activeSlide.image}
-                  alt={activeSlide.title}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src =
-                      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80';
-                  }}
-                  className="h-full w-full object-cover object-center rounded-[8px] absolute inset-2.5 transform-gpu"
-                />
+              <div className="relative w-full max-w-[500px] h-[392px] sm:h-[436px] bg-[#FAFAFC] rounded-2xl shadow-xl border border-[#DFE4EA] overflow-hidden p-2 flex flex-col justify-between">
+                
+                {/* View Mode Toggle Pill */}
+                <div className="absolute top-4 right-4 z-20 flex items-center gap-1 bg-white/90 backdrop-blur-md p-1 rounded-lg border border-[#DFE4EA] shadow-md">
+                  <button
+                    type="button"
+                    onClick={() => setViewMode('3d')}
+                    className={`flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono font-semibold rounded-md transition-all cursor-pointer ${
+                      viewMode === '3d'
+                        ? 'bg-[#EE461F] text-white shadow-sm'
+                        : 'text-[#4B5565] hover:text-[#121A50]'
+                    }`}
+                  >
+                    <Box className="w-3.5 h-3.5" />
+                    <span>3D Model</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setViewMode('image')}
+                    className={`flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono font-semibold rounded-md transition-all cursor-pointer ${
+                      viewMode === 'image'
+                        ? 'bg-[#EE461F] text-white shadow-sm'
+                        : 'text-[#4B5565] hover:text-[#121A50]'
+                    }`}
+                  >
+                    <ImageIcon className="w-3.5 h-3.5" />
+                    <span>Image</span>
+                  </button>
+                </div>
+
+                {viewMode === '3d' ? (
+                  <ThreeWireframeGradientShape
+                    key={`case-study-3d-${activeIndex}`}
+                    interactive={true}
+                    className="w-full h-full border-none rounded-xl"
+                  />
+                ) : (
+                  <motion.img
+                    key={`case-study-img-${activeIndex}`}
+                    src={activeSlide.image}
+                    alt={activeSlide.title}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src =
+                        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80';
+                    }}
+                    className="h-full w-full object-cover object-center rounded-[12px] transform-gpu"
+                  />
+                )}
               </div>
             </div>
 

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Check, X } from "lucide-react";
 import { AppleStyleDock } from "@/components/apple-style-dock";
 import HeroSection from "@/components/ui/dynamic-animated-hero-section-with-gradient";
+import { TrustedClientsGridSection } from "@/components/trusted-clients-grid-section";
 import { AgencyServicesSection } from "@/components/agency-services-section";
 import { ScrollingFeatureShowcase } from "@/components/ui/interactive-scrolling-story-component";
 import { AboutAgencyBannerSection } from "@/components/about-agency-banner-section";
@@ -33,12 +34,14 @@ export default function Home() {
       {/* Dynamic Animated Hero Section with Gradient */}
       <HeroSection onCtaClick={() => setModalOpen(true)} />
 
+      {/* Companies We Work With - Partner Grid Section */}
+      <TrustedClientsGridSection />
+
       {/* 3. Editorial Agency Services Section */}
       <AgencyServicesSection
         onQuoteClick={() => setModalOpen(true)}
         onExploreClick={() => setModalOpen(true)}
       />
-
 
 
       {/* Interactive Scrolling Case Studies / Story Showcase */}
@@ -55,6 +58,7 @@ export default function Home() {
 
       {/* Story Scroll Section */}
       <FlowArtDefaultDemo />
+
 
       {/* Interactive Agency FAQ Section */}
       <AgencyFaqSection onContactClick={() => setModalOpen(true)} />

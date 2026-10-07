@@ -127,6 +127,9 @@ const STYLES = `
   -webkit-text-fill-color: transparent;
   background-clip: text;
   filter: drop-shadow(0px 0px 20px color-mix(in oklch, var(--foreground) 15%, transparent));
+  padding-bottom: 0.2em;
+  line-height: 1.15;
+  display: inline-block;
 }
 `;
 
@@ -326,7 +329,7 @@ export function CinematicFooter({ onQuoteClick }: CinematicFooterProps) {
           <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-20 w-full max-w-5xl mx-auto">
             <h2
               ref={headingRef}
-              className="text-5xl md:text-8xl font-black footer-text-glow tracking-tighter mb-12 text-center"
+              className="text-5xl md:text-8xl font-black footer-text-glow tracking-tighter mb-12 text-center pb-4 sm:pb-6 leading-normal"
             >
               Ready to begin?
             </h2>
