@@ -3,114 +3,110 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-interface ProcessStep {
+interface ProcessItem {
   number: string;
   title: string;
   description: string;
 }
 
-const steps: ProcessStep[] = [
+const processSteps: ProcessItem[] = [
   {
     number: '01',
-    title: 'Discover & Define',
-    description:
-      'Deep dive into business goals and requirements. We craft a precise project blueprint.',
+    title: 'DISCOVER',
+    description: 'We analyze your business goals, tech stack, and digital objectives.',
   },
   {
     number: '02',
-    title: 'Architect & Plan',
-    description:
-      'System architecture, tech stack, sprint roadmap. Built for scale from day one.',
+    title: 'DIRECTION',
+    description: 'We define the system architecture, technical roadmap, and UI strategy.',
   },
   {
     number: '03',
-    title: 'Design & Build',
-    description:
-      'Agile sprints with bi-weekly demos. Clean documented code and automated testing.',
+    title: 'DESIGN',
+    description: 'We craft high-performance UI/UX, wireframes, and design systems.',
   },
   {
     number: '04',
-    title: 'Test & Secure',
-    description:
-      'Rigorous QA, performance benchmarks, security audits and UAT before production.',
+    title: 'DEVELOP',
+    description: 'We engineer scalable microservices, cloud APIs, and web platforms.',
   },
   {
     number: '05',
-    title: 'Deploy & Support',
-    description:
-      'Zero-downtime deployment and ongoing managed support with guaranteed SLAs.',
+    title: 'LAUNCH',
+    description: 'Rigorous security audits, automated testing, and zero-downtime deploy.',
+  },
+  {
+    number: '06',
+    title: 'IMPROVE',
+    description: 'Continuous cloud optimization, monitoring, and proactive updates.',
   },
 ];
 
 export function ProvenDeliveryProcessSection() {
   return (
-    <section className="relative w-full bg-[#F4F7FB] text-[#121A50] py-20 lg:py-28 overflow-hidden border-b border-[#DFE4EA]">
-      {/* Subtle Binary Grid Ambient Overlay */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#121A50_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
-
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
+    <section className="relative w-full bg-[#F3F1EA] text-[#111111] py-20 lg:py-36 px-4 sm:px-8 lg:px-12 border-b border-black/10 selection:bg-[#EE461F] selection:text-white">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start relative">
         
-        {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+        {/* LEFT COLUMN - Sticky Pinned Section Header & Tagline (Shifted Down & Left) */}
+        <div className="lg:col-span-5 lg:sticky lg:top-36 pt-4 sm:pt-8 lg:pt-12 flex flex-col justify-between self-start pb-8">
           
-          {/* Eyebrow Label with Accent Dash */}
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="w-8 h-0.5 bg-[#EE461F]" />
-            <span className="text-xs font-extrabold uppercase tracking-[0.25em] text-[#EE461F]">
-              HOW WE WORK
-            </span>
-            <span className="w-8 h-0.5 bg-[#EE461F]" />
+          {/* Main Giant Editorial Heading */}
+          <div className="relative mb-12 sm:mb-16">
+            <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold uppercase tracking-tight text-[#111111] leading-[0.92] font-sans">
+              HOW WE
+              <br />
+              MAKE
+              <br />
+              <span className="font-serif italic font-normal uppercase tracking-tight text-[#111111] inline-block pt-1">
+                THINGS.
+              </span>
+            </h2>
           </div>
 
-          {/* Main Title */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#121A50] tracking-tight mb-4 font-sans">
-            Our Proven Delivery Process
-          </h2>
-
-          {/* Subtitle Description */}
-          <p className="text-sm sm:text-base text-[#4B5565] leading-relaxed max-w-xl mx-auto">
-            A structured yet flexible approach ensuring quality, transparency, and on-time delivery every time.
-          </p>
+          {/* Subtitle / Philosophy Notes */}
+          <div className="space-y-1 text-sm sm:text-base text-black/70 font-normal leading-relaxed">
+            <p>Clear enough to trust.</p>
+            <p>Loose enough for good ideas.</p>
+          </div>
 
         </div>
 
-        {/* 5-Step Process Timeline Container */}
-        <div className="relative w-full pt-4 pb-8">
-          
-          {/* Desktop Horizontal Connecting Line */}
-          <div className="hidden md:block absolute top-[52px] left-[10%] right-[10%] h-[2px] bg-[#D6E0EE] z-0" />
-
-          {/* Steps Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 relative z-10">
-            {steps.map((step, idx) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.12 }}
-                className="flex flex-col items-center text-center group cursor-pointer"
-              >
-                {/* Circle Number Badge */}
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white border-2 border-gray-100 shadow-[0_10px_25px_rgba(18,26,80,0.08)] flex items-center justify-center text-center mb-6 group-hover:border-[#EE461F] group-hover:scale-110 group-hover:shadow-[0_15px_30px_rgba(238,70,31,0.2)] transition-all duration-300 relative z-10">
-                  <span className="text-base sm:text-lg font-bold font-serif text-[#EE461F] group-hover:text-[#EE461F]">
-                    {step.number}
-                  </span>
+        {/* RIGHT COLUMN - Scrolling Process Steps (Shifted Right) */}
+        <div className="lg:col-span-7 flex flex-col border-t border-black/20 lg:pl-4">
+          {processSteps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.4, delay: index * 0.04 }}
+              className="relative py-8 sm:py-10 border-b border-black/20 group transition-colors duration-300 hover:bg-black/[0.02] px-2 sm:px-4 cursor-pointer overflow-hidden"
+            >
+              <div className="grid grid-cols-12 gap-4 items-baseline">
+                
+                {/* Step Number */}
+                <div className="col-span-2 sm:col-span-2 text-xs sm:text-sm font-mono text-black/50 font-normal group-hover:text-[#EE461F] transition-colors duration-300">
+                  {step.number}
                 </div>
 
-                {/* Step Title */}
-                <h3 className="text-base sm:text-lg font-bold text-[#121A50] mb-2.5 group-hover:text-[#EE461F] transition-colors">
-                  {step.title}
-                </h3>
+                {/* Step Title (Clean Regular Weight Sans Font) */}
+                <div className="col-span-10 sm:col-span-5">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-normal uppercase tracking-wide text-[#111111] group-hover:translate-x-2 transition-transform duration-300 font-sans">
+                    {step.title}
+                  </h3>
+                </div>
 
                 {/* Step Description */}
-                <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed max-w-[240px]">
+                <div className="col-span-12 sm:col-span-5 mt-2 sm:mt-0 text-sm sm:text-base text-black/75 font-normal leading-relaxed">
                   {step.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+                </div>
 
+              </div>
+
+              {/* Animated Colored Horizontal Line traveling Left to Right on Hover */}
+              <div className="absolute bottom-0 left-0 w-full h-[2.5px] bg-gradient-to-r from-[#EE461F] via-[#F97316] to-[#EE461F] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out" />
+            </motion.div>
+          ))}
         </div>
 
       </div>

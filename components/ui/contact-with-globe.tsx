@@ -4,7 +4,7 @@ import * as React from "react";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Mail, Phone, Headphones } from "lucide-react";
+import { ArrowRight, Mail, Phone, Headphones, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import * as d3 from "d3";
@@ -733,25 +733,15 @@ export function ContactWithGlobe({
           >
             {title}
           </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.3, ease: smoothEase }}
-            className="text-base text-[#4B5565] max-w-xl leading-relaxed"
-          >
-            {description}
-          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 max-w-6xl mx-auto items-start">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.0, delay: 0.2, ease: smoothEase }}
-            className="flex flex-col gap-6"
+            className="lg:col-span-5 flex flex-col gap-6"
           >
             <div className="flex flex-col gap-1">
               <h3 className="text-2xl font-black uppercase tracking-tight text-[#121A50]">
@@ -814,93 +804,108 @@ export function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.0, delay: 0.35, ease: smoothEase }}
-            className="rounded-2xl border border-[#DFE4EA] bg-white p-6 sm:p-8 flex flex-col gap-5 shadow-xl"
+            className="lg:col-span-7 max-w-[580px] w-full lg:ml-auto lg:translate-x-10 rounded-3xl border border-[#DFE4EA] bg-gradient-to-br from-[#EEF4FF]/75 via-[#F8FAFC] to-[#EBF3FF]/80 p-8 sm:p-10 flex flex-col gap-6 shadow-2xl backdrop-blur-xl relative overflow-hidden"
           >
             <div>
-              <h3 className="text-xl font-black uppercase tracking-tight text-[#121A50] mb-1">
-                Send a message
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight mb-2 font-sans">
+                Tell Us About Your Project
               </h3>
-              <p className="text-sm text-[#4B5565]">
-                Fill out the form and we&apos;ll get back to you promptly.
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Fill in a few details and we&apos;ll get back to you within one business day.
               </p>
             </div>
 
-            <FormDots />
-
             {formSubmitted ? (
-              <div className="text-center py-10">
-                <div className="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto mb-3 font-bold text-xl border border-emerald-500/20">
+              <div className="text-center py-10 bg-white/80 rounded-2xl border border-emerald-200 shadow-xs">
+                <div className="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mx-auto mb-3 font-bold text-xl border border-emerald-500/20">
                   ✓
                 </div>
-                <h4 className="text-lg font-bold text-[#121A50] mb-1">
+                <h4 className="text-lg font-bold text-[#0F172A] mb-1">
                   Message Sent
                 </h4>
-                <p className="text-xs text-[#4B5565] mb-6">
-                  Thank you. We will contact you within 2 business hours.
+                <p className="text-xs text-slate-500 mb-6">
+                  Thank you. We will contact you within one business day.
                 </p>
                 <Button
                   onClick={() => setFormSubmitted(false)}
-                  className="bg-[#121A50] hover:bg-[#182368] text-white font-semibold"
+                  className="bg-[#0F172A] hover:bg-[#1E293B] text-white font-semibold rounded-full"
                 >
                   Send another message
                 </Button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-2">
-                    <label className="text-xs font-bold tracking-wider uppercase text-[#121A50]">
-                      Full Name *
-                    </label>
-                    <input
-                      required
-                      type="text"
-                      placeholder="Alex Morgan"
-                      className="w-full bg-slate-50 border border-[#DFE4EA] rounded-xl px-4 py-2.5 text-sm text-[#121A50] placeholder:text-slate-400 outline-none focus:border-[#EE461F] focus:ring-1 focus:ring-[#EE461F] transition-all duration-200"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-xs font-bold tracking-wider uppercase text-[#121A50]">
-                      Company
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Ayyatech Systems"
-                      className="w-full bg-slate-50 border border-[#DFE4EA] rounded-xl px-4 py-2.5 text-sm text-[#121A50] placeholder:text-slate-400 outline-none focus:border-[#EE461F] focus:ring-1 focus:ring-[#EE461F] transition-all duration-200"
-                    />
-                  </div>
-                </div>
+                {/* Full name input */}
+                <input
+                  required
+                  type="text"
+                  placeholder="Full name"
+                  className="w-full h-14 bg-white border border-[#E2E8F0] rounded-2xl px-6 text-sm text-[#0F172A] placeholder:text-slate-400 outline-none focus:border-[#1433D1] focus:ring-2 focus:ring-[#1433D1]/20 shadow-2xs transition-all duration-200"
+                />
 
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold tracking-wider uppercase text-[#121A50]">
-                    Email Address *
-                  </label>
+                {/* Email address & Phone number grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <input
                     required
                     type="email"
-                    placeholder="alex@company.com"
-                    className="w-full bg-slate-50 border border-[#DFE4EA] rounded-xl px-4 py-2.5 text-sm text-[#121A50] placeholder:text-slate-400 outline-none focus:border-[#EE461F] focus:ring-1 focus:ring-[#EE461F] transition-all duration-200"
+                    placeholder="Email address"
+                    className="w-full h-14 bg-white border border-[#E2E8F0] rounded-2xl px-6 text-sm text-[#0F172A] placeholder:text-slate-400 outline-none focus:border-[#1433D1] focus:ring-2 focus:ring-[#1433D1]/20 shadow-2xs transition-all duration-200"
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Phone number"
+                    className="w-full h-14 bg-white border border-[#E2E8F0] rounded-2xl px-6 text-sm text-[#0F172A] placeholder:text-slate-400 outline-none focus:border-[#1433D1] focus:ring-2 focus:ring-[#1433D1]/20 shadow-2xs transition-all duration-200"
                   />
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-bold tracking-wider uppercase text-[#121A50]">
-                    Message
-                  </label>
-                  <textarea
-                    placeholder="Type your message here"
-                    rows={4}
-                    className="w-full bg-slate-50 border border-[#DFE4EA] rounded-xl px-4 py-3 text-sm text-[#121A50] placeholder:text-slate-400 outline-none focus:border-[#EE461F] focus:ring-1 focus:ring-[#EE461F] resize-none transition-all duration-200"
+                {/* City & State grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    placeholder="City"
+                    className="w-full h-14 bg-white border border-[#E2E8F0] rounded-2xl px-6 text-sm text-[#0F172A] placeholder:text-slate-400 outline-none focus:border-[#1433D1] focus:ring-2 focus:ring-[#1433D1]/20 shadow-2xs transition-all duration-200"
+                  />
+                  <input
+                    type="text"
+                    placeholder="State"
+                    className="w-full h-14 bg-white border border-[#E2E8F0] rounded-2xl px-6 text-sm text-[#0F172A] placeholder:text-slate-400 outline-none focus:border-[#1433D1] focus:ring-2 focus:ring-[#1433D1]/20 shadow-2xs transition-all duration-200"
                   />
                 </div>
 
-                <Button
+                {/* Service select dropdown box */}
+                <div className="relative flex flex-col justify-center bg-white border border-[#E2E8F0] rounded-2xl px-6 py-2 shadow-2xs focus-within:border-[#1433D1] focus-within:ring-2 focus-within:ring-[#1433D1]/20 transition-all duration-200">
+                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                    Service you need
+                  </span>
+                  <select
+                    defaultValue=""
+                    className="w-full bg-transparent text-sm text-[#0F172A] font-semibold outline-none cursor-pointer appearance-none pr-8 py-0.5"
+                  >
+                    <option value="" disabled hidden>Select a service...</option>
+                    <option value="Custom Website Development">Custom Website Development</option>
+                    <option value="IT Consultancy & Digital Transformation">IT Consultancy & Digital Transformation</option>
+                    <option value="Cloud-Native Infrastructure & DevOps">Cloud-Native Infrastructure & DevOps</option>
+                    <option value="AI-Powered Enterprise Systems">AI-Powered Enterprise Systems</option>
+                    <option value="Mobile Application Development">Mobile Application Development</option>
+                  </select>
+                  <ChevronDown className="w-4 h-4 text-slate-500 pointer-events-none absolute right-6 top-1/2 -translate-y-1/2" />
+                </div>
+
+                {/* Project details (optional) textarea */}
+                <textarea
+                  placeholder="Project details (optional)"
+                  rows={4}
+                  className="w-full bg-white border border-[#E2E8F0] rounded-2xl p-6 text-sm text-[#0F172A] placeholder:text-slate-400 outline-none focus:border-[#1433D1] focus:ring-2 focus:ring-[#1433D1]/20 shadow-2xs resize-none transition-all duration-200"
+                />
+
+                {/* Submit button */}
+                <button
                   type="submit"
-                  className="w-fit h-11 px-8 rounded-xl font-bold text-xs uppercase tracking-wider bg-[#EE461F] hover:bg-[#D63B15] text-white group cursor-pointer transition-colors shadow-md shadow-[#EE461F]/20"
+                  className="w-fit h-14 px-8 rounded-full font-bold text-sm bg-[#0F172A] hover:bg-[#1E293B] text-white flex items-center gap-3 transition-all duration-300 shadow-md hover:scale-102 cursor-pointer mt-2"
                 >
-                  Submit
-                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </Button>
+                  <span>Send message</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </form>
             )}
           </motion.div>

@@ -1,14 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, Search, HelpCircle, MessageSquare, ArrowRight, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { MessageSquare, ArrowRight, Sparkles } from 'lucide-react';
+import { FaqPro, type FaqProItem } from '@/components/ui/faq-pro';
 
-interface FaqItem {
-  id: string;
+interface FaqItem extends FaqProItem {
   category: 'General' | 'Services' | 'Process & Security' | 'Engagement';
-  question: string;
-  answer: string;
 }
 
 const faqData: FaqItem[] = [
@@ -78,19 +76,9 @@ export interface FaqSectionProps {
 
 export function AgencyFaqSection({ onContactClick }: FaqSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string>('All');
-  const [openFaqId, setOpenFaqId] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState<string>('');
-
-  const toggleFaq = (id: string) => {
-    setOpenFaqId((prev) => (prev === id ? null : id));
-  };
 
   const filteredFaqs = faqData.filter((faq) => {
-    const matchesCategory = activeCategory === 'All' || faq.category === activeCategory;
-    const matchesSearch =
-      faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    return activeCategory === 'All' || faq.category === activeCategory;
   });
 
   return (
@@ -102,64 +90,22 @@ export function AgencyFaqSection({ onContactClick }: FaqSectionProps) {
       <div className="max-w-[1320px] mx-auto px-6 sm:px-10 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#121A50] leading-tight">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#121A50] leading-tight font-sans">
             Frequently Asked Questions
           </h2>
         </div>
 
-        {/* Accordion FAQ List */}
-        <div className="max-w-4xl mx-auto space-y-4">
-          {faqData.map((faq) => {
-              const isOpen = openFaqId === faq.id;
-              return (
-                <div
-                  key={faq.id}
-                  className={`rounded-2xl border transition-all duration-300 overflow-hidden bg-white ${
-                    isOpen
-                      ? 'border-[#EE461F] shadow-lg shadow-[#EE461F]/5'
-                      : 'border-[#DFE4EA] hover:border-gray-300 shadow-xs'
-                  }`}
-                >
-                  <button
-                    type="button"
-                    onClick={() => toggleFaq(faq.id)}
-                    className="w-full px-6 py-5 flex items-center justify-between text-left gap-4 cursor-pointer select-none"
-                  >
-                    <span className="text-base sm:text-lg font-bold text-[#121A50] leading-snug">
-                      {faq.question}
-                    </span>
-                    <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors duration-200 ${
-                        isOpen ? 'bg-[#EE461F] text-white' : 'bg-gray-100 text-[#121A50] hover:bg-gray-200'
-                      }`}
-                    >
-                      {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                    </div>
-                  </button>
-
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-[#4B5565] leading-relaxed border-t border-gray-100">
-                          {faq.answer}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-        </div>
+        {/* FaqPro Interactive Search & Animated Spring Accordion Component */}
+        <FaqPro
+          defaultOpenFirst={false}
+          items={faqData}
+          searchPlaceholder="Search FAQs by keywords (e.g. security, AI, SLA, onboarding)..."
+          className="w-full"
+        />
 
         {/* Bottom Contact CTA Box */}
-        <div className="mt-14 max-w-4xl mx-auto rounded-2xl bg-gradient-to-r from-[#121A50] via-[#1A2568] to-[#121A50] p-8 sm:p-10 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-white/10">
+        <div className="mt-16 max-w-3xl mx-auto rounded-2xl bg-gradient-to-r from-[#121A50] via-[#1A2568] to-[#121A50] p-8 sm:p-10 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-white/10">
           <div className="flex items-center gap-4 text-left">
             <div className="w-12 h-12 rounded-2xl bg-[#EE461F] flex items-center justify-center shrink-0 shadow-lg">
               <MessageSquare className="w-6 h-6 text-white" />

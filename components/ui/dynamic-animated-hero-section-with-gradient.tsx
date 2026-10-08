@@ -83,8 +83,8 @@ export function HeroSection({ onCtaClick }: HeroSectionProps) {
 
   // Smooth Physics Spring for Liquid Parallax Frame Scrubbing
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 140,
-    damping: 32,
+    stiffness: 90,
+    damping: 38,
     restDelta: 0.0001,
   });
 
@@ -188,7 +188,7 @@ export function HeroSection({ onCtaClick }: HeroSectionProps) {
   return (
     <div
       ref={targetRef}
-      className="relative w-full h-[300vh] bg-[#080D2B] text-white selection:bg-[#EE461F] selection:text-white"
+      className="relative w-full h-[600vh] bg-[#080D2B] text-white selection:bg-[#EE461F] selection:text-white"
     >
       {/* STICKY FULLSCREEN VIEWPORT CONTAINER */}
       <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden py-10">

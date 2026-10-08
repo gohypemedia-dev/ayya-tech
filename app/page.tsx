@@ -6,7 +6,6 @@ import { AppleStyleDock } from "@/components/apple-style-dock";
 import HeroSection from "@/components/ui/dynamic-animated-hero-section-with-gradient";
 import { TrustedClientsGridSection } from "@/components/trusted-clients-grid-section";
 import { AgencyServicesSection } from "@/components/agency-services-section";
-import { ScrollingFeatureShowcase } from "@/components/ui/interactive-scrolling-story-component";
 import { AboutAgencyBannerSection } from "@/components/about-agency-banner-section";
 import { ProvenDeliveryProcessSection } from "@/components/proven-delivery-process-section";
 import { AgencyStatsAndFeaturesSection } from "@/components/agency-stats-and-features-section";
@@ -42,10 +41,6 @@ export default function Home() {
         onQuoteClick={() => setModalOpen(true)}
         onExploreClick={() => setModalOpen(true)}
       />
-
-
-      {/* Interactive Scrolling Case Studies / Story Showcase */}
-      <ScrollingFeatureShowcase onCtaClick={() => setModalOpen(true)} />
 
       {/* About Agency Banner Section (1:1 Screenshot Design) */}
       <AboutAgencyBannerSection onCtaClick={() => setModalOpen(true)} />
