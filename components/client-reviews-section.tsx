@@ -120,8 +120,8 @@ export function ClientReviewsSection() {
         
         {/* Section Heading */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#121A50] leading-tight">
-            Trusted by Global Enterprise Leaders
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-[#121A50] leading-tight">
+            TRUSTED BY GLOBAL ENTERPRISE LEADERS
           </h2>
         </div>
 

@@ -91,8 +91,8 @@ export function AgencyFaqSection({ onContactClick }: FaqSectionProps) {
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#121A50] leading-tight font-sans">
-            Frequently Asked Questions
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-[#121A50] leading-tight font-sans">
+            FREQUENTLY ASKED QUESTIONS
           </h2>
         </div>
 

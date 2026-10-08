@@ -54,18 +54,18 @@ export function AgencyStatsAndFeaturesSection() {
   const features = [
     {
       number: '01',
-      title: 'TOTAL DESIGN & ARCHITECTURE FREEDOM',
-      subtitle: 'CORE CAPABILITIES',
+      title: 'Total Design & Architecture Freedom',
+      subtitle: 'Core Capabilities',
     },
     {
       number: '02',
-      title: 'AGILE ENTERPRISE SOFTWARE DEVELOPMENT',
-      subtitle: 'CORE CAPABILITIES',
+      title: 'Agile Enterprise Software Development',
+      subtitle: 'Core Capabilities',
     },
     {
       number: '03',
-      title: 'CLOUD-NATIVE SCALABILITY & 24/7 DEVOPS',
-      subtitle: 'CORE CAPABILITIES',
+      title: 'Cloud-Native Scalability & 24/7 DevOps',
+      subtitle: 'Core Capabilities',
     },
   ];
 
@@ -115,8 +115,8 @@ export function AgencyStatsAndFeaturesSection() {
             
             {/* Bright Orange Highlight Box */}
             <div className="bg-[#EE461F] p-8 sm:p-10 text-white flex flex-col justify-center rounded-none">
-              <h3 className="text-xl sm:text-2xl font-black leading-snug tracking-tight uppercase">
-                WE ARE COMMITTED TO DELIVERING HIGH QUALITY DIGITAL SOLUTIONS THAT HELP BUSINESSES GROW.
+              <h3 className="text-xl sm:text-2xl font-bold leading-snug tracking-tight">
+                We are committed to delivering high quality digital solutions that help businesses grow.
               </h3>
             </div>
 
@@ -148,7 +148,7 @@ export function AgencyStatsAndFeaturesSection() {
             
             <div>
               {/* Main Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-white leading-tight tracking-tight mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black uppercase text-white leading-tight tracking-tight mb-6">
                 WE’RE TRUSTED BY MORE THAN <span className="text-white">1500 CLIENTS</span><span className="text-[#EE461F]">.</span>
               </h2>
 
@@ -164,12 +164,8 @@ export function AgencyStatsAndFeaturesSection() {
               {/* Team Image Box */}
               <div className="relative w-full h-[210px] sm:h-[230px] rounded-none overflow-hidden border border-white/15 shadow-md">
                 <img
-                  src="/it_team_left.jpg"
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
                   alt="IT Team Collaboration"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src =
-                      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80';
-                  }}
                   className="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </div>

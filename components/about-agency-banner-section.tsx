@@ -14,13 +14,22 @@ export function AboutAgencyBannerSection({ onCtaClick }: AboutAgencyBannerSectio
   };
 
   return (
-    <section className="relative w-full bg-[#0F1746] text-white overflow-hidden py-16 lg:py-24 select-none border-t border-b border-[#1C2766]">
+    <section className="relative w-full bg-[#FAF6F0] text-[#121A50] overflow-hidden py-16 lg:py-24 select-none border-t border-b border-[#E8E0D2]">
       
-      {/* Background Dual-Tone Split Layer */}
+      {/* Cream Dual-Tone Split Layer */}
       <div className="absolute inset-0 z-0 pointer-events-none flex">
-        <div className="w-full lg:w-[32%] bg-[#060A22]" />
-        <div className="hidden lg:block w-[68%] bg-[#0F1746]" />
+        <div className="w-full lg:w-[32%] bg-[#F0E8DC]" />
+        <div className="hidden lg:block w-[68%] bg-[#FAF6F0]" />
       </div>
+
+      {/* Tech Grid Pattern Overlay */}
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none opacity-40"
+        style={{
+          backgroundImage: `linear-gradient(to right, rgba(18, 26, 80, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(18, 26, 80, 0.08) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -29,12 +38,12 @@ export function AboutAgencyBannerSection({ onCtaClick }: AboutAgencyBannerSectio
           <div className="lg:col-span-5 relative flex items-center justify-center lg:justify-start">
             
             {/* Thick Brand Orange Accent Bar on Far Left */}
-            <div className="absolute -left-4 sm:left-0 top-6 bottom-6 w-3.5 bg-[#EE461F] rounded-full z-10 hidden sm:block shadow-lg shadow-[#EE461F]/30" />
+            <div className="absolute -left-4 sm:left-0 top-6 bottom-6 w-3.5 bg-[#EE461F] rounded-full z-10 hidden sm:block shadow-lg shadow-[#EE461F]/25" />
 
             {/* Overlapping Images Container */}
             <div className="relative w-full max-w-[460px] h-[340px] sm:h-[440px] ml-0 sm:ml-6">
               
-              {/* Top Image: Professional Business Men Collaborating (Grayscale Drag-Glide Entry) */}
+              {/* Top Image: Professional Business Men Collaborating */}
               <motion.div
                 initial={{ y: -130, x: 35, scale: 1.16, opacity: 0.2 }}
                 whileInView={{ y: 0, x: 0, scale: 1, opacity: 1 }}
@@ -45,7 +54,7 @@ export function AboutAgencyBannerSection({ onCtaClick }: AboutAgencyBannerSectio
                   damping: 18,
                   mass: 0.9,
                 }}
-                className="absolute top-0 right-0 w-[80%] h-[68%] rounded-xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.55)] border border-white/10 z-10"
+                className="absolute top-0 right-0 w-[80%] h-[68%] rounded-xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.18)] border border-white/60 z-10"
               >
                 <img
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80"
@@ -54,7 +63,7 @@ export function AboutAgencyBannerSection({ onCtaClick }: AboutAgencyBannerSectio
                 />
               </motion.div>
 
-              {/* Bottom Image: Team High-Five over Laptop (Grayscale Drag-Glide Entry) */}
+              {/* Bottom Image: Team High-Five over Laptop */}
               <motion.div
                 initial={{ y: 130, x: -35, scale: 0.86, opacity: 0.2 }}
                 whileInView={{ y: 0, x: 0, scale: 1, opacity: 1 }}
@@ -66,7 +75,7 @@ export function AboutAgencyBannerSection({ onCtaClick }: AboutAgencyBannerSectio
                   mass: 0.9,
                   delay: 0.1,
                 }}
-                className="absolute bottom-0 left-0 w-[80%] h-[66%] rounded-xl overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.65)] border-4 border-[#060A22] z-20"
+                className="absolute bottom-0 left-0 w-[80%] h-[66%] rounded-xl overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.22)] border-4 border-[#F0E8DC] z-20"
               >
                 <img
                   src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80"
@@ -82,17 +91,17 @@ export function AboutAgencyBannerSection({ onCtaClick }: AboutAgencyBannerSectio
           <div className="lg:col-span-7 flex flex-col justify-center text-left">
             
             {/* Main Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-[1.08] mb-5 font-sans">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-[#121A50] leading-[1.08] mb-5 font-sans">
               WE&apos;RE THE LEADING IT CONSULTANCY &amp; SOFTWARE AGENCY <span className="text-[#EE461F]">.</span>
             </h2>
 
             {/* Sub-headline Brand Orange Text */}
-            <h3 className="text-xs sm:text-sm lg:text-[15px] font-extrabold uppercase tracking-wide text-[#EE461F] leading-relaxed mb-5 max-w-2xl">
-              WE ARE COMMITTED TO DELIVERING SCALABLE CLOUD ARCHITECTURE, AI SYSTEMS &amp; HIGH-PERFORMANCE SOFTWARE FOR ENTERPRISES.
+            <h3 className="text-xs sm:text-sm lg:text-[15px] font-extrabold tracking-wide text-[#EE461F] leading-relaxed mb-5 max-w-2xl">
+              We are committed to delivering scalable cloud architecture, AI systems &amp; high-performance software for enterprises.
             </h3>
 
             {/* Paragraph Text */}
-            <p className="text-sm sm:text-base text-[#94A3B8] leading-relaxed mb-7 max-w-xl font-normal">
+            <p className="text-sm sm:text-base text-[#475569] leading-relaxed mb-7 max-w-xl font-normal">
               Our team of senior tech architects continuously leverages cutting-edge frameworks, microservices, and AI models to ensure our enterprise clients maintain a decisive competitive advantage.
             </p>
 
@@ -100,27 +109,27 @@ export function AboutAgencyBannerSection({ onCtaClick }: AboutAgencyBannerSectio
             <div className="space-y-3.5 mb-9">
               <div className="flex items-center gap-3.5">
                 <Check className="w-5 h-5 text-[#EE461F] stroke-[3.5] shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-white">
+                <span className="text-xs sm:text-sm font-semibold text-[#121A50]">
                   Team of Senior IT Architects &amp; Proven Engineering Excellence
                 </span>
               </div>
 
               <div className="flex items-center gap-3.5">
                 <Check className="w-5 h-5 text-[#EE461F] stroke-[3.5] shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-white">
+                <span className="text-xs sm:text-sm font-semibold text-[#121A50]">
                   Empowering Enterprises with Cloud-Native &amp; AI-Powered Platforms
                 </span>
               </div>
 
               <div className="flex items-center gap-3.5">
                 <Check className="w-5 h-5 text-[#EE461F] stroke-[3.5] shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-white">
+                <span className="text-xs sm:text-sm font-semibold text-[#121A50]">
                   Modernizing Legacy Systems using Latest Tech &amp; Low-Code Velocity
                 </span>
               </div>
             </div>
 
-            {/* Discover More CTA Button (Without Since 2014 Badge) */}
+            {/* Discover More CTA Button */}
             <div className="pt-1">
               <button
                 type="button"

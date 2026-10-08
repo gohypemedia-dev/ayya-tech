@@ -121,10 +121,10 @@ export function TrustedClientsGridSection({ className = '' }: TrustedClientsGrid
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10 flex flex-col items-center text-center">
         
         {/* Web Services-Oriented Main Heading with Brand Color Gradient */}
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#121A50] tracking-tight leading-tight max-w-3xl mb-10 sm:mb-14">
-          Empowering Tech Leaders with{' '}
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-[#121A50] tracking-tight leading-tight max-w-3xl mb-10 sm:mb-14">
+          EMPOWERING TECH LEADERS WITH{' '}
           <span className="bg-gradient-to-r from-[#EE461F] via-[#1433D1] to-[#121A50] bg-clip-text text-transparent">
-            Next-Gen Web Solutions
+            NEXT-GEN WEB SOLUTIONS
           </span>
         </h2>
 
