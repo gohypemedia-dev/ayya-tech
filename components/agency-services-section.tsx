@@ -193,7 +193,7 @@ const THREE_SECTIONS: SectionGroup[] = [
       'React Native & Flutter mobile ecosystems',
       'Low-code / No-code rapid application MVPs',
     ],
-    layoutPosition: 'right', // Section 1 on RIGHT side
+    layoutPosition: 'left', // Section 1 on LEFT side
     services: [
       {
         id: 'web-dev',
@@ -233,7 +233,7 @@ const THREE_SECTIONS: SectionGroup[] = [
       'Top 1% senior engineering staff augmentation',
       'CTO advisory & digital transformation roadmaps',
     ],
-    layoutPosition: 'left', // Section 2 on LEFT side
+    layoutPosition: 'right', // Section 2 on RIGHT side
     services: [
       {
         id: 'software-dev',
@@ -273,7 +273,7 @@ const THREE_SECTIONS: SectionGroup[] = [
       'Custom LLMs, RAG pipelines & autonomous AI agents',
       'Connected IoT sensors & edge computing streaming',
     ],
-    layoutPosition: 'right', // Section 3 on RIGHT side
+    layoutPosition: 'left', // Section 3 on LEFT side
     services: [
       {
         id: 'cloud-infra',
@@ -570,7 +570,7 @@ export function AgencyServicesSection({
           </motion.h2>
         </div>
 
-        {/* 3 DISTINCT PARALLAX SECTIONS (SECTION 1: RIGHT | SECTION 2: LEFT | SECTION 3: RIGHT) */}
+        {/* 3 DISTINCT PARALLAX SECTIONS (SECTION 1: LEFT | SECTION 2: RIGHT | SECTION 3: LEFT) */}
         <div className="flex flex-col gap-28 sm:gap-36">
           {THREE_SECTIONS.map((section) => (
             <ParallaxSectionRow
