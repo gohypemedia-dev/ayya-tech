@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquare, ArrowRight, Sparkles } from 'lucide-react';
+import { MessageSquare, ArrowRight } from 'lucide-react';
 import { FaqPro, type FaqProItem } from '@/components/ui/faq-pro';
 
 interface FaqItem extends FaqProItem {
@@ -90,11 +90,17 @@ export function AgencyFaqSection({ onContactClick }: FaqSectionProps) {
       <div className="max-w-[1320px] mx-auto px-6 sm:px-10 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12"
+        >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-[#121A50] leading-tight font-sans">
             FREQUENTLY ASKED QUESTIONS
           </h2>
-        </div>
+        </motion.div>
 
         {/* FaqPro Interactive Search & Animated Spring Accordion Component */}
         <FaqPro
@@ -105,7 +111,13 @@ export function AgencyFaqSection({ onContactClick }: FaqSectionProps) {
         />
 
         {/* Bottom Contact CTA Box */}
-        <div className="mt-16 max-w-3xl mx-auto rounded-2xl bg-gradient-to-r from-[#121A50] via-[#1A2568] to-[#121A50] p-8 sm:p-10 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-white/10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-16 max-w-3xl mx-auto rounded-2xl bg-gradient-to-r from-[#121A50] via-[#1A2568] to-[#121A50] p-8 sm:p-10 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-white/10"
+        >
           <div className="flex items-center gap-4 text-left">
             <div className="w-12 h-12 rounded-2xl bg-[#EE461F] flex items-center justify-center shrink-0 shadow-lg">
               <MessageSquare className="w-6 h-6 text-white" />
@@ -126,7 +138,7 @@ export function AgencyFaqSection({ onContactClick }: FaqSectionProps) {
             <span>Ask an Expert</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
-        </div>
+        </motion.div>
 
       </div>
     </section>

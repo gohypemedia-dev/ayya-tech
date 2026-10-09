@@ -226,24 +226,25 @@ export function FaqPro({
         className
       )}
     >
-      <div className="flex flex-col gap-3">
-        <AnimatePresence initial={false} mode="popLayout">
+      <div className="flex flex-col gap-3.5 overflow-hidden py-2 px-1">
+        <AnimatePresence mode="popLayout">
           {visibleItems.length > 0 ? (
             visibleItems.map((item, index) => {
+              // 1st question (index 0) comes from RIGHT (+220px), 2nd (index 1) from LEFT (-220px), 3rd from RIGHT (+220px)...
               const isEven = index % 2 === 0;
-              const initialX = isEven ? -60 : 60;
+              const initialX = isEven ? 220 : -220;
 
               return (
                 <motion.div
+                  key={item.id}
                   initial={{ opacity: 0, x: initialX }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  key={item.id}
+                  viewport={{ once: true, amount: 0.15 }}
                   layout="position"
                   transition={{
-                    duration: 0.5,
-                    delay: index * 0.08,
-                    ease: PANEL_EASE,
+                    duration: 0.65,
+                    delay: (index % 6) * 0.09,
+                    ease: [0.16, 1, 0.3, 1],
                   }}
                 >
                   <FaqProRow
