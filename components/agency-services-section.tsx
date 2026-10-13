@@ -300,82 +300,60 @@ const THREE_SECTIONS: SectionGroup[] = [
   },
 ];
 
-/* Single Card Component with Sub-Parallax Offset & Tag Logos */
-function ParallaxSingleCard({
+/* Single Service Card Component with Horizontal Breathing Room & Tag Logos */
+function ServiceCard({
   service,
-  cardIdx,
-  smoothProgress,
   onExploreClick,
   onQuoteClick,
 }: {
   service: ServiceItem;
-  cardIdx: number;
-  smoothProgress: MotionValue<number>;
   onExploreClick?: (title: string) => void;
   onQuoteClick?: () => void;
 }) {
-  // Micro differential vertical movement for 3D card depth
-  const offsets = [
-    [25, -25],
-    [-15, 15],
-    [35, -35],
-  ];
-  const cardY = useTransform(smoothProgress, [0, 1], offsets[cardIdx % 3]);
-
   const IconComp = service.icon;
 
   return (
-    <motion.div
-      style={{ y: cardY }}
-      className="bg-white/90 backdrop-blur-xl border border-slate-200/90 rounded-3xl p-6 flex flex-col justify-between shadow-xs hover:shadow-2xl hover:border-[#EE461F]/40 transition-all duration-300 group hover:-translate-y-1 relative"
+    <div
+      onClick={() => {
+        if (onExploreClick) {
+          onExploreClick(service.title);
+        } else if (onQuoteClick) {
+          onQuoteClick();
+        }
+      }}
+      className="bg-white/95 backdrop-blur-xl border border-slate-200/90 hover:border-[#EE461F]/40 rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-5"
     >
-      <div>
-        {/* Icon Box (Brand Palette: #EEF3FF / #1433D1 -> Hover #EE461F) */}
-        <div className="w-11 h-11 rounded-2xl bg-[#EEF3FF] border border-[#1433D1]/20 text-[#1433D1] flex items-center justify-center mb-5 group-hover:bg-[#EE461F] group-hover:text-white group-hover:border-[#EE461F] transition-colors duration-300 shadow-2xs">
-          <IconComp className="w-5 h-5" />
+      <div className="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+        <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200/80 group-hover:bg-[#EE461F]/10 group-hover:border-[#EE461F]/30 flex items-center justify-center shrink-0 transition-all duration-200">
+          <IconComp className="w-5 h-5 text-[#121A50] group-hover:text-[#EE461F] transition-colors" />
         </div>
-
-        {/* Service Title */}
-        <h4 className="text-lg font-extrabold text-[#121A50] tracking-tight group-hover:text-[#EE461F] transition-colors mb-2.5 leading-snug">
-          {service.title}
-        </h4>
-
-        {/* Service Description */}
-        <p className="text-xs sm:text-sm text-[#4B5565] leading-relaxed font-normal mb-5">
-          {service.description}
-        </p>
-
-        {/* Service Tag Pills with Real Tech Brand Logos */}
-        <div className="flex flex-wrap gap-1.5 mb-5">
-          {service.tags.map((tag, i) => (
-            <span
-              key={i}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100/90 text-slate-700 text-[11px] font-semibold border border-slate-200/80 shadow-2xs group-hover:bg-[#EEF3FF] group-hover:text-[#1433D1] group-hover:border-[#1433D1]/30 transition-colors"
-            >
-              {renderTechLogo(tag)}
-              <span>{tag}</span>
-            </span>
-          ))}
+        <div className="flex-1 min-w-0">
+          <h4 className="text-base sm:text-lg font-bold text-[#121A50] group-hover:text-[#EE461F] transition-colors leading-snug">
+            {service.title}
+          </h4>
+          <p className="text-xs sm:text-sm text-[#4B5565] leading-relaxed mt-1 mb-2.5">
+            {service.description}
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {service.tags.map((tag, i) => (
+              <span
+                key={i}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-[11px] font-semibold border border-slate-200/80 group-hover:bg-[#EEF3FF] group-hover:text-[#1433D1] transition-colors"
+              >
+                {renderTechLogo(tag)}
+                <span>{tag}</span>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Get Started Action */}
-      <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-        <button
-          onClick={() => {
-            if (onExploreClick) {
-              onExploreClick(service.title);
-            } else if (onQuoteClick) {
-              onQuoteClick();
-            }
-          }}
-          className="inline-flex items-center gap-1 text-xs font-bold text-[#1433D1] group-hover:text-[#EE461F] transition-colors cursor-pointer group/btn"
-        >
-          <span>Get started</span>
-          <ArrowUpRight className="w-3.5 h-3.5 transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-        </button>
+      <div className="flex items-center justify-end sm:self-center shrink-0">
+        <div className="w-9 h-9 rounded-full bg-slate-100 group-hover:bg-[#EE461F] text-slate-500 group-hover:text-white flex items-center justify-center transition-all duration-200 shadow-2xs group-hover:scale-105">
+          <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -404,23 +382,9 @@ function ParallaxSectionRow({
 
   const isRightSide = section.layoutPosition === 'right';
 
-  // Parallax offsets for Banner Card
-  const bannerY = useTransform(
-    smoothProgress,
-    [0, 1],
-    isRightSide ? [40, -40] : [-40, 40]
-  );
-
-  // Parallax offsets for Grid Container
-  const cardsY = useTransform(
-    smoothProgress,
-    [0, 1],
-    isRightSide ? [-30, 30] : [30, -30]
-  );
-
   // Background Ambient Orb Parallax
-  const orbY = useTransform(smoothProgress, [0, 1], [-80, 80]);
-  const orbScale = useTransform(smoothProgress, [0, 0.5, 1], [0.85, 1.1, 0.9]);
+  const orbY = useTransform(smoothProgress, [0, 1], [-60, 60]);
+  const orbScale = useTransform(smoothProgress, [0, 0.5, 1], [0.9, 1.05, 0.95]);
 
   const SectionIcon = section.icon;
 
@@ -437,21 +401,21 @@ function ParallaxSectionRow({
       />
 
       <div
-        className={`flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12 relative z-10 ${
+        className={`flex flex-col lg:flex-row items-stretch gap-8 lg:gap-10 relative z-10 ${
           isRightSide ? 'lg:flex-row-reverse' : 'lg:flex-row'
         }`}
       >
-        {/* PARALLAX BANNER CARD */}
-        <motion.div style={{ y: bannerY }} className="w-full lg:w-[38%] flex flex-col">
-          <div className="h-full bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-xl relative overflow-hidden group hover:border-[#EE461F]/30 transition-all duration-300">
+        {/* PILLAR BANNER CARD */}
+        <div className="w-full lg:w-[40%] flex flex-col">
+          <div className="h-full bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-lg relative overflow-hidden group hover:border-[#EE461F]/30 transition-all duration-300">
             <div>
               {/* Section Index & Subtitle */}
               <div className="flex items-center justify-between mb-6">
-                <span className="text-3xl sm:text-4xl font-black text-slate-300 group-hover:text-[#EE461F] transition-colors">
+                <span className="text-4xl font-black text-slate-300 group-hover:text-[#EE461F] transition-colors">
                   {section.number}
                 </span>
                 <div
-                  className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold border ${section.badgeBg}`}
+                  className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold border ${section.badgeBg}`}
                 >
                   <SectionIcon className="w-3.5 h-3.5" />
                   <span>{section.subtitle}</span>
@@ -482,31 +446,28 @@ function ParallaxSectionRow({
             {/* Section Bottom Action */}
             <div className="pt-4 border-t border-slate-100">
               <button
+                type="button"
                 onClick={() => onQuoteClick?.()}
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#1433D1] group-hover:text-[#EE461F] transition-colors cursor-pointer group/cta"
+                className="w-full py-3.5 px-6 rounded-2xl bg-slate-50 hover:bg-[#EE461F] text-[#121A50] hover:text-white font-bold text-sm transition-all duration-200 border border-slate-200 hover:border-[#EE461F] flex items-center justify-center gap-2 group/cta cursor-pointer shadow-xs"
               >
                 <span>Explore {section.title}</span>
                 <ArrowUpRight className="w-4 h-4 transform group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-transform" />
               </button>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* PARALLAX SERVICES GRID FOR THIS SECTION */}
-        <motion.div style={{ y: cardsY }} className="w-full lg:w-[62%] flex flex-col justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {section.services.map((service, cardIdx) => (
-              <ParallaxSingleCard
-                key={service.id}
-                service={service}
-                cardIdx={cardIdx}
-                smoothProgress={smoothProgress}
-                onExploreClick={onExploreClick}
-                onQuoteClick={onQuoteClick}
-              />
-            ))}
-          </div>
-        </motion.div>
+        {/* SERVICES CARDS (STACKED HORIZONTAL CARDS FOR READABILITY & BALANCE) */}
+        <div className="w-full lg:w-[60%] flex flex-col justify-between gap-4">
+          {section.services.map((service) => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              onExploreClick={onExploreClick}
+              onQuoteClick={onQuoteClick}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

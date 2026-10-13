@@ -1,26 +1,27 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { useInView } from 'framer-motion';
+import { Check, ShieldCheck, Zap, Layers, Cloud } from 'lucide-react';
 
 interface StatItemProps {
   endValue: number;
   label: string;
   suffix?: string;
+  prefix?: string;
 }
 
-function AnimatedCounter({ endValue, label, suffix = '+' }: StatItemProps) {
+function AnimatedCounter({ endValue, label, suffix = '+', prefix = '' }: StatItemProps) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const isInView = useInView(ref, { once: true, margin: '-40px' });
 
   useEffect(() => {
     if (!isInView) return;
 
     let start = 0;
-    const duration = 2000; // 2 seconds
-    const frameTime = 1000 / 60; // 60 fps
+    const duration = 2000;
+    const frameTime = 1000 / 60;
     const totalFrames = duration / frameTime;
     const increment = endValue / totalFrames;
 
@@ -38,12 +39,13 @@ function AnimatedCounter({ endValue, label, suffix = '+' }: StatItemProps) {
   }, [isInView, endValue]);
 
   return (
-    <div ref={ref} className="flex flex-col items-center justify-center p-6 text-center">
-      <span className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight mb-2 font-heading">
-        {count}
-        {suffix}
-      </span>
-      <span className="text-xs sm:text-sm font-bold tracking-widest text-white/80 uppercase">
+    <div ref={ref} className="flex flex-col items-center justify-center p-5 sm:p-6 text-center">
+      <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#121A50] tracking-tight mb-1 flex items-center">
+        {prefix}
+        <span>{count.toLocaleString()}</span>
+        <span className="text-[#EE461F]">{suffix}</span>
+      </div>
+      <span className="text-xs sm:text-sm font-semibold tracking-wider text-slate-500 uppercase">
         {label}
       </span>
     </div>
@@ -51,133 +53,138 @@ function AnimatedCounter({ endValue, label, suffix = '+' }: StatItemProps) {
 }
 
 export function AgencyStatsAndFeaturesSection() {
-  const features = [
+  const capabilities = [
     {
-      number: '01',
+      icon: Layers,
       title: 'Total Design & Architecture Freedom',
-      subtitle: 'Core Capabilities',
+      description: 'Bespoke systems and modular microservices with zero vendor lock-in.',
     },
     {
-      number: '02',
+      icon: Zap,
       title: 'Agile Enterprise Software Development',
-      subtitle: 'Core Capabilities',
+      description: 'Rapid sprint cycles delivering production-ready, test-covered code.',
     },
     {
-      number: '03',
+      icon: Cloud,
       title: 'Cloud-Native Scalability & 24/7 DevOps',
-      subtitle: 'Core Capabilities',
+      description: 'Multi-cloud Kubernetes clusters with automated CI/CD and 99.9% uptime SLAs.',
     },
   ];
 
-  const checkPoints = [
-    'Proven Digital & Software Strategies.',
-    'Experienced Tech Architects & Developers.',
-    'Data-Driven Enterprise Approach.',
-    'Focused on Real Scalable Business Growth.',
+  const trustChecklist = [
+    'Proven Digital & Software Strategies',
+    'Experienced Tech Architects & Senior Developers',
+    'Data-Driven & Scalable Enterprise Approach',
+    'Full Source Code & 100% Client IP Ownership',
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-slate-950 text-white">
-      
-      {/* Fixed Parallax Background Image */}
-      <div
-        className="absolute inset-0 bg-fixed bg-cover bg-center filter grayscale contrast-125 opacity-35"
-        style={{
-          backgroundImage: `url('/full_screen_it_team_bg.jpg')`,
-        }}
-      />
-      
-      {/* Dark Overlay Gradient for High Contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#080D2B]/90 via-[#0B1238]/85 to-[#080D2B]/95" />
+    <section className="relative w-full bg-[#FAFBFD] text-[#121A50] py-16 lg:py-24 border-t border-slate-200/80">
+      {/* Soft warm/blue subtle background gradient orbs matching FAQ & Services */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#EE461F]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-[#1433D1]/5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Main Container */}
-      <div className="relative z-10 max-w-[1540px] mx-auto py-20 lg:py-28 px-6 sm:px-10 lg:px-16 flex flex-col gap-16 lg:gap-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 flex flex-col gap-8 lg:gap-10">
         
-        {/* ========================================== */}
-        {/* TOP STATS COUNTER BAR (Unboxed 4 Columns with Divider Lines) */}
-        {/* ========================================== */}
-        <div className="w-full max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/20 border-t border-b border-white/10 py-6 sm:py-8">
-            <AnimatedCounter endValue={1500} label="PROJECTS COMPLETED" />
-            <AnimatedCounter endValue={180} label="ACTIVE CLIENTS" />
-            <AnimatedCounter endValue={2500} label="CODE REPOS & BUILDS" />
-            <AnimatedCounter endValue={2000} label="HAPPY CLIENTS" />
+        {/* ========================================================= */}
+        {/* TOP STATS COUNTER BAR (Clean Elevated White Card)          */}
+        {/* ========================================================= */}
+        <div className="w-full bg-white border border-slate-200/80 rounded-2xl shadow-xs p-2 sm:p-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+            <AnimatedCounter endValue={1500} label="Projects Completed" suffix="+" />
+            <AnimatedCounter endValue={180} label="Active Enterprise Clients" suffix="+" />
+            <AnimatedCounter endValue={2500} label="Code Repos & Builds" suffix="+" />
+            <AnimatedCounter endValue={2000} label="Happy Enterprise Clients" suffix="+" />
           </div>
         </div>
 
-        {/* ========================================== */}
-        {/* BOTTOM CONTENT GRID (Scrolls Over Fixed BG) */}
-        {/* ========================================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        {/* ========================================================= */}
+        {/* MAIN 2-COLUMN CARDS SHOWCASE                               */}
+        {/* ========================================================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
           
-          {/* LEFT COLUMN: Orange Headline Card + Vertical Core Features List */}
-          <div className="lg:col-span-5 flex flex-col w-full shadow-2xl rounded-none overflow-hidden border border-white/10 bg-[#0E1438]/90 backdrop-blur-xl">
-            
-            {/* Bright Orange Highlight Box */}
-            <div className="bg-[#EE461F] p-8 sm:p-10 text-white flex flex-col justify-center rounded-none">
-              <h3 className="text-xl sm:text-2xl font-bold leading-snug tracking-tight">
-                We are committed to delivering high quality digital solutions that help businesses grow.
-              </h3>
+          {/* LEFT CARD: Core Commitment & Technical Pillars */}
+          <div className="lg:col-span-5 flex flex-col bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-md transition-shadow duration-300">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EE461F]/10 border border-[#EE461F]/20 text-xs font-semibold text-[#EE461F] mb-5 w-fit">
+              <span className="w-2 h-2 rounded-full bg-[#EE461F]" />
+              <span>Our Core Commitment</span>
             </div>
 
-            {/* Core Features List below Orange Box */}
-            <div className="p-6 sm:p-8 flex flex-col divide-y divide-white/10">
-              {features.map((item) => (
-                <div key={item.number} className="py-6 first:pt-2 last:pb-2 flex items-start gap-5 group cursor-pointer">
-                  <div className="w-12 h-12 rounded-none bg-[#EE461F]/15 border border-[#EE461F]/30 flex items-center justify-center shrink-0 group-hover:bg-[#EE461F] transition-colors duration-300">
-                    <span className="text-lg font-black text-[#EE461F] group-hover:text-white transition-colors duration-300 font-mono">
-                      {item.number}
-                    </span>
-                  </div>
-                  <div className="flex flex-col text-left">
-                    <h4 className="text-sm sm:text-base font-bold text-white tracking-wide leading-snug group-hover:text-[#EE461F] transition-colors duration-200">
-                      {item.title}
-                    </h4>
-                    <span className="text-[10px] font-extrabold tracking-widest text-[#EE461F] uppercase mt-1">
-                      {item.subtitle}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#121A50] tracking-tight leading-snug mb-3">
+              Delivering high-velocity, production-grade solutions that fuel enterprise growth.
+            </h3>
 
+            <p className="text-sm text-slate-600 leading-relaxed mb-6">
+              We combine deep technical architecture with rapid execution, empowering businesses to outpace competition and scale fearlessly.
+            </p>
+
+            {/* Capabilities List */}
+            <div className="flex flex-col gap-3 border-t border-slate-100 pt-5">
+              {capabilities.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={index}
+                    className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-50/70 border border-slate-100 hover:border-[#EE461F]/30 hover:bg-[#FAFBFD] transition-all duration-200"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-[#EE461F]/10 border border-[#EE461F]/20 text-[#EE461F] flex items-center justify-center shrink-0">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <div className="flex flex-col text-left">
+                      <h4 className="text-sm font-bold text-[#121A50] tracking-tight leading-snug">
+                        {item.title}
+                      </h4>
+                      <p className="text-xs text-slate-500 leading-relaxed mt-0.5">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
-          {/* RIGHT COLUMN: Dark Executive Card ("Trusted by 1500+ Clients") */}
-          <div className="lg:col-span-7 flex flex-col justify-between w-full bg-[#0E1438]/90 backdrop-blur-xl rounded-none border border-white/10 p-8 sm:p-10 lg:p-12 shadow-2xl">
-            
-            <div>
-              {/* Main Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black uppercase text-white leading-tight tracking-tight mb-6">
-                WE’RE TRUSTED BY MORE THAN <span className="text-white">1500 CLIENTS</span><span className="text-[#EE461F]">.</span>
-              </h2>
-
-              {/* Sub-description */}
-              <p className="text-base sm:text-lg text-[#94A3B8] leading-relaxed mb-10 max-w-2xl">
-                Businesses across different industries trust our digital engineering expertise to grow their online presence, modernize legacy IT infrastructure, and generate real measurable results.
-              </p>
+          {/* RIGHT CARD: Enterprise Trust & Client Track Record */}
+          <div className="lg:col-span-7 flex flex-col bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-md transition-shadow duration-300">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1433D1]/10 border border-[#1433D1]/20 text-xs font-semibold text-[#1433D1] mb-5 w-fit">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#1433D1]" />
+              <span>Enterprise Proven Track Record</span>
             </div>
 
-            {/* Bottom Row: Image + Checkpoints */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center pt-6 border-t border-white/10">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#121A50] tracking-tight leading-tight mb-3">
+              Trusted by more than <span className="text-[#EE461F]">1,500</span> clients worldwide.
+            </h2>
+
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 max-w-2xl">
+              Global leaders and high-growth scale-ups rely on our engineering squads to modernize legacy architectures, launch mission-critical systems, and drive measurable revenue impact.
+            </p>
+
+            {/* Bottom Row: Team Image & Verified Checklist */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-center pt-5 border-t border-slate-100">
               
-              {/* Team Image Box */}
-              <div className="relative w-full h-[210px] sm:h-[230px] rounded-none overflow-hidden border border-white/15 shadow-md">
+              {/* Framed Team Photo */}
+              <div className="relative w-full h-[220px] rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs group/img">
                 <img
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-                  alt="IT Team Collaboration"
-                  className="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
+                  alt="Ayya Tech Engineering Team Collaboration"
+                  className="w-full h-full object-cover object-center transition-transform duration-500 group-hover/img:scale-105"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-3 left-3 text-xs font-semibold text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/20">
+                  Global Engineering Pods
+                </div>
               </div>
 
-              {/* Checklist Points */}
-              <div className="flex flex-col gap-3.5 text-left">
-                {checkPoints.map((point, idx) => (
+              {/* Verified Checklist */}
+              <div className="flex flex-col gap-3 text-left">
+                {trustChecklist.map((point, idx) => (
                   <div key={idx} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#EE461F]/20 flex items-center justify-center shrink-0 border border-[#EE461F]/40">
-                      <Check className="w-3.5 h-3.5 text-[#EE461F] stroke-[3]" />
+                    <div className="w-5 h-5 rounded-full bg-[#EE461F]/10 flex items-center justify-center shrink-0 border border-[#EE461F]/20">
+                      <Check className="w-3 h-3 text-[#EE461F] stroke-[3]" />
                     </div>
-                    <span className="text-xs sm:text-sm font-semibold text-white/90 leading-tight">
+                    <span className="text-xs sm:text-sm font-semibold text-slate-700 leading-snug">
                       {point}
                     </span>
                   </div>
@@ -191,7 +198,6 @@ export function AgencyStatsAndFeaturesSection() {
         </div>
 
       </div>
-
     </section>
   );
 }
