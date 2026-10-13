@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, ChevronLeft, ChevronRight, Quote, Sparkles, Building2, ShieldCheck } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 interface Review {
   id: string;
@@ -84,34 +84,54 @@ const reviews: Review[] = [
   },
 ];
 
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 60 : -60,
+    opacity: 0,
+    scale: 0.97,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+  },
+  exit: (direction: number) => ({
+    x: direction < 0 ? 60 : -60,
+    opacity: 0,
+    scale: 0.97,
+  }),
+};
+
 export function ClientReviewsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [direction, setDirection] = useState(1);
 
-  // Autoplay timer every 2 seconds (2000ms)
+  // Auto-move carousel every 3.5 seconds
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % reviews.length);
-    }, 2000);
+    }, 3500);
 
-    return () => clearInterval(interval);
-  }, [isPaused]);
+    return () => clearInterval(timer);
+  }, [currentIndex]);
 
   const handlePrev = () => {
+    setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
   };
 
   const handleNext = () => {
+    setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % reviews.length);
   };
+
+  const currentReview = reviews[currentIndex];
 
   return (
     <section
       id="reviews"
       className="relative w-full bg-[#FCFDFE] text-[#121A50] py-20 lg:py-28 border-t border-[#DFE4EA] overflow-hidden select-none"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Background Decorator */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-[#EE461F]/10 via-[#1433D1]/5 to-[#EE461F]/10 rounded-full blur-3xl pointer-events-none" />
@@ -119,93 +139,108 @@ export function ClientReviewsSection() {
       <div className="max-w-[1320px] mx-auto px-6 sm:px-10 relative z-10">
         
         {/* Section Heading */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-[#121A50] leading-tight">
             TRUSTED BY GLOBAL ENTERPRISE LEADERS
           </h2>
         </div>
 
-        {/* 3D Overlapping Carousel Stage */}
-        <div className="relative w-full h-[420px] sm:h-[400px] flex items-center justify-center">
-          
-          <div className="relative w-full max-w-4xl h-full flex items-center justify-center">
-            {reviews.map((review, idx) => {
-              // Compute distance relative to active center index
-              let diff = (idx - currentIndex + reviews.length) % reviews.length;
-              if (diff > reviews.length / 2) diff -= reviews.length;
+        {/* Single Centered Review Card (No Side Cards) */}
+        <div className="relative w-full max-w-2xl mx-auto min-h-[320px] sm:min-h-[300px] flex items-center justify-center">
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={currentReview.id}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                duration: 0.45,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
+              className="w-full p-7 sm:p-9 rounded-2xl border border-[#EE461F] bg-white shadow-xl shadow-[#121A50]/10 flex flex-col justify-between"
+            >
+              {/* Top Row: Rating Stars & Badge */}
+              <div className="flex items-center justify-between gap-3 mb-5">
+                <div className="flex items-center gap-1">
+                  {[...Array(currentReview.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-[#EE461F] text-[#EE461F]" />
+                  ))}
+                </div>
+                <span className="text-[11px] font-bold text-[#EE461F] uppercase tracking-wider bg-[#EE461F]/10 px-3 py-1 rounded-full border border-[#EE461F]/20">
+                  {currentReview.badge}
+                </span>
+              </div>
 
-              // Only render center, prev (-1), and next (1) for 3D overlap effect
-              const isVisible = Math.abs(diff) <= 1;
+              {/* Review Content Quote */}
+              <div className="relative mb-6">
+                <Quote className="w-8 h-8 text-[#EE461F]/15 absolute -top-3 -left-2 -z-10" />
+                <p className="text-base sm:text-lg leading-relaxed text-[#121A50] font-medium">
+                  "{currentReview.content}"
+                </p>
+              </div>
 
-              if (!isVisible) return null;
-
-              const isCenter = diff === 0;
-              const isPrev = diff === -1;
-              const isNext = diff === 1;
-
-              return (
-                <motion.div
-                  key={review.id}
-                  initial={false}
-                  animate={{
-                    x: isCenter ? '0%' : isPrev ? '-48%' : '48%',
-                    scale: isCenter ? 1 : 0.88,
-                    opacity: isCenter ? 1 : 0.65,
-                    zIndex: isCenter ? 30 : 10,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    ease: [0.25, 0.1, 0.25, 1],
-                  }}
-                  onClick={() => {
-                    if (isPrev) handlePrev();
-                    if (isNext) handleNext();
-                  }}
-                  className={`absolute w-full max-w-[340px] sm:max-w-[540px] p-6 sm:p-8 rounded-2xl border transition-shadow duration-300 cursor-pointer bg-white ${
-                    isCenter
-                      ? 'border-[#EE461F] shadow-2xl shadow-[#121A50]/15'
-                      : 'border-[#DFE4EA] shadow-lg hover:opacity-90'
-                  }`}
-                >
-                  {/* Top Row: Rating Stars & Badge */}
-                  <div className="flex items-center justify-between gap-3 mb-4">
-                    <div className="flex items-center gap-1">
-                      {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#EE461F] text-[#EE461F]" />
-                      ))}
-                    </div>
-                    <span className="text-[11px] font-bold text-[#EE461F] uppercase tracking-wider bg-[#EE461F]/10 px-3 py-1 rounded-full border border-[#EE461F]/20">
-                      {review.badge}
-                    </span>
-                  </div>
-
-                  {/* Review Content Quote */}
-                  <div className="relative mb-6">
-                    <Quote className="w-8 h-8 text-[#EE461F]/15 absolute -top-3 -left-2 -z-10" />
-                    <p className={`text-sm sm:text-base leading-relaxed ${isCenter ? 'text-[#121A50] font-medium' : 'text-[#4B5565]'}`}>
-                      "{review.content}"
-                    </p>
-                  </div>
-
-                  {/* Author Meta Info */}
-                  <div className="flex items-center gap-3.5 pt-4 border-t border-gray-100">
-                    <img
-                      src={review.avatar}
-                      alt={review.name}
-                      className="w-11 h-11 rounded-full object-cover border-2 border-[#EE461F]/30 shrink-0"
-                    />
-                    <div className="text-left overflow-hidden">
-                      <h4 className="text-sm font-bold text-[#121A50] truncate">{review.name}</h4>
-                      <p className="text-xs text-[#4B5565] truncate">
-                        {review.role} • <span className="font-semibold text-[#121A50]">{review.company}</span>
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+              {/* Author Meta Info */}
+              <div className="flex items-center gap-3.5 pt-4 border-t border-gray-100">
+                <img
+                  src={currentReview.avatar}
+                  alt={currentReview.name}
+                  className="w-12 h-12 rounded-full object-cover border-2 border-[#EE461F]/30 shrink-0"
+                />
+                <div className="text-left overflow-hidden">
+                  <h4 className="text-base font-bold text-[#121A50] truncate">
+                    {currentReview.name}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-[#4B5565] truncate">
+                    {currentReview.role} • <span className="font-semibold text-[#121A50]">{currentReview.company}</span>
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
+
+        {/* Carousel Navigation Controls & Indicators */}
+        <div className="flex items-center justify-center gap-5 mt-8">
+          <button
+            type="button"
+            onClick={handlePrev}
+            aria-label="Previous review"
+            className="w-10 h-10 rounded-full border border-[#DFE4EA] bg-white hover:border-[#EE461F] hover:text-[#EE461F] text-[#121A50] flex items-center justify-center shadow-xs transition-all cursor-pointer hover:scale-105 active:scale-95"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <div className="flex items-center gap-2">
+            {reviews.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => {
+                  setDirection(i > currentIndex ? 1 : -1);
+                  setCurrentIndex(i);
+                }}
+                aria-label={`Go to review ${i + 1}`}
+                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  currentIndex === i
+                    ? 'w-7 bg-[#EE461F]'
+                    : 'w-2.5 bg-slate-200 hover:bg-slate-300'
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={handleNext}
+            aria-label="Next review"
+            className="w-10 h-10 rounded-full border border-[#DFE4EA] bg-white hover:border-[#EE461F] hover:text-[#EE461F] text-[#121A50] flex items-center justify-center shadow-xs transition-all cursor-pointer hover:scale-105 active:scale-95"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
       </div>
     </section>
   );

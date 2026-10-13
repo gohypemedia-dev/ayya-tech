@@ -1,145 +1,185 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { MessageSquare, ArrowRight } from 'lucide-react';
-import { FaqPro, type FaqProItem } from '@/components/ui/faq-pro';
+import { Plus, X } from 'lucide-react';
 
-interface FaqItem extends FaqProItem {
-  category: 'General' | 'Services' | 'Process & Security' | 'Engagement';
+interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
 }
 
 const faqData: FaqItem[] = [
   {
     id: 'faq-1',
-    category: 'General',
-    question: 'What core technology services does Ayya Tech specialize in?',
+    question: 'What does your agency specialize in?',
     answer:
-      'We specialize in end-to-end enterprise IT solutions including Strategic IT Consultancy, Bespoke Software Development, Low-Code/No-Code Rapid Builds, Cloud-Native & DevOps Architecture, IoT Engineering, Mobile App Development, AI-Powered Systems, and Senior IT Staff Augmentation.',
+      'We specialize in helping startups design, build, and scale AI-powered products. Our expertise includes AI strategy, UX/UI design, automation tools, and product development for SaaS, tech, and data-driven businesses.',
   },
   {
     id: 'faq-2',
-    category: 'Engagement',
-    question: 'How quickly can Ayya Tech onboard dedicated engineering talent?',
+    question: 'Do you work with early-stage startups?',
     answer:
-      'Our pre-vetted senior software engineers, cloud architects, and dedicated pods can be deployed and fully integrated into your agile workflow within 48 hours, aligned with your timezone.',
+      'Yes, absolutely! We partner with early-stage founders as well as fast-growing scale-ups. Whether you need rapid MVP development to validate product-market fit or a dedicated engineering squad to scale your platform, we tailor our process to your stage.',
   },
   {
     id: 'faq-3',
-    category: 'Engagement',
-    question: 'What project engagement models do you offer?',
+    question: 'How long does a typical project take?',
     answer:
-      'We offer three flexible engagement models: (1) Fixed-Price Milestones for defined project scopes, (2) Dedicated Agile Squads for continuous long-term platform development, and (3) Staff Augmentation to rapidly scale your existing engineering team.',
+      'Timelines depend on project complexity and scope. Rapid MVP sprints and custom integrations typically deliver within 3 to 6 weeks, while large-scale enterprise platforms and migrations range from 8 to 14 weeks with continuous bi-weekly deployment milestones.',
   },
   {
     id: 'faq-4',
-    category: 'Process & Security',
-    question: 'How do you ensure data security, privacy, and IP protection?',
+    question: 'Can you integrate AI into my existing product?',
     answer:
-      'We enforce strict enterprise security standards including SOC 2 type compliance protocols, comprehensive Non-Disclosure Agreements (NDAs), encrypted CI/CD pipelines, ISO 27001 standards, and full client ownership of source code and intellectual property.',
+      'Yes. We build custom Retrieval-Augmented Generation (RAG) pipelines, fine-tuned LLM systems, and intelligent automated workflows that integrate seamlessly via secure APIs into your existing tech stack without disrupting ongoing operations.',
   },
   {
     id: 'faq-5',
-    category: 'Services',
-    question: 'Can you modernize legacy enterprise systems with zero business downtime?',
+    question: 'What do you need from me to get started?',
     answer:
-      'Yes. Using modern microservices patterns, API abstraction layers, and strangler-fig migration strategies, we modernize monolithic legacy architectures into scalable, cloud-native environments without interrupting active operations.',
+      'All we need is a high-level overview of your business goals, target deliverables, and any existing design or technical specs. From there, we schedule a discovery call, define a clear milestone roadmap, and can kick off development within 48 to 72 hours.',
   },
   {
     id: 'faq-6',
-    category: 'Process & Security',
-    question: 'Do you provide 24/7 post-launch maintenance and SLA support?',
+    question: 'How do you ensure quality?',
     answer:
-      'Yes, we provide ongoing 24/7 monitoring, 99.99% infrastructure uptime SLAs, automated vulnerability patching, performance optimizations, and dedicated DevOps support post-deployment.',
+      'We enforce rigorous automated testing, comprehensive CI/CD pipelines, strict code reviews, SOC 2 / ISO-aligned security practices, and a guaranteed 99.9% uptime SLA with full client IP and source code ownership.',
   },
   {
     id: 'faq-7',
-    category: 'Services',
-    question: 'How do you integrate custom AI and LLM models into our existing software?',
+    question: 'What project engagement models do you offer?',
     answer:
-      'We build tailored Retrieval-Augmented Generation (RAG) pipelines, fine-tune open-source & proprietary LLMs, and develop autonomous AI agents that securely connect to your internal databases and APIs.',
+      'We offer three flexible models: Fixed-Price Sprints for well-defined deliverables, Dedicated Agile Pods for continuous product velocity, and Senior Staff Augmentation to rapidly scale your existing engineering team.',
   },
   {
     id: 'faq-8',
-    category: 'General',
-    question: 'What sets Ayya Tech apart from traditional IT outsourcing agencies?',
+    question: 'Do you provide 24/7 post-launch maintenance and SLA support?',
     answer:
-      'We blend deep senior engineering expertise with high-speed execution, transparent communication, modern tech stacks (Next.js 16, React 19, Cloud-Native, AI), and a obsessive commitment to enterprise reliability and measurable business ROI.',
+      'Yes, we provide round-the-clock monitoring, 24/7 proactive security updates, performance optimizations, and dedicated SLA support post-deployment.',
+  },
+  {
+    id: 'faq-9',
+    question: 'How do you handle IP ownership and Non-Disclosure Agreements (NDAs)?',
+    answer:
+      'We sign strict mutual NDAs prior to any technical discovery. Upon milestone completion and delivery, 100% of all intellectual property, source code, designs, and assets are fully transferred and owned by your organization.',
+  },
+  {
+    id: 'faq-10',
+    question: 'Can your team integrate into our existing Git workflows and toolchains?',
+    answer:
+      'Yes. Our engineers integrate seamlessly into your preferred stack and agile toolchain, including GitHub, GitLab, Jira, Linear, Slack, AWS, GCP, and custom Docker/Kubernetes deployment pipelines.',
   },
 ];
-
-const categories = ['All', 'General', 'Services', 'Process & Security', 'Engagement'] as const;
 
 export interface FaqSectionProps {
   onContactClick?: () => void;
 }
 
 export function AgencyFaqSection({ onContactClick }: FaqSectionProps) {
-  const [activeCategory, setActiveCategory] = useState<string>('All');
+  // First item open by default as shown in the design
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const filteredFaqs = faqData.filter((faq) => {
-    return activeCategory === 'All' || faq.category === activeCategory;
-  });
+  const toggleFaq = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
-    <section id="faq" className="relative w-full bg-[#FCFDFE] text-[#121A50] py-20 lg:py-28 border-t border-[#DFE4EA] overflow-hidden">
-      {/* Background Decorative Ambient Aura */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#EE461F]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-[#1433D1]/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="faq" className="relative w-full bg-[#FAFBFD] text-[#121A50] py-20 lg:py-28 overflow-x-clip">
+      {/* Subtle warm ambient glow matching design */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#EE461F]/4 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-10 right-10 w-96 h-96 bg-[#FF7A59]/4 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1320px] mx-auto px-6 sm:px-10 relative z-10">
-        
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12"
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-[#121A50] leading-tight font-sans">
-            FREQUENTLY ASKED QUESTIONS
-          </h2>
-        </motion.div>
-
-        {/* FaqPro Interactive Search & Animated Spring Accordion Component */}
-        <FaqPro
-          defaultOpenFirst={false}
-          items={faqData}
-          searchPlaceholder="Search FAQs by keywords (e.g. security, AI, SLA, onboarding)..."
-          className="w-full"
-        />
-
-        {/* Bottom Contact CTA Box */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-16 max-w-3xl mx-auto rounded-2xl bg-gradient-to-r from-[#121A50] via-[#1A2568] to-[#121A50] p-8 sm:p-10 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-white/10"
-        >
-          <div className="flex items-center gap-4 text-left">
-            <div className="w-12 h-12 rounded-2xl bg-[#EE461F] flex items-center justify-center shrink-0 shadow-lg">
-              <MessageSquare className="w-6 h-6 text-white" />
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-10 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          
+          {/* Left Column: FAQs Tag, Heading, and "Book a 15 min call" Card (Sticky as page scrolls) */}
+          <div className="lg:col-span-5 lg:sticky lg:top-24 lg:self-start flex flex-col pb-4 z-20">
+            {/* Tag / Badge */}
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#EE461F] shrink-0" />
+              <span className="text-sm font-semibold text-[#121A50] tracking-wide">FAQs</span>
             </div>
-            <div>
-              <h4 className="text-xl font-bold text-white mb-1">Still have questions?</h4>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                Can't find the answer you're looking for? Speak directly with our technical consultants.
+
+            {/* Main Heading */}
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#121A50] tracking-tight leading-[1.18] mb-8">
+              Frequently Asked<br />Questions
+            </h2>
+
+            {/* "Book a 15 min call" Card */}
+            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#EAEEF4] shadow-[0_10px_30px_rgba(18,26,80,0.04)] max-w-sm sm:max-w-md w-full">
+              {/* Profile Avatar with subtle warm glow */}
+              <div className="relative inline-block mb-4">
+                <div className="absolute inset-0 rounded-full bg-[#EE461F]/15 blur-md transform scale-110" />
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&h=240&q=80"
+                  alt="Ayya Tech Technical Advisor"
+                  className="relative w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm"
+                />
+              </div>
+
+              {/* Card Title */}
+              <h3 className="text-xl font-bold text-[#121A50] mb-2 tracking-tight">
+                Book a 15 min call
+              </h3>
+
+              {/* Card Description */}
+              <p className="text-sm text-[#4B5565] leading-relaxed mb-6 font-normal">
+                If you have any questions, just book a 15-minute call with us before subscribing
               </p>
+
+              {/* Call-to-action Button */}
+              <button
+                type="button"
+                onClick={onContactClick}
+                className="w-full py-3.5 px-6 rounded-2xl bg-[#EE461F] hover:bg-[#D63B15] active:scale-[0.98] text-white font-semibold text-sm transition-all duration-200 shadow-md shadow-[#EE461F]/25 hover:shadow-lg hover:shadow-[#EE461F]/35 cursor-pointer text-center"
+              >
+                Book a Free Call!
+              </button>
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={onContactClick}
-            className="px-6 py-3.5 bg-[#EE461F] hover:bg-[#D63B15] text-white text-sm font-bold rounded-full shadow-md shadow-[#EE461F]/30 hover:shadow-[#EE461F]/50 transition-all cursor-pointer shrink-0 flex items-center gap-2 group"
-          >
-            <span>Ask an Expert</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </motion.div>
+          {/* Right Column: Accordion Questions List */}
+          <div className="lg:col-span-7 flex flex-col space-y-3.5">
+            {faqData.map((faq, index) => {
+              const isOpen = openIndex === index;
 
+              return (
+                <div
+                  key={faq.id}
+                  className="bg-white rounded-2xl sm:rounded-3xl border border-[#EAEEF4] shadow-[0_2px_10px_rgba(18,26,80,0.02)] transition-all duration-200 overflow-hidden hover:border-[#DFE4EA]"
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleFaq(index)}
+                    aria-expanded={isOpen}
+                    className="w-full text-left p-5 sm:p-6 flex items-start sm:items-center justify-between gap-4 cursor-pointer select-none transition-colors"
+                  >
+                    <span className="font-semibold text-base sm:text-lg text-[#121A50] leading-snug">
+                      {faq.question}
+                    </span>
+                    <span className="shrink-0 p-1 rounded-full text-[#4B5565] hover:text-[#121A50] transition-colors">
+                      {isOpen ? (
+                        <X className="w-5 h-5 text-[#121A50]" />
+                      ) : (
+                        <Plus className="w-5 h-5 text-[#4B5565]" />
+                      )}
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="overflow-hidden">
+                      <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 text-sm sm:text-base text-[#4B5565] leading-relaxed">
+                        {faq.answer}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
       </div>
     </section>
   );

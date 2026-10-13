@@ -109,10 +109,10 @@ const STYLES = `
 
 /* Giant Background Text Masking */
 .footer-giant-bg-text {
-  font-size: 24vw;
+  font-size: 22vw;
   line-height: 0.75;
   font-weight: 900;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
   color: transparent;
   -webkit-text-stroke: 1px color-mix(in oklch, var(--foreground) 5%, transparent);
   background: linear-gradient(180deg, color-mix(in oklch, var(--foreground) 10%, transparent) 0%, transparent 60%);

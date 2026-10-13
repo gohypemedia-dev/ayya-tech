@@ -8,7 +8,6 @@ import { TrustedClientsGridSection } from "@/components/trusted-clients-grid-sec
 import { AgencyServicesSection } from "@/components/agency-services-section";
 import { YellowServicesTicker } from "@/components/ui/yellow-services-ticker";
 import { AboutAgencyBannerSection } from "@/components/about-agency-banner-section";
-import { Nocturne3DPaperSection } from "@/components/ui/nocturne-3d-paper";
 import { ProvenDeliveryProcessSection } from "@/components/proven-delivery-process-section";
 import { AgencyStatsAndFeaturesSection } from "@/components/agency-stats-and-features-section";
 import { FlowArtDefaultDemo } from "@/components/ui/story-scroll-demo";
@@ -49,9 +48,6 @@ export default function Home() {
 
       {/* About Agency Banner Section (1:1 Screenshot Design) */}
       <AboutAgencyBannerSection onCtaClick={() => setModalOpen(true)} />
-
-      {/* 3D Paper Section */}
-      <Nocturne3DPaperSection />
 
       {/* Proven Delivery Process Section ("How We Work") */}
       <ProvenDeliveryProcessSection />
