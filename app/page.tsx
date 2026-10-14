@@ -32,7 +32,7 @@ export default function Home() {
       <AppleStyleDock onContactClick={() => setModalOpen(true)} />
 
       {/* Dynamic Animated Hero Section with Gradient */}
-      <HeroSection onCtaClick={() => setModalOpen(true)} />
+      <HeroSection />
 
       {/* Light-themed Autoplay Tilted Services Marquee Strip (Slow Motion) */}
       <YellowServicesTicker />
