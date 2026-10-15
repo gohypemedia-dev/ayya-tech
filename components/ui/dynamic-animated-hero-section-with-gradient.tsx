@@ -108,6 +108,7 @@ export function HeroSection() {
 
   return (
     <div
+      id="hero-video"
       ref={targetRef}
       className="relative w-full h-[600svh] motion-reduce:h-svh bg-[#080D2B] text-white selection:bg-[#EE461F] selection:text-white"
     >

@@ -10,7 +10,7 @@ import {
   X,
   ArrowRight
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
 interface AppleStyleDockProps {
   onContactClick?: () => void;
@@ -20,11 +20,16 @@ interface AppleStyleDockProps {
 export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProps) {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [logoOnly, setLogoOnly] = useState(true);
+  const reduceMotion = useReducedMotion();
+  const transition = { duration: reduceMotion ? 0 : 0.65, ease: [0.22, 1, 0.36, 1] as const };
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const videoSection = document.getElementById('hero-video');
+      const overVideo = !!videoSection && videoSection.getBoundingClientRect().bottom > 0;
+      setLogoOnly(overVideo);
+      if (overVideo) setMobileMenuOpen(false);
 
       const sections = ['home', 'services', 'case-studies', 'contact'];
       const scrollPosition = window.scrollY + 200;
@@ -42,8 +47,13 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   const navItems = [
@@ -90,25 +100,38 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
   ];
 
   return (
-    <header className={`fixed top-3 sm:top-5 left-0 right-0 z-[100] px-3 sm:px-6 transition-all duration-300 ${className || ''}`}>
+    <header className={`fixed top-3 sm:top-5 left-0 right-0 z-[100] px-3 sm:px-6 transition-all duration-300 ${logoOnly ? 'pointer-events-none' : ''} ${className || ''}`}>
       <div className="max-w-6xl mx-auto">
-        <nav className={`relative flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300 bg-white/95 backdrop-blur-xl border border-gray-200/90 shadow-xl shadow-black/10 ${
-          scrolled ? 'shadow-2xl shadow-black/15 border-gray-300/90' : ''
-        }`}>
+        <nav className={`relative isolate flex items-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent ${logoOnly ? 'justify-center' : 'justify-between'}`}>
+          <motion.div
+            aria-hidden="true"
+            initial={false}
+            animate={{ width: logoOnly ? '180px' : '100%', opacity: logoOnly ? 0 : 1 }}
+            transition={transition}
+            className="absolute inset-y-0 left-1/2 -translate-x-1/2 -z-10 rounded-full bg-white/95 backdrop-blur-xl border border-gray-300/90 shadow-2xl shadow-black/15"
+          />
           {/* Brand Logo Image */}
-          <button
+          <motion.button
+            layout="position"
+            transition={{ layout: transition }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center group cursor-pointer focus:outline-none shrink-0"
+            aria-label="Back to home"
+            className="pointer-events-auto flex items-center group cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#EE461F] shrink-0"
           >
             <img
               src="/images/ayya-logo.png"
               alt="AYYA Technology Logo"
               className="h-9 sm:h-11 lg:h-[46px] w-auto object-contain hover:opacity-90 transition-opacity"
             />
-          </button>
+          </motion.button>
 
           {/* Desktop Navigation Links (Clean Text Only - No Boxes) */}
-          <div className="hidden md:flex items-center gap-6 sm:gap-8">
+          {!logoOnly && <motion.div
+            initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...transition, delay: reduceMotion ? 0 : 0.18 }}
+            className="hidden md:flex items-center gap-6 sm:gap-8"
+          >
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
@@ -132,10 +155,15 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
                 </button>
               );
             })}
-          </div>
+          </motion.div>}
 
           {/* Right Action CTA & Mobile Menu Toggle */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {!logoOnly && <motion.div
+            initial={{ opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...transition, delay: reduceMotion ? 0 : 0.24 }}
+            className="flex items-center gap-2 sm:gap-3"
+          >
             <button
               onClick={() => {
                 if (onContactClick) onContactClick();
@@ -155,12 +183,12 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
-          </div>
+          </motion.div>}
         </nav>
 
         {/* Mobile Navigation Drawer Dropdown */}
         <AnimatePresence>
-          {mobileMenuOpen && (
+          {mobileMenuOpen && !logoOnly && (
             <motion.div
               initial={{ opacity: 0, y: -15, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
