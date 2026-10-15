@@ -1,14 +1,23 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import { useScroll, useSpring, useReducedMotion } from "framer-motion";
+import React, { useRef, useEffect, useState } from "react";
+import { useScroll, useSpring, useReducedMotion, useMotionValueEvent } from "framer-motion";
 
 const TOTAL_FRAMES = 240;
+const serviceTitles = [
+  "IT Consultancy & Digital Transformation",
+  "Bespoke Full-Stack Software Development",
+  "Low-Code & No-Code Applications",
+  "Cloud-Native Infrastructure & DevOps",
+  "IoT & Smart Hardware Engineering",
+  "AI-Powered Enterprise Software & RAG",
+];
 
 export function HeroSection() {
   const targetRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reduceMotion = useReducedMotion();
+  const [activeStage, setActiveStage] = useState(0);
 
   // Raw Scroll Progress for Hero Section
   const { scrollYProgress } = useScroll({
@@ -21,6 +30,11 @@ export function HeroSection() {
     stiffness: 90,
     damping: 38,
     restDelta: 0.0001,
+  });
+
+  useMotionValueEvent(smoothProgress, "change", (progress) => {
+    const frame = Math.min(TOTAL_FRAMES, Math.max(1, Math.round(progress * (TOTAL_FRAMES - 1)) + 1));
+    setActiveStage(Math.min(serviceTitles.length - 1, Math.floor((frame - 1) / 40)));
   });
 
   // Keep a small window decoded: the full sequence would use ~2 GB of memory.
@@ -125,11 +139,15 @@ export function HeroSection() {
           />
 
           {/* Subtle Top & Bottom Gradient for Clear Contrast without darkening the frame */}
-          <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#080D2B]/85 via-[#080D2B]/30 to-transparent z-0" />
+          <div className="absolute inset-x-0 top-0 h-[65%] bg-gradient-to-b from-[#080D2B]/95 via-[#080D2B]/75 to-transparent z-0" />
           <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#080D2B]/90 via-[#080D2B]/30 to-transparent z-0" />
         </div>
 
-        <h1 className="sr-only">AyyaTech ? IT consulting and software development</h1>
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-7 pt-20 sm:px-12 sm:pt-24 lg:pt-28 pointer-events-none">
+          <h1 className="max-w-3xl text-3xl sm:text-5xl lg:text-6xl font-bold leading-[1.12] tracking-tight text-white font-[family-name:var(--font-heading)] drop-shadow-lg">
+            {serviceTitles[reduceMotion ? 0 : activeStage]}
+          </h1>
+        </div>
 
       </div>
     </div>
