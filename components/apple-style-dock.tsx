@@ -1,11 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import {
-  Briefcase,
-  FolderGit2,
-  HomeIcon,
-  Mail,
   Menu,
   X,
   ArrowRight
@@ -18,9 +16,11 @@ interface AppleStyleDockProps {
 }
 
 export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProps) {
-  const [activeSection, setActiveSection] = useState('home');
+  const pathname = usePathname();
+  const router = useRouter();
+  const activeSection = pathname.startsWith('/services') ? 'services' : pathname.startsWith('/case-studies') ? 'case-studies' : 'home';
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [logoOnly, setLogoOnly] = useState(true);
+  const [logoOnly, setLogoOnly] = useState(pathname === '/');
   const reduceMotion = useReducedMotion();
   const transition = { duration: reduceMotion ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] as const };
 
@@ -31,19 +31,6 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
       setLogoOnly(overVideo);
       if (overVideo) setMobileMenuOpen(false);
 
-      const sections = ['home', 'services', 'case-studies', 'contact'];
-      const scrollPosition = window.scrollY + 200;
-
-      for (const section of [...sections].reverse()) {
-        const element = document.getElementById(section);
-        if (element) {
-          const top = element.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
     };
 
     handleScroll();
@@ -53,50 +40,20 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, []);
+  }, [pathname]);
 
   const navItems = [
-    {
-      id: 'home',
-      title: 'Home',
-      icon: HomeIcon,
-      action: () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        setMobileMenuOpen(false);
-      },
-    },
-    {
-      id: 'services',
-      title: 'Services',
-      icon: Briefcase,
-      action: () => {
-        document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
-        setMobileMenuOpen(false);
-      },
-    },
-    {
-      id: 'case-studies',
-      title: 'Case Studies',
-      icon: FolderGit2,
-      action: () => {
-        document.querySelector('#case-studies')?.scrollIntoView({ behavior: 'smooth' });
-        setMobileMenuOpen(false);
-      },
-    },
-    {
-      id: 'contact',
-      title: 'Contact',
-      icon: Mail,
-      action: () => {
-        if (onContactClick) {
-          onContactClick();
-        } else {
-          document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-        }
-        setMobileMenuOpen(false);
-      },
-    },
+    { id: 'home', title: 'Home', href: '/' },
+    { id: 'services', title: 'Services', href: '/services' },
+    { id: 'case-studies', title: 'Case Studies', href: '/case-studies' },
+    { id: 'contact', title: 'Contact', href: '/#contact' },
   ];
+
+  const contact = () => {
+    setMobileMenuOpen(false);
+    if (onContactClick) onContactClick();
+    else router.push('/#contact');
+  };
 
   return (
     <header className={`fixed top-3 sm:top-5 left-0 right-0 z-[100] px-3 sm:px-6 pointer-events-none ${className || ''}`}>
@@ -114,7 +71,7 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
           />
           {/* Brand Logo Image */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => router.push('/')}
             aria-label="Back to home"
             className="pointer-events-auto flex items-center group cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#EE461F] shrink-0"
           >
@@ -135,9 +92,16 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
-                <button
+                <Link
                   key={item.id}
-                  onClick={item.action}
+                  href={item.href}
+                  onClick={(event) => {
+                    setMobileMenuOpen(false);
+                    if (item.id === 'contact' && onContactClick) {
+                      event.preventDefault();
+                      contact();
+                    }
+                  }}
                   aria-current={isActive ? 'page' : undefined}
                   className={`text-xs sm:text-sm tracking-wide transition-colors duration-200 cursor-pointer relative py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#EE461F] ${
                     isActive
@@ -153,7 +117,7 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
                       transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
-                </button>
+                </Link>
               );
             })}
           </motion.div>}
@@ -166,10 +130,7 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
             className="flex items-center gap-2 sm:gap-3"
           >
             <button
-              onClick={() => {
-                if (onContactClick) onContactClick();
-                else document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={contact}
               className="group relative inline-flex items-center gap-2 whitespace-nowrap px-3 sm:px-5 py-2.5 rounded-full bg-gradient-to-r from-[#EE461F] to-[#F59E0B] text-white text-xs sm:text-sm font-extrabold shadow-sm shadow-[#EE461F]/20 hover:shadow-md hover:shadow-[#EE461F]/30 motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 transition-all duration-200 cursor-pointer overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#EE461F]"
             >
               <span>Get a Quote</span>
@@ -203,9 +164,17 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
               {navItems.map((item) => {
                 const isActive = activeSection === item.id;
                 return (
-                  <button
+                  <Link
                     key={item.id}
-                    onClick={item.action}
+                    href={item.href}
+                    aria-current={isActive ? 'page' : undefined}
+                    onClick={(event) => {
+                      setMobileMenuOpen(false);
+                      if (item.id === 'contact' && onContactClick) {
+                        event.preventDefault();
+                        contact();
+                      }
+                    }}
                     className={`w-full px-4 py-3 rounded-xl text-sm font-bold flex items-center transition-all ${
                       isActive
                         ? 'bg-[#EE461F] text-white shadow-md shadow-[#EE461F]/30'
@@ -213,7 +182,7 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
                     }`}
                   >
                     <span>{item.title}</span>
-                  </button>
+                  </Link>
                 );
               })}
             </motion.div>

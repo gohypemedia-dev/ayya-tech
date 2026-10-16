@@ -360,13 +360,13 @@ export function CinematicFooter({ onQuoteClick }: CinematicFooterProps) {
 
               {/* Secondary Navigation Links */}
               <div className="flex flex-wrap justify-center gap-3 md:gap-6 w-full mt-2">
-                <MagneticButton as="a" href="#services" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                <MagneticButton as="a" href="/services" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
                   Services
                 </MagneticButton>
-                <MagneticButton as="a" href="#case-studies" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                <MagneticButton as="a" href="/case-studies" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
                   Case Studies
                 </MagneticButton>
-                <MagneticButton as="a" href="#contact" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                <MagneticButton as="a" href="/#contact" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
                   Contact
                 </MagneticButton>
               </div>

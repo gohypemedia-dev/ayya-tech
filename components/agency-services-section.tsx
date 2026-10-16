@@ -177,7 +177,7 @@ function renderTechLogo(tag: string) {
   );
 }
 
-const THREE_SECTIONS: SectionGroup[] = [
+export const THREE_SECTIONS: SectionGroup[] = [
   {
     id: 'web-mobile-section',
     number: '01',

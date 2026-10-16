@@ -5,7 +5,6 @@ import { Check, X } from "lucide-react";
 import { AppleStyleDock } from "@/components/apple-style-dock";
 import HeroSection from "@/components/ui/dynamic-animated-hero-section-with-gradient";
 import { TrustedClientsGridSection } from "@/components/trusted-clients-grid-section";
-import { AgencyServicesSection } from "@/components/agency-services-section";
 import { YellowServicesTicker } from "@/components/ui/yellow-services-ticker";
 import { AboutAgencyBannerSection } from "@/components/about-agency-banner-section";
 import { ProvenDeliveryProcessSection } from "@/components/proven-delivery-process-section";
@@ -39,12 +38,6 @@ export default function Home() {
 
       {/* Companies We Work With - Partner Grid Section */}
       <TrustedClientsGridSection />
-
-      {/* 3. Editorial Agency Services Section */}
-      <AgencyServicesSection
-        onQuoteClick={() => setModalOpen(true)}
-        onExploreClick={() => setModalOpen(true)}
-      />
 
       {/* About Agency Banner Section (1:1 Screenshot Design) */}
       <AboutAgencyBannerSection onCtaClick={() => setModalOpen(true)} />
