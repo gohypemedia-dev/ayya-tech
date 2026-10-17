@@ -1,0 +1,58 @@
+'use client';
+
+import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowUpRight, ArrowUp } from 'lucide-react';
+import { ServicesOverview } from './services-overview';
+import { ProjectShowcase } from './project-showcase';
+import { ScrollStatement } from './scroll-statement';
+import { ProjectInvitation } from './project-invitation';
+import { TechnologyMarquee } from './technology-marquee';
+import { ProcessSection } from './process-section';
+import { ReviewsMarquee } from './reviews-marquee';
+import styles from './home-editorial.module.css';
+
+
+
+
+
+
+export function HomeEditorial({ onContact }: { onContact: () => void }) {
+  return (
+    <div className={styles.home}>
+      <TechnologyMarquee />
+
+      <ServicesOverview embedded onContact={onContact} />
+
+      <section className={`${styles.section} ${styles.about}`} id="about" aria-labelledby="about-heading">
+        <div className={styles.photo}>
+          <Image src="/it_team_left.jpg" alt="A team collaborating on a software project" fill sizes="(max-width: 760px) 90vw, 45vw" />
+          <span>Strategy meets craft.</span>
+        </div>
+        <div className={styles.aboutCopy}>
+          <p className={styles.label}>The people behind your next step</p>
+          <h2 id="about-heading">Big on ideas.<br /><em>Close to your business.</em></h2>
+          <p>We’re Ayyatech. A technology partner for businesses turning a new idea into a product, or making an existing system work better.</p>
+          <p>We bring design and engineering together, with clear communication from the first conversation to the final handover.</p>
+          <button className={`${styles.textLink} ${styles.brandLink}`} onClick={onContact}>Let’s get to know your project <ArrowUpRight size={19} /></button>
+        </div>
+      </section>
+
+      <ProjectShowcase />
+
+      <ScrollStatement />
+
+      <ProcessSection onContact={onContact} />
+      <ReviewsMarquee />
+
+
+
+      <ProjectInvitation />
+      <footer className={styles.footer}>
+        <Link href="/" aria-label="Ayyatech home"><Image src="/images/ayya-logo.png" alt="Ayyatech" width={145} height={55} /></Link>
+        <p>Thoughtfully designed. Expertly engineered.</p>
+        <nav aria-label="Footer navigation"><Link href="/services">Services</Link><Link href="/case-studies">Case studies</Link><a href="#home" aria-label="Back to top"><ArrowUp size={20} /></a></nav>
+      </footer>
+    </div>
+  );
+}

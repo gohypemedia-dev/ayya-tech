@@ -1,0 +1,4 @@
+﻿Technology icons sourced from Simple Icons:
+https://github.com/simple-icons/simple-icons
+Source: icons/{slug}.svg on the develop branch.
+Simple Icons is distributed under CC0-1.0. Brand marks remain trademarks of their respective owners.

@@ -1,0 +1,11 @@
+Generated using the built-in image_gen tool. These are illustrative concepts, not real client screenshots.
+
+Shared prompt: Generate a polished software case-study concept image for Ayyatech. Landscape 16:10 composition. [Service brief below] Straight-on high-fidelity website/app UI mockup filling most of the image with a slim browser frame, subtle depth on a complementary pale background. Large legible visual hierarchy at thumbnail scale. Restrained typography and generous spacing, polished real product design, no watermarks, no unrelated text, no laptop or hands, no collage. This is an illustrative concept, not a real client screenshot.
+
+commerce.png: A premium ecommerce storefront for a fictional modern furniture brand, ivory and sage palette, large editorial photo of a sculptural lounge chair, product thumbnails and compact shopping cart summary. Clear visible heading 'Everyday, elevated.'
+
+cloud.png: A refined cloud infrastructure management dashboard, deep navy and pale blue palette, a large network topology connecting three regions, service health cards, deployment timeline and small latency chart. Clear heading 'Infrastructure overview'. No stock photography.
+
+ai.png: A sophisticated enterprise AI workspace, warm white and lavender palette, document search and assistant conversation beside a knowledge graph, source document cards and a compact workflow panel. Heading 'Knowledge, connected'. No robot imagery.
+
+payments.png: A premium enterprise payments dashboard, dark forest green sidebar and white content area, transaction list with status badges, simple revenue chart, a compact checkout panel and payment method icons. Heading 'Payments overview'. No real financial company logos.

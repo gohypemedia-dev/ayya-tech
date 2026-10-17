@@ -154,7 +154,7 @@ export function HeroSection() {
       className="relative w-full h-[600svh] motion-reduce:h-svh bg-[#080D2B] text-white selection:bg-[#EE461F] selection:text-white"
     >
       {/* STICKY FULLSCREEN VIEWPORT CONTAINER */}
-      <div className="sticky top-0 h-svh w-full flex flex-col justify-between overflow-hidden py-10">
+      <div className="sticky top-0 h-svh w-full flex flex-col justify-end overflow-hidden py-10 sm:pb-16 lg:pb-20">
         
         {/* 1. SCROLL-TRIGGERED HIGH QUALITY PARALLAX FRAME SCRUBBER CANVAS */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-cover bg-center"
@@ -167,10 +167,10 @@ export function HeroSection() {
 
           {/* Subtle Top & Bottom Gradient for Clear Contrast without darkening the frame */}
           <div className="absolute inset-x-0 top-0 h-[65%] bg-gradient-to-b from-[#080D2B]/95 via-[#080D2B]/75 to-transparent z-0" />
-          <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#080D2B]/90 via-[#080D2B]/30 to-transparent z-0" />
+          <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-[#080D2B]/95 via-[#080D2B]/60 to-transparent z-0" />
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-7 pt-20 sm:px-12 sm:pt-24 lg:pt-28 pointer-events-none">
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-7 sm:px-12 pointer-events-none">
           <h1 className="max-w-4xl text-[2.5rem] sm:text-6xl lg:text-[5rem] font-normal leading-[1.1] tracking-tight text-white font-[family-name:var(--font-heading)] drop-shadow-lg">
             {reduceMotion ? serviceTitles[0] : (
               <AnimatePresence mode="wait" initial={false}>

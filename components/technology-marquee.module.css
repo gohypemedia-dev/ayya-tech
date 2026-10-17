@@ -1,0 +1,11 @@
+.section { width: 100%; min-width: 0; padding: 36px 0; margin-bottom: 24px; }
+.viewport { overflow: hidden; width: 100%; mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent); }
+.track { display: flex; width: max-content; animation: brandScroll 36s linear infinite; }
+.viewport:hover .track { animation-play-state: paused; }
+.group { display: flex; align-items: center; justify-content: space-around; flex: 0 0 auto; min-width: 100vw; gap: 60px; margin: 0; padding: 16px 60px 16px 0; list-style: none; }
+.group li { display: flex; align-items: center; gap: 12px; white-space: nowrap; font-size: 23px; font-weight: 650; letter-spacing: -.04em; color: #55505d; }
+.group img { object-fit: contain; filter: grayscale(1); opacity: .75; transition: filter 200ms, opacity 200ms; }
+.group li:hover img { filter: none; opacity: 1; }
+@keyframes brandScroll { to { transform: translateX(-50%); } }
+@media (max-width: 640px) { .section { padding-block: 24px; margin-bottom: 12px; } .group { gap: 36px; padding-right: 36px; } .group li { font-size: 20px; } }
+@media (prefers-reduced-motion: reduce) { .track { animation: none; width: 100%; } .group { min-width: 0; width: 100%; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 10px 18px; } .group[aria-hidden='true'] { display: none; } .viewport { mask-image: none; } .group img { transition: none; } }

@@ -15,7 +15,7 @@ interface Review {
   content: string;
 }
 
-const reviews: Review[] = [
+export const reviews: Review[] = [
   {
     id: 'rev-1',
     name: 'Marcus Vance',

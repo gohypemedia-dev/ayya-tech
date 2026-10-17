@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Oswald } from "next/font/google";
 import "./globals.css";
+import "lenis/dist/lenis.css";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import { cn } from "@/lib/utils";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -31,12 +33,13 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("h-full", "antialiased", jakarta.variable, oswald.variable, "font-sans", "scroll-smooth")}
+      className={cn("h-full", "antialiased", jakarta.variable, oswald.variable, "font-sans")}
     >
       <body
         suppressHydrationWarning
         className="min-h-full flex flex-col bg-white text-[#121A50] selection:bg-[#1433D1] selection:text-white"
       >
+        <SmoothScroll />
         {children}
       </body>
     </html>
