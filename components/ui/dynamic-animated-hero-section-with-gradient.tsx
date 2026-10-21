@@ -151,7 +151,7 @@ export function HeroSection() {
     <div
       id="hero-video"
       ref={targetRef}
-      className="relative w-full h-[600svh] motion-reduce:h-svh bg-[#080D2B] text-white selection:bg-[#EE461F] selection:text-white"
+      className="relative w-full h-[300svh] sm:h-[600svh] motion-reduce:h-svh bg-[#121D50] text-white selection:bg-[#EC4621] selection:text-white"
     >
       {/* STICKY FULLSCREEN VIEWPORT CONTAINER */}
       <div className="sticky top-0 h-svh w-full flex flex-col justify-end overflow-hidden py-10 sm:pb-16 lg:pb-20">
@@ -166,12 +166,12 @@ export function HeroSection() {
           />
 
           {/* Subtle Top & Bottom Gradient for Clear Contrast without darkening the frame */}
-          <div className="absolute inset-x-0 top-0 h-[65%] bg-gradient-to-b from-[#080D2B]/95 via-[#080D2B]/75 to-transparent z-0" />
-          <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-[#080D2B]/95 via-[#080D2B]/60 to-transparent z-0" />
+          <div className="absolute inset-x-0 top-0 h-[65%] bg-gradient-to-b from-[#121D50]/95 via-[#121D50]/75 to-transparent z-0" />
+          <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-[#121D50]/95 via-[#121D50]/60 to-transparent z-0" />
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-7 sm:px-12 pointer-events-none">
-          <h1 className="max-w-4xl text-[2.5rem] sm:text-6xl lg:text-[5rem] font-normal leading-[1.1] tracking-tight text-white font-[family-name:var(--font-heading)] drop-shadow-lg">
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-12 pointer-events-none">
+          <h1 className="max-w-4xl text-[2rem] sm:text-5xl lg:text-[4rem] font-normal leading-[1.1] tracking-tight text-white font-[family-name:var(--font-heading)] drop-shadow-lg">
             {reduceMotion ? serviceTitles[0] : (
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span

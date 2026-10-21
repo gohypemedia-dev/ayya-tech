@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useState, useId } from 'react';
+import { useState, useId, useSyncExternalStore } from 'react';
 import { ArrowUpRight, Plus } from 'lucide-react';
 import styles from './project-invitation.module.css';
 
@@ -13,11 +13,22 @@ const inclusions = [
   ['Personal handover & guidance', 'Understand how your product works, how to manage it, and what comes next. We walk you through the essentials and discuss ongoing support.'],
 ];
 
+function subscribeToMobile(onChange: () => void) {
+  const query = window.matchMedia('(max-width: 640px)');
+  query.addEventListener('change', onChange);
+  return () => query.removeEventListener('change', onChange);
+}
+
+const getMobileSnapshot = () => window.matchMedia('(max-width: 640px)').matches;
+const getServerSnapshot = () => true;
+
 export function ProjectInvitation() {
-  const [active, setActive] = useState<number | null>(0);
+  const isMobile = useSyncExternalStore(subscribeToMobile, getMobileSnapshot, getServerSnapshot);
+  const [selected, setActive] = useState<number | null | undefined>(undefined);
+  const active = selected === undefined ? (isMobile ? null : 0) : selected;
   const id = useId();
   return (
-    <section id="contact" className={styles.panel} aria-labelledby={`${id}-heading`}>
+    <section id="project-invitation" className={styles.panel} aria-labelledby={`${id}-heading`}>
       <div className={styles.accordion}>
         {inclusions.map(([title, description], index) => (
           <div key={title} className={styles.item} data-open={active === index}>

@@ -4,8 +4,9 @@ import * as React from "react";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Mail, Phone, Headphones, ChevronDown } from "lucide-react";
+import { ArrowRight, Mail, Phone, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import * as d3 from "d3";
 import { feature } from "topojson-client";
@@ -673,7 +674,7 @@ const FormDots = React.forwardRef<
           <div
             className={cn(
               "absolute inset-0 bg-repeat",
-              "text-neutral-400 dark:text-white/20",
+              "text-[#121D50] dark:text-white/20",
             )}
             style={{
               backgroundImage:
@@ -718,17 +719,17 @@ export function ContactWithGlobe({
     <section
       id="contact"
       className={cn(
-        "relative w-full bg-[#FCFDFE] text-[#121A50] py-20 lg:py-24 border-t border-[#DFE4EA] overflow-hidden",
+        "relative w-full bg-[#FFFFFF] text-[#121D50] py-12 sm:py-20 lg:py-24 border-t border-[#EDF0F3] overflow-hidden",
         className,
       )}
     >
       {/* Subtle ambient lighting */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#EE461F]/4 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#1433D1]/4 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#EC4621]/4 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#0E33CB]/4 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative mx-auto max-w-6xl px-6 sm:px-8">
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-14">
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-8 sm:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -736,8 +737,8 @@ export function ContactWithGlobe({
             transition={{ duration: 0.5, ease: smoothEase }}
             className="flex items-center gap-2 mb-3"
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#EE461F]" />
-            <span className="text-xs font-bold uppercase tracking-wider text-[#121A50]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#EC4621]" />
+            <span className="text-xs font-bold uppercase tracking-wider text-[#121D50]">
               Get In Touch
             </span>
           </motion.div>
@@ -746,7 +747,7 @@ export function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1, ease: smoothEase }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#121A50]"
+            className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#0E33CB] to-[#1F45E4]"
           >
             {title}
           </motion.h2>
@@ -755,7 +756,7 @@ export function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15, ease: smoothEase }}
-            className="text-sm sm:text-base text-[#4B5565] mt-3"
+            className="text-sm sm:text-base text-[#121D50] mt-3"
           >
             Have a project or inquiry? Fill in the details below or reach out directly.
           </motion.p>
@@ -773,10 +774,10 @@ export function ContactWithGlobe({
             className="w-full flex flex-col gap-6"
           >
             <div className="flex flex-col gap-1">
-              <h3 className="text-2xl font-black uppercase tracking-tight text-[#121A50]">
+              <h3 className="text-xl font-black uppercase tracking-tight text-[#121D50]">
                 Get in touch
               </h3>
-              <p className="text-sm text-[#4B5565] leading-relaxed max-w-sm">
+              <p className="text-sm text-[#121D50] leading-relaxed max-w-sm">
                 Reach out via any channel below. We typically reply within one business day.
               </p>
             </div>
@@ -794,10 +795,10 @@ export function ContactWithGlobe({
                     delay: 0.3 + i * 0.1,
                     ease: smoothEase,
                   }}
-                  className="group flex items-center gap-3 w-fit text-sm text-[#4B5565] hover:text-[#EE461F] transition-colors duration-200"
+                  className="group flex items-center gap-3 w-fit text-sm text-[#121D50] hover:text-[#EC4621] transition-colors duration-200"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-slate-100 border border-[#DFE4EA] group-hover:border-[#EE461F]/40 group-hover:bg-[#EE461F]/10 flex items-center justify-center shrink-0 transition-all duration-200">
-                    <Icon className="w-4 h-4 text-[#121A50] group-hover:text-[#EE461F] transition-colors duration-200" />
+                  <div className="w-9 h-9 rounded-xl bg-[#EDF0F3] border border-[#EDF0F3] group-hover:border-[#EC4621]/40 group-hover:bg-[#EC4621]/10 flex items-center justify-center shrink-0 transition-all duration-200">
+                    <Icon className="w-4 h-4 text-[#121D50] group-hover:text-[#EC4621] transition-colors duration-200" />
                   </div>
                   <span className="font-medium">{label}</span>
                 </motion.a>
@@ -805,8 +806,8 @@ export function ContactWithGlobe({
             </div>
 
             {/* Rising Half-Globe Horizon with smooth bottom fade (All Orange, Exact Original Design & Position) */}
-            <div className="relative overflow-hidden h-52 sm:h-60 w-full mt-2 flex items-start justify-center">
-              <div className="w-[440px] h-[440px] shrink-0 relative">
+            <div className="relative overflow-hidden h-40 sm:h-60 w-full mt-2 flex items-start justify-center">
+              <div className="w-[440px] h-[440px] shrink-0 relative origin-top scale-75 sm:scale-100">
                 <GlobeWireframe
                   width={440}
                   height={440}
@@ -817,14 +818,14 @@ export function ContactWithGlobe({
                   autoRotate
                   autoRotateSpeed={0.45}
                   strokeWidth={0.85}
-                  strokeColor="#EE461F"
-                  sphereOutlineColor="#EE461F"
+                  strokeColor="#EC4621"
+                  sphereOutlineColor="#EC4621"
                   sphereOutlineWidth={1.5}
                   scale={0.96}
                   backgroundColor="transparent"
                 />
               </div>
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#FCFDFE] via-[#FCFDFE]/80 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#FFFFFF] via-[#FFFFFF]/80 to-transparent" />
             </div>
           </motion.div>
 
@@ -837,28 +838,28 @@ export function ContactWithGlobe({
             className="w-full flex flex-col"
           >
             <div className="mb-6">
-              <h3 className="text-xl font-bold text-[#121A50] mb-1 tracking-tight">
+              <h3 className="text-lg font-bold text-[#121D50] mb-1 tracking-tight">
                 Tell Us About Your Project
               </h3>
-              <p className="text-sm text-[#4B5565]">
+              <p className="text-sm text-[#121D50]">
                 Tell us what you are looking to build.
               </p>
             </div>
 
             {formSubmitted ? (
-              <div className="text-center py-10 bg-white/80 rounded-2xl border border-emerald-200">
-                <div className="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mx-auto mb-3 font-bold text-xl border border-emerald-500/20">
+              <div className="text-center py-10 bg-white/80 rounded-2xl border border-[#EDF0F3]">
+                <div className="w-12 h-12 rounded-full bg-[#EDF0F3]/10 text-[#121D50] flex items-center justify-center mx-auto mb-3 font-bold text-lg border border-[#EDF0F3]/20">
                   ✓
                 </div>
-                <h4 className="text-lg font-bold text-[#121A50] mb-1">
+                <h4 className="text-lg font-bold text-[#121D50] mb-1">
                   Message Sent
                 </h4>
-                <p className="text-xs text-[#4B5565] mb-6">
+                <p className="text-xs text-[#121D50] mb-6">
                   Thank you. We will get back to you within one business day.
                 </p>
                 <Button
                   onClick={() => setFormSubmitted(false)}
-                  className="bg-[#121A50] hover:bg-[#EE461F] text-white font-semibold rounded-full cursor-pointer transition-colors"
+                  className="bg-[#121D50] hover:bg-[#EC4621] text-white font-semibold rounded-full cursor-pointer transition-colors"
                 >
                   Send another message
                 </Button>
@@ -867,67 +868,71 @@ export function ContactWithGlobe({
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 {/* Full name input */}
                 <div>
-                  <label className="block text-xs font-semibold text-[#121A50] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-[#121D50] uppercase tracking-wider mb-1.5">
                     Your Name *
                   </label>
                   <input
                     required
                     type="text"
                     placeholder="Jane Doe"
-                    className="w-full h-12 bg-white/60 hover:bg-white focus:bg-white border border-[#DFE4EA] rounded-xl px-4 text-sm text-[#121A50] placeholder:text-slate-400 outline-none focus:border-[#EE461F] focus:ring-2 focus:ring-[#EE461F]/15 transition-all"
+                    className="w-full h-12 bg-white/60 hover:bg-white focus:bg-white border border-[#EDF0F3] rounded-xl px-4 text-base sm:text-sm text-[#121D50] placeholder:text-[#121D50] outline-none focus:border-[#EC4621] focus:ring-2 focus:ring-[#EC4621]/15 transition-all"
                   />
                 </div>
 
                 {/* Email address input */}
                 <div>
-                  <label className="block text-xs font-semibold text-[#121A50] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-[#121D50] uppercase tracking-wider mb-1.5">
                     Work Email *
                   </label>
                   <input
                     required
                     type="email"
                     placeholder="jane@company.com"
-                    className="w-full h-12 bg-white/60 hover:bg-white focus:bg-white border border-[#DFE4EA] rounded-xl px-4 text-sm text-[#121A50] placeholder:text-slate-400 outline-none focus:border-[#EE461F] focus:ring-2 focus:ring-[#EE461F]/15 transition-all"
+                    className="w-full h-12 bg-white/60 hover:bg-white focus:bg-white border border-[#EDF0F3] rounded-xl px-4 text-base sm:text-sm text-[#121D50] placeholder:text-[#121D50] outline-none focus:border-[#EC4621] focus:ring-2 focus:ring-[#EC4621]/15 transition-all"
                   />
                 </div>
 
-                {/* Service select dropdown box */}
+                {/* Service selector */}
                 <div>
-                  <label className="block text-xs font-semibold text-[#121A50] uppercase tracking-wider mb-1.5">
+                  <label htmlFor="contact-service" className="block text-xs font-semibold text-[#121D50] uppercase tracking-wider mb-1.5">
                     Service Needed
                   </label>
-                  <div className="relative flex items-center bg-white/60 hover:bg-white focus-within:bg-white border border-[#DFE4EA] rounded-xl px-4 h-12 focus-within:border-[#EE461F] focus-within:ring-2 focus-within:ring-[#EE461F]/15 transition-all">
-                    <select
-                      defaultValue=""
-                      className="w-full bg-transparent text-sm text-[#121A50] font-medium outline-none cursor-pointer appearance-none pr-8"
-                    >
-                      <option value="" disabled hidden>Select a service...</option>
-                      <option value="Custom Website Development">Custom Website Development</option>
-                      <option value="IT Consultancy & Digital Transformation">IT Consultancy & Digital Transformation</option>
-                      <option value="Cloud-Native Infrastructure & DevOps">Cloud-Native Infrastructure & DevOps</option>
-                      <option value="AI-Powered Enterprise Systems">AI-Powered Enterprise Systems</option>
-                      <option value="Mobile Application Development">Mobile Application Development</option>
-                    </select>
-                    <ChevronDown className="w-4 h-4 text-slate-500 pointer-events-none absolute right-4 top-1/2 -translate-y-1/2" />
-                  </div>
+                  <Select name="service">
+                    <SelectTrigger id="contact-service" className="w-full data-[size=default]:h-12 rounded-xl border-[#EDF0F3] bg-white px-4 text-[#121D50] shadow-none hover:border-[#1F45E4] focus-visible:border-[#EC4621] focus-visible:ring-2 focus-visible:ring-[#EC4621]/15 data-open:border-[#EC4621] [&_[data-slot=select-value]]:min-w-0 [&_[data-slot=select-value]]:truncate">
+                      <SelectValue placeholder="Select a service?" />
+                    </SelectTrigger>
+                    <SelectContent align="start" alignItemWithTrigger={false} sideOffset={8} className="rounded-xl border border-[#EDF0F3] bg-white p-1.5 text-[#121D50] shadow-[0_12px_35px_-12px_rgba(18,29,80,0.25)] ring-0 motion-reduce:animate-none" data-lenis-prevent>
+                      {[
+                        'Custom Website Development',
+                        'IT Consultancy & Digital Transformation',
+                        'Cloud-Native Infrastructure & DevOps',
+                        'AI-Powered Enterprise Systems',
+                        'Mobile Application Development',
+                      ].map(service => (
+                        <SelectItem key={service} value={service} className="min-h-12 cursor-pointer rounded-lg px-3 py-3 pr-9 text-sm leading-relaxed data-highlighted:bg-[#EDF0F3] data-highlighted:text-[#121D50] data-selected:bg-[#EDF0F3] data-selected:font-semibold data-selected:text-[#0E33CB] [&>span:first-child]:min-w-0 [&>span:first-child]:shrink [&>span:first-child]:whitespace-normal [&_svg]:text-[#EC4621]">
+                          {service}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 {/* Project details textarea */}
                 <div>
-                  <label className="block text-xs font-semibold text-[#121A50] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-[#121D50] uppercase tracking-wider mb-1.5">
                     Project Details
                   </label>
                   <textarea
                     placeholder="Tell us about your project, goals, or timeline..."
                     rows={4}
-                    className="w-full bg-white/60 hover:bg-white focus:bg-white border border-[#DFE4EA] rounded-xl p-4 text-sm text-[#121A50] placeholder:text-slate-400 outline-none focus:border-[#EE461F] focus:ring-2 focus:ring-[#EE461F]/15 transition-all resize-none"
+                    className="w-full bg-white/60 hover:bg-white focus:bg-white border border-[#EDF0F3] rounded-xl p-4 text-base sm:text-sm text-[#121D50] placeholder:text-[#121D50] outline-none focus:border-[#EC4621] focus:ring-2 focus:ring-[#EC4621]/15 transition-all resize-none"
                   />
                 </div>
 
                 {/* Submit button */}
                 <button
                   type="submit"
-                  className="w-fit h-12 px-7 rounded-xl font-bold text-sm bg-[#121A50] hover:bg-[#EE461F] text-white flex items-center gap-2.5 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer mt-1"
+                  className="w-fit h-12 px-7 rounded-xl font-bold text-sm bg-[#EC4621] hover:bg-[#0E33CB] text-white flex items-center gap-2.5 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer mt-1"
                 >
                   <span>Send Message</span>
                   <ArrowRight className="w-4 h-4" />

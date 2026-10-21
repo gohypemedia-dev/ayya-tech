@@ -12,7 +12,7 @@ export function ProcessSection({ onContact }: { onContact: () => void }) {
   return (
     <section className={styles.section} id="process" aria-labelledby="process-heading">
       <div className={styles.intro}>
-        <h2 className={styles.heading} id="process-heading">From the first<br />idea<em>to the next step</em></h2>
+        <h2 className={styles.heading} id="process-heading">From the first{' '}<br />idea<em>to the next step</em></h2>
         <p className={styles.description}>We stay in touch.<br />Personal, direct, and collaborative.</p>
         <button className={styles.cta} onClick={onContact}>Discuss your project <ArrowUpRight size={18} /></button>
       </div>
@@ -21,7 +21,7 @@ export function ProcessSection({ onContact }: { onContact: () => void }) {
           <li className={styles.card} key={step.title[0]}>
             <span className={styles.number}>0{index + 1}</span>
             <div>
-              <h3>{step.title[0]}<br />{step.title[1]}</h3>
+              <h3>{step.title[0]}{' '}<br />{step.title[1]}</h3>
               <p>{step.description}</p>
             </div>
           </li>

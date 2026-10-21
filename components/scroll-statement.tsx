@@ -81,7 +81,7 @@ export function ScrollStatement() {
           </motion.span>
         </span>
       </p>
-      <motion.div layout={reducedMotion ? false : "position"} transition={{ layout: layoutTransition }} className={styles.signature}><span className={styles.mark} aria-hidden="true">a.</span><span><strong>The Ayyatech approach</strong><span>Thoughtful technology. Everyday impact.</span></span></motion.div></LayoutGroup>
+      </LayoutGroup>
       </div>
     </section>
   );

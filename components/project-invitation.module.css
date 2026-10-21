@@ -1,26 +1,35 @@
-.panel { width: min(1440px, calc(100% - 64px)); margin: 12px auto 28px; padding: clamp(32px, 5vw, 76px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(40px, 6vw, 90px); align-items: center; border: 1px solid transparent; border-radius: 28px 28px 90px 28px; background: radial-gradient(ellipse at 100% 0%, #e7e0f2, transparent 48%) padding-box, linear-gradient(125deg, #fcfcff, #faf7f8) padding-box, linear-gradient(120deg, #a8a4ff, #f2e7fa 50%, #efbb9f) border-box; box-shadow: 0 28px 45px -35px #32254150; color: #19191d; scroll-margin-top: 120px; }
+.panel { width: min(1440px, calc(100% - 64px)); margin: 12px auto 28px; padding: clamp(32px, 5vw, 76px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(40px, 6vw, 90px); align-items: center; border: 1px solid transparent; border-radius: 28px 28px 90px 28px; background: radial-gradient(ellipse at 100% 0%, #EDF0F3, transparent 48%) padding-box, linear-gradient(125deg, #FFFFFF, #FFFFFF) padding-box, linear-gradient(120deg, #EDF0F3, #EDF0F3 50%, #EDF0F3) border-box; box-shadow: 0 28px 45px -35px #121D5050; color: #121D50; scroll-margin-top: 120px; }
 .accordion { min-width: 0; }
-.item { border-bottom: 1px solid #dedbe4; }
+.item { border-bottom: 1px solid #EDF0F3; }
 .item:last-child { border-bottom: 0; }
 .item h3 { margin: 0; }
-.item button { display: flex; align-items: center; justify-content: space-between; gap: 14px; width: 100%; padding: 23px 0; color: #76717e; text-align: left; font-size: clamp(17px, 1.55vw, 23px); font-weight: 500; line-height: 1.35; letter-spacing: -.035em; cursor: pointer; transition: color 200ms; }
-.item button:hover, .item[data-open='true'] button { color: #19191d; }
+.item button { display: flex; align-items: center; justify-content: space-between; gap: 14px; width: 100%; padding: 23px 0; color: #121D50; text-align: left; font-size: clamp(16px, 1.395vw, 21px); font-weight: 500; line-height: 1.35; letter-spacing: -.035em; cursor: pointer; transition: color 200ms; }
+.item button:hover, .item[data-open='true'] button { color: #0E33CB; }
 .item button svg { flex-shrink: 0; transition: transform 300ms; }
 .item[data-open='true'] button svg { transform: rotate(45deg); }
 .reveal { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 350ms cubic-bezier(.22,1,.36,1), opacity 250ms; }
 .item[data-open='true'] .reveal { grid-template-rows: 1fr; opacity: 1; }
 .reveal > div { overflow: hidden; min-height: 0; }
-.reveal p { padding: 0 18px 25px 0; color: #625c6d; font-size: 15px; line-height: 1.8; max-width: 490px; }
+.reveal p { padding: 0 18px 25px 0; color: #121D50; font-size: 15px; line-height: 1.8; max-width: 490px; }
 .invitation { min-width: 0; text-align: right; }
-.panel .invitation h2 { font-size: clamp(48px, 5.7vw, 88px); font-weight: 800; line-height: 1.04; letter-spacing: -.065em; margin: 0; }
-.panel .invitation h2 em { display: block; font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: .78em; line-height: 1.15; letter-spacing: -.065em; margin-top: 10px; color: #9472bc; background: linear-gradient(100deg, #6765e8, #b96abd 62%, #d69574); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.invitation > p { font-size: clamp(18px, 1.7vw, 25px); line-height: 1.6; letter-spacing: -.03em; margin: 35px 0; }
-.button { display: inline-flex; align-items: center; justify-content: center; gap: 24px; padding: 18px 23px; border-radius: 12px; background: #19191d; color: white; font-size: 13px; font-weight: 600; transition: background 200ms; }
-.button:hover { background: #38303f; }
+.panel .invitation h2 { font-size: clamp(38px, 4.56vw, 70px); font-weight: 800; line-height: 1.04; letter-spacing: -.065em; margin: 0; }
+.panel .invitation h2 em { display: block; font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: .78em; line-height: 1.15; letter-spacing: -.065em; margin-top: 10px; color: #121D50; background: linear-gradient(100deg, #0E33CB, #1F45E4); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.invitation > p { font-size: clamp(16px, 1.53vw, 22px); line-height: 1.6; letter-spacing: -.03em; margin: 35px 0; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 24px; padding: 18px 23px; border-radius: 12px; background: #EC4621; color: white; font-size: 13px; font-weight: 600; transition: background 200ms; }
+.button:hover { background: #0E33CB; }
 .button svg { transition: transform 200ms; }
 .button:hover svg { transform: translate(2px, -2px); }
-.note { display: block; color: #756e7f; margin-top: 15px; font-size: 11px; line-height: 1.7; }
-.panel :is(button, a):focus-visible { outline: 2px solid #9472bc; outline-offset: 5px; }
-@media (max-width: 900px) { .panel { grid-template-columns: 1fr; gap: 35px; } .invitation { grid-row: 1; text-align: left; } .panel .invitation h2 { font-size: clamp(48px, 8vw, 72px); } .invitation > p { max-width: 530px; margin: 24px 0; } }
-@media (max-width: 640px) { .panel { width: calc(100% - 36px); padding: 30px 23px; border-bottom-right-radius: 55px; } .panel .invitation h2 { font-size: clamp(40px, 10vw, 58px); } .item button { padding-block: 19px; } .reveal p { font-size: 14px; } }
+.note { display: block; color: #121D50; margin-top: 15px; font-size: 11px; line-height: 1.7; }
+.panel :is(button, a):focus-visible { outline: 2px solid #121D50; outline-offset: 5px; }
+@media (max-width: 900px) { .panel { grid-template-columns: 1fr; gap: 35px; } .invitation { grid-row: 1; text-align: left; } .panel .invitation h2 { font-size: clamp(38px, 6.4vw, 58px); } .invitation > p { max-width: 530px; margin: 24px 0; } }
+@media (max-width: 640px) { .panel { width: calc(100% - 36px); padding: 30px 23px; border-bottom-right-radius: 55px; } .panel .invitation h2 { font-size: clamp(32px, 8vw, 46px); } .item button { padding-block: 19px; } .reveal p { font-size: 14px; } }
 @media (prefers-reduced-motion: reduce) { .panel *, .panel *::before { transition: none; } }
+
+@media (max-width: 640px) {
+  .panel { width: 100%; margin: 0 auto 24px; padding: 28px 18px; gap: 24px; border: 0; border-radius: 0; background: none; box-shadow: none; }
+  .panel .invitation h2 { font-size: clamp(32px, 9vw, 44px); }
+  .invitation > p { font-size: 16px; margin: 20px 0; }
+  .button { width: 100%; min-height: 48px; padding: 13px 20px; justify-content: space-between; gap: 16px; font-size: 14px; line-height: 1.5; }
+  .button svg { flex-shrink: 0; }
+  .item button { font-size: 16px; }
+}

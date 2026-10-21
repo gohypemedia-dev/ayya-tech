@@ -1,0 +1,98 @@
+.page { padding: 140px 48px 64px; background: white; color: #121D50; display: flex; flex-direction: column; gap: 28px; }
+.page > * { width: 100%; max-width: 1440px; margin-inline: auto; }
+.hero { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 40px; padding: 40px 44px; border: 1px solid #f0e2d9; border-radius: 28px; background: linear-gradient(120deg, #fff1e8, #fff 75%); }
+.heroTitle { display: flex; align-items: center; gap: 20px; }
+.phone { position: relative; flex-shrink: 0; width: 110px; height: 190px; }
+.phone img { object-fit: contain; }
+.eyebrow { display: block; font-size: 12px; color: #c63c1c; margin-bottom: 14px; }
+.page h1 { font-size: clamp(30px, 3vw, 46px); font-weight: 750; letter-spacing: -.055em; line-height: 1.08; }
+.page em { color: #EC4621; font-family: Georgia, serif; font-weight: 400; }
+.page h1 em { display: block; margin-top: 8px; }
+.page p { font-size: 16px; line-height: 1.75; }
+.heroCopy p { max-width: 440px; }
+.heroCopy a, .collaboration a, .infoCards a { display: inline-flex; align-items: center; gap: 16px; font-size: 14px; font-weight: 600; margin-top: 24px; }
+.contactCards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.contactCards > * { display: flex; align-items: center; gap: 16px; text-align: left; padding: 24px; border: 1px solid #f0e2d9; border-radius: 16px; background: white; cursor: pointer; min-width: 0; }
+.contactCards > * > svg:first-child { color: #EC4621; flex-shrink: 0; width: 22px; }
+.contactCards > * > svg:last-child { margin-left: auto; flex-shrink: 0; }
+.contactCards span { font-size: 12px; min-width: 0; }
+.contactCards strong { display: block; font-size: 14px; font-weight: 600; margin-top: 5px; overflow-wrap: anywhere; }
+.formSection { display: grid; grid-template-columns: .85fr 1.3fr; gap: 72px; border: 1px solid #f0e2d9; border-radius: 28px; padding: 52px; scroll-margin-top: 120px; }
+.page h2 { font-size: clamp(30px, 3.2vw, 48px); font-weight: 700; line-height: 1.13; letter-spacing: -.05em; }
+.formIntro > p { margin-top: 22px; max-width: 350px; }
+.next { border-top: 1px solid #f0e2d9; margin-top: 32px; padding-top: 24px; }
+.next strong { font-size: 14px; }
+.next p { font-size: 14px; margin-top: 8px; }
+.form { display: flex; flex-direction: column; gap: 20px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form label { display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; font-weight: 600; min-width: 0; }
+.form label > span { font-weight: 400; }
+.form input, .form textarea, .form select { width: 100%; min-width: 0; border: 1px solid #e9dacf; border-radius: 10px; padding: 13px 14px; background: #fffcfa; font: inherit; font-size: 16px; font-weight: 400; color: #121D50; }
+.form textarea { resize: vertical; }
+.form input:focus, .form textarea:focus, .form select:focus { outline: 2px solid #EC4621; outline-offset: 2px; }
+.formBottom { display: flex; align-items: center; gap: 20px; justify-content: space-between; }
+.formBottom p { font-size: 12px; max-width: 230px; }
+.formBottom button { display: inline-flex; justify-content: center; align-items: center; gap: 16px; padding: 15px 20px; min-height: 48px; border-radius: 12px; background: #EC4621; color: white; font-size: 14px; font-weight: 600; cursor: pointer; flex-shrink: 0; }
+.form .status { font-size: 13px; background: #fff1e8; padding: 16px; border-radius: 10px; }
+.status a { text-decoration: underline; }
+.collaboration { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; padding: 48px 52px; border-radius: 28px; background: #fff8f3; }
+.collaboration p { margin-top: 22px; max-width: 500px; }
+.indiaMap { width: 100%; max-width: 480px; margin-inline: auto; }
+.indiaMap img { width: 100%; height: auto; }
+.indiaMap p { text-align: center; font-size: 11px; opacity: .7; margin-top: 8px; }
+.globe { display: grid; place-items: center; position: relative; padding: 12px 0 30px; color: #EC4621; }
+.globe > svg { width: min(100%, 300px); height: auto; }
+.globe span { position: absolute; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 14px 20px; background: white; border: 1px solid #f0e2d9; border-radius: 12px; font-size: 13px; color: #121D50; }
+.infoCards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.infoCards article { padding: 32px; border: 1px solid #f0e2d9; border-radius: 22px; }
+.infoCards h3 { font-size: 23px; font-weight: 650; letter-spacing: -.04em; }
+.infoCards p { margin-top: 14px; font-size: 15px; }
+.page :is(a, button):focus-visible { outline: 2px solid #EC4621; outline-offset: 5px; }
+@media (max-width: 1000px) { .hero { padding: 32px; gap: 28px; } .phone { width: 90px; height: 160px; } .formSection { gap: 32px; padding: 32px; } .contactCards { grid-template-columns: 1fr; } .formBottom { flex-direction: column; align-items: stretch; } .formBottom p { max-width: none; } }
+@media (max-width: 640px) { .page { padding: 104px 18px 32px; gap: 20px; } .hero { grid-template-columns: 1fr; padding: 26px 22px; gap: 26px; border-radius: 20px; } .heroTitle { gap: 14px; } .phone { width: 76px; height: 145px; } .page h1 { font-size: 32px; } .page p { font-size: 14px; } .eyebrow { font-size: 11px; } .heroCopy a { font-size: 13px; margin-top: 16px; } .contactCards { gap: 10px; } .contactCards > * { padding: 18px; } .formSection { grid-template-columns: 1fr; gap: 26px; padding: 24px 18px; border-radius: 20px; scroll-margin-top: 100px; } .formIntro > p { margin-top: 14px; } .next { margin-top: 20px; padding-top: 16px; } .row { grid-template-columns: 1fr; gap: 18px; } .formBottom p { font-size: 12px; } .collaboration { grid-template-columns: 1fr; padding: 28px 22px; gap: 24px; } .globe > svg { width: 200px; } .infoCards { grid-template-columns: 1fr; gap: 16px; } .infoCards article { padding: 24px; } }
+
+.infoCards .exploreCard { display: flex; flex-direction: column; align-items: flex-start; margin: 0; padding: 30px 32px; border: 1px solid #f0e2d9; border-radius: 22px; background: linear-gradient(120deg, #fff8f2, #fff 80%); color: #121D50; text-decoration: none; transition: border-color 180ms, box-shadow 180ms; }
+.infoCards .exploreCard:nth-child(2) { background: linear-gradient(120deg, #fff, #fff4ec); }
+.cardCategory { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 24px; color: #c63c1c; font-size: 12px; font-weight: 600; }
+.cardCategory > svg { box-sizing: content-box; padding: 10px; border: 1px solid #f3d8c9; border-radius: 50%; background: white; }
+.infoCards .exploreCard h3 { font-size: clamp(24px, 2.2vw, 32px); line-height: 1.18; letter-spacing: -.045em; }
+.infoCards .exploreCard p { max-width: 410px; margin: 16px 0 26px; font-size: 15px; font-weight: 400; }
+.cardAction { display: inline-flex; align-items: center; gap: 14px; margin-top: auto; padding-bottom: 6px; border-bottom: 1px solid #EC4621; font-size: 14px; font-weight: 600; }
+.exploreCard:hover { border-color: #EC4621; box-shadow: 0 12px 25px -20px #c63c1c80; }
+@media (max-width: 640px) {
+  .infoCards .exploreCard { padding: 22px; border-radius: 18px; }
+  .cardCategory { margin-bottom: 18px; }
+  .cardCategory > svg { padding: 8px; width: 18px; height: 18px; }
+  .infoCards .exploreCard h3 { font-size: 25px; }
+  .infoCards .exploreCard p { font-size: 14px; margin: 14px 0 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .infoCards .exploreCard { transition: none; } }
+
+/* Compact image-backed navigation cards. */
+.infoCards .exploreCard, .infoCards .exploreCard:nth-child(2) { padding: 22px 26px; border-radius: 18px; background: linear-gradient(90deg, #fffdfbf5 0%, #fffdfbe8 48%, #fffdfb25 100%), url('/contact-cards-background.png') right center / cover no-repeat; }
+.cardCategory { margin-bottom: 12px; }
+.cardCategory > svg { padding: 7px; width: 16px; height: 16px; }
+.infoCards .exploreCard h3 { font-size: 23px; line-height: 1.2; }
+.infoCards .exploreCard p { max-width: 330px; font-size: 13px; line-height: 1.65; margin: 12px 0 18px; }
+.cardAction { font-size: 13px; padding-bottom: 4px; }
+@media (max-width: 640px) {
+  .infoCards .exploreCard, .infoCards .exploreCard:nth-child(2) { padding: 20px; background-position: right center; }
+  .infoCards .exploreCard h3 { font-size: 22px; }
+  .infoCards .exploreCard p { max-width: 85%; font-size: 13px; margin: 10px 0 16px; }
+}
+
+.infoCards .exploreCard:nth-child(2) {
+  background-image: linear-gradient(90deg, #fffdfbf5 0%, #fffdfbe8 48%, #fffdfb25 100%), url('/contact-case-studies-background.png');
+}
+
+/* Balance the contact page's orange actions with the site's blue accents. */
+.hero { background: linear-gradient(120deg, #edf2ff, #fff 75%); border-color: #e1e7f5; }
+.page em { color: #1F45E4; }
+.eyebrow, .cardCategory { color: #0E33CB; }
+.contactCards > * > svg:first-child { color: #1F45E4; }
+.collaboration { background: #f3f6ff; }
+.formSection, .contactCards > *, .infoCards .exploreCard { border-color: #e1e7f5; }
+.form input:focus, .form textarea:focus, .form select:focus { outline-color: #1F45E4; }
+.page :is(a, button):focus-visible { outline-color: #1F45E4; }
+.form .status { background: #edf2ff; }
+.cardCategory > svg { color: #EC4621; }

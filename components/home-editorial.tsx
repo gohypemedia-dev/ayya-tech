@@ -10,6 +10,7 @@ import { ProjectInvitation } from './project-invitation';
 import { TechnologyMarquee } from './technology-marquee';
 import { ProcessSection } from './process-section';
 import { ReviewsMarquee } from './reviews-marquee';
+import ContactWithGlobe from './ui/contact-with-globe';
 import styles from './home-editorial.module.css';
 
 
@@ -48,6 +49,7 @@ export function HomeEditorial({ onContact }: { onContact: () => void }) {
 
 
       <ProjectInvitation />
+      <ContactWithGlobe className="scroll-mt-[112px]" />
       <footer className={styles.footer}>
         <Link href="/" aria-label="Ayyatech home"><Image src="/images/ayya-logo.png" alt="Ayyatech" width={145} height={55} /></Link>
         <p>Thoughtfully designed. Expertly engineered.</p>
