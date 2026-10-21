@@ -1,6 +1,6 @@
-﻿'use client';
+'use client';
 
-import { useState, useId, useSyncExternalStore } from 'react';
+import { Fragment, useState, useId, useSyncExternalStore, type CSSProperties } from 'react';
 import { ArrowUpRight, Plus } from 'lucide-react';
 import styles from './project-invitation.module.css';
 
@@ -34,7 +34,13 @@ export function ProjectInvitation() {
           <div key={title} className={styles.item} data-open={active === index}>
             <h3><button type="button" id={`${id}-trigger-${index}`} aria-expanded={active === index} aria-controls={`${id}-panel-${index}`} onClick={() => setActive(active === index ? null : index)}><span>{title}</span><Plus size={18} aria-hidden="true" /></button></h3>
             <div id={`${id}-panel-${index}`} role="region" aria-labelledby={`${id}-trigger-${index}`} className={styles.reveal} inert={active !== index} aria-hidden={active !== index}>
-              <div><p>{description}</p></div>
+              <div>
+                <p>
+                  {description.split(' ').map((word, wordIndex) => (
+                    <Fragment key={wordIndex}><span className={styles.word} style={{ '--i': wordIndex } as CSSProperties}>{word}</span>{' '}</Fragment>
+                  ))}
+                </p>
+              </div>
             </div>
           </div>
         ))}

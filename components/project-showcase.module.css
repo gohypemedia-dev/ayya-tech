@@ -8,7 +8,7 @@
 .card { width: 100%; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 60px); align-items: center; transform-origin: center; }
 .project:focus-within .card { opacity: 1 !important; transform: none !important; }
 .visual { min-width: 0; transform-origin: center bottom; }
-.preview { display: block; position: relative; width: 100%; aspect-ratio: 1.25; max-height: 56svh; overflow: hidden; border-radius: 8px; background: #EDF0F3; }
+.preview { display: block; position: relative; width: 100%; aspect-ratio: 1.6; max-height: 56svh; overflow: hidden; border-radius: 8px; background: transparent; }
 .preview img { object-fit: contain; object-position: center; }
 .description { display: flex; flex-direction: column; align-items: start; min-width: 0; padding-block: 0 10px; }
 .number { font-size: clamp(29px, 2.8vw, 42px); line-height: 1; font-weight: 500; letter-spacing: -.06em; color: #EC4621; margin-bottom: 20px; }
@@ -24,7 +24,7 @@
 .project:focus-within .visual { clip-path: none !important; }
 .project:focus-within .description { opacity: 1 !important; }
 @media (hover: hover) { .caseLink:hover svg { transform: translate(3px, -3px); } }
-@media (max-width: 1000px) { .section { width: calc(100% - 64px); } .card { gap: 30px; } .preview { aspect-ratio: 1.25; } .number { margin-bottom: 24px; } }
+@media (max-width: 1000px) { .section { width: calc(100% - 64px); } .card { gap: 30px; } .preview { aspect-ratio: 1.6; } .number { margin-bottom: 24px; } }
 @media (max-width: 800px) {
   .section { width: calc(100% - 36px); padding-block: 24px 32px; }
   .header { flex-direction: column-reverse; align-items: start; gap: 12px; margin-bottom: 18px; }
