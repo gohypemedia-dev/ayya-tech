@@ -33,3 +33,8 @@
   .button svg { flex-shrink: 0; }
   .item button { font-size: 16px; }
 }
+
+@media (min-width: 1200px) {
+  .invitation { container-type: inline-size; }
+  .invitation > p { font-size: min(17px, 2.65cqw); white-space: nowrap; }
+}

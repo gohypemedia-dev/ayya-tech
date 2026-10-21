@@ -729,7 +729,7 @@ export function ContactWithGlobe({
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-8 sm:mb-14">
+        <div className="flex flex-col items-center text-center w-full mx-auto mb-8 sm:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -839,7 +839,7 @@ export function ContactWithGlobe({
           >
             <div className="mb-6">
               <h3 className="text-lg font-bold text-[#121D50] mb-1 tracking-tight">
-                Tell Us About Your Project
+                TELL US ABOUT YOUR PROJECT
               </h3>
               <p className="text-sm text-[#121D50]">
                 Tell us what you are looking to build.
