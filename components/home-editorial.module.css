@@ -9,7 +9,7 @@
 .photo { aspect-ratio: 1.12; position: relative; overflow: hidden; border-radius: 22px 22px 80px 22px; background: #EDF0F3; }
 .photo img { object-fit: cover; }
 .photo::after { content: ''; position: absolute; inset: 50% 0 0; background: linear-gradient(transparent, #121D5080); }
-.photo > span { position: absolute; left: 30px; bottom: 27px; color: white; font-size: 16px; z-index: 1; }
+.photo > span { position: absolute; left: 30px; bottom: 27px; color: white; font-size: 16px; font-weight: 500; letter-spacing: -0.01em; text-shadow: 0 1px 6px rgba(18, 29, 80, 0.5); z-index: 1; }
 .label { font-size: 13px; color: var(--editorial-muted); margin-bottom: 25px; }
 .aboutCopy h2 { font-size: clamp(29px, 2.96vw, 45px); }
 .aboutCopy > p:not(.label) { color: var(--editorial-muted); font-size: 16px; line-height: 1.85; margin-top: 22px; max-width: 480px; }

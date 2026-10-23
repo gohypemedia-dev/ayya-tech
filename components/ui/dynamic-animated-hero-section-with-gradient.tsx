@@ -171,7 +171,7 @@ export function HeroSection() {
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-12 pointer-events-none">
-          <h1 className="max-w-4xl text-[2rem] sm:text-5xl lg:text-[4rem] font-normal leading-[1.1] tracking-tight text-white font-[family-name:var(--font-heading)] drop-shadow-lg">
+          <h1 className="max-w-none text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[5.75rem] 2xl:text-[6.25rem] font-normal leading-[1.08] sm:leading-[1.05] tracking-tight text-white font-[family-name:var(--font-heading)] drop-shadow-lg">
             {reduceMotion ? serviceTitles[0] : (
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span

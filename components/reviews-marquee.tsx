@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useReducedMotion } from 'framer-motion';
 import { Star } from 'lucide-react';
 import { reviews } from './client-reviews-section';
+import { CountryFlag } from './country-flag';
 import styles from './reviews-marquee.module.css';
 
 const initials = (name: string) => name.split(' ').map(word => word[0]).slice(0, 2).join('');
@@ -48,12 +49,30 @@ export function ReviewsMarquee() {
         <svg className={styles.waves} viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
           {Array.from({ length: 10 }, (_, index) => <path key={index} d={`M-100 ${20 + index * 35} Q 360 ${-30 + index * 30}, 720 ${20 + index * 35} T 1540 ${20 + index * 35}`} />)}
         </svg>
-        {reviews.map((review, index) => (
-          <div key={review.id} className={styles.floating} data-open={open === review.id} style={{ '--x': `${positions[index][0]}%`, '--y': `${positions[index][1]}%`, '--delay': `${index * -.8}s` } as CSSProperties} onMouseEnter={() => setOpen(review.id)} onMouseLeave={() => setOpen(null)}>
-            <button className={styles.avatar} aria-label={`Read ${review.name}'s review`} aria-expanded={open === review.id} aria-controls={`bubble-${review.id}`} onClick={() => setOpen(open === review.id ? null : review.id)} onFocus={event => { if (event.currentTarget.matches(":focus-visible")) setOpen(review.id); }} onBlur={() => setOpen(null)}><Portrait review={review} /></button>
-            {open === review.id && <div id={`bubble-${review.id}`} className={styles.bubble} data-side={positions[index][0] > 60 ? 'right' : 'left'}><Stars rating={review.rating} /><TypedQuote text={review.content} /><strong>{review.name}</strong><span>{review.company}</span></div>}
-          </div>
-        ))}
+        {reviews.map((review, index) => {
+          const pos = positions[index % positions.length];
+          return (
+            <div key={review.id} className={styles.floating} data-open={open === review.id} style={{ '--x': `${pos[0]}%`, '--y': `${pos[1]}%`, '--delay': `${index * -.8}s` } as CSSProperties} onMouseEnter={() => setOpen(review.id)} onMouseLeave={() => setOpen(null)}>
+              <button className={styles.avatar} aria-label={`Read ${review.name}'s review`} aria-expanded={open === review.id} aria-controls={`bubble-${review.id}`} onClick={() => setOpen(open === review.id ? null : review.id)} onFocus={event => { if (event.currentTarget.matches(":focus-visible")) setOpen(review.id); }} onBlur={() => setOpen(null)}><Portrait review={review} /></button>
+              {open === review.id && (
+                <div id={`bubble-${review.id}`} className={styles.bubble} data-side={pos[0] > 60 ? 'right' : 'left'}>
+                  <div className={styles.bubbleHeader}>
+                    <Stars rating={review.rating} />
+                    <div className={styles.countryBadge}>
+                      <CountryFlag code={review.countryCode} />
+                      <span className={styles.countryLabel}>
+                        {review.city}, <strong className={styles.countryHighlight}>{review.country}</strong>
+                      </span>
+                    </div>
+                  </div>
+                  <TypedQuote text={review.content} />
+                  <strong>{review.name}</strong>
+                  <span>{review.role} • {review.company}</span>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
       <div className={styles.viewport} tabIndex={0} role="region" aria-label="Client reviews, scroll horizontally to explore">
         <div className={styles.track}>
@@ -61,9 +80,24 @@ export function ReviewsMarquee() {
             <ul key={copy} className={styles.group} aria-hidden={copy === 1 ? true : undefined}>
               {reviews.map(review => (
                 <li className={styles.card} key={review.id}>
-                  <Stars rating={review.rating} />
+                  <div className={styles.cardHeader}>
+                    <Stars rating={review.rating} />
+                    <div className={styles.countryBadge}>
+                      <CountryFlag code={review.countryCode} />
+                      <span className={styles.countryLabel}>
+                        {review.city}, <strong className={styles.countryHighlight}>{review.country}</strong>
+                      </span>
+                    </div>
+                  </div>
                   <blockquote>&ldquo;{review.content}&rdquo;</blockquote>
-                  <div className={styles.person}><span className={styles.avatar} aria-hidden="true"><Portrait review={review} /></span><div><strong>{review.name}</strong><span>{review.role}</span><span>{review.company}</span></div></div>
+                  <div className={styles.person}>
+                    <span className={styles.avatar} aria-hidden="true"><Portrait review={review} /></span>
+                    <div className={styles.personDetails}>
+                      <strong className={styles.personName}>{review.name}</strong>
+                      <span className={styles.personRole}>{review.role}</span>
+                      <span className={styles.companyName}>{review.company}</span>
+                    </div>
+                  </div>
                 </li>
               ))}
             </ul>
