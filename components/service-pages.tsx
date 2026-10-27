@@ -11,6 +11,8 @@ export function ServicePageContent({ page }: { page: 'services' | 'case-studies'
   const contact = () => router.push('/#contact');
   const services = page === 'services';
 
+  if (services) return <ServicesDirectory onContact={contact} />;
+
   return (
     <div className="min-h-screen bg-white text-[#121D50]">
       <AppleStyleDock />

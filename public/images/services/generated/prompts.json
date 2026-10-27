@@ -1,0 +1,50 @@
+{
+  "tool": "Built-in image_gen",
+  "images": [
+    {
+      "file": "service-0.png",
+      "subject": "Website development: architecturally composed creative studio desk with a large monitor showing abstract elegant website layouts",
+      "style": "Wide 16:9 cinematic editorial photography. Graphite, cool blue and amber. Central subject, dark lower third for HTML headings. No text, logos or watermark."
+    },
+    {
+      "file": "service-1.png",
+      "subject": "Mobile app development: cinematic macro of a modern smartphone displaying a refined app interface on sculptural stone",
+      "style": "Wide 16:9 cinematic editorial photography. Graphite, cool blue and amber. Central subject, dark lower third for HTML headings. No text, logos or watermark."
+    },
+    {
+      "file": "service-2.png",
+      "subject": "Low-code and automation: physical modular translucent blocks connected by illuminated tracks, elegant workflow metaphor",
+      "style": "Wide 16:9 cinematic editorial photography. Graphite, cool blue and amber. Central subject, dark lower third for HTML headings. No text, logos or watermark."
+    },
+    {
+      "file": "service-3.png",
+      "subject": "Custom software development: cinematic software workstation with layered abstract code interfaces and precision hardware",
+      "style": "Wide 16:9 cinematic editorial photography. Graphite, cool blue and amber. Central subject, dark lower third for HTML headings. No text, logos or watermark."
+    },
+    {
+      "file": "service-4.png",
+      "subject": "IT consulting: architects of technology collaborating around a glass planning table in a sophisticated studio",
+      "style": "Wide 16:9 cinematic editorial photography. Graphite, cool blue and amber. Central subject, dark lower third for HTML headings. No text, logos or watermark."
+    },
+    {
+      "file": "service-5.png",
+      "subject": "Engineering teams: diverse software engineers collaborating in a beautiful evening studio",
+      "style": "Wide 16:9 cinematic editorial photography. Graphite, cool blue and amber. Central subject, dark lower third for HTML headings. No text, logos or watermark."
+    },
+    {
+      "file": "service-6.png",
+      "subject": "Cloud infrastructure: monumental server aisle with blue lighting, cinematic symmetry",
+      "style": "Wide 16:9 cinematic editorial photography. Graphite, cool blue and amber. Central subject, dark lower third for HTML headings. No text, logos or watermark."
+    },
+    {
+      "file": "service-7.png",
+      "subject": "AI-powered software: luminous neural computation sculpture inside a dark research laboratory",
+      "style": "Wide 16:9 cinematic editorial photography. Graphite, cool blue and amber. Central subject, dark lower third for HTML headings. No text, logos or watermark."
+    },
+    {
+      "file": "service-8.png",
+      "subject": "IoT and connected devices: sophisticated connected sensors and circuit boards on an industrial workbench",
+      "style": "Wide 16:9 cinematic editorial photography. Graphite, cool blue and amber. Central subject, dark lower third for HTML headings. No text, logos or watermark."
+    }
+  ]
+}

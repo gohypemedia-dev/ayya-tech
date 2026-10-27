@@ -1,7 +1,12 @@
 "use client";
 
 import Image from 'next/image';
-import { ArrowDown, ArrowUpRight, Check } from 'lucide-react';
+import Link from 'next/link';
+import { useEffect, useRef } from 'react';
+import { ProcessSection } from '@/components/process-section';
+import { AppleStyleDock } from '@/components/apple-style-dock';
+import { ArrowDown, ArrowUpRight, Plus } from 'lucide-react';
+import styles from './services-directory.module.css';
 
 const groups = [
   {
@@ -33,93 +38,176 @@ const groups = [
   },
 ];
 
+const allServices = groups.flatMap(group => group.services.map((service, index) => ({ ...service, category: group.title, anchor: index === 0 ? group.id : undefined })));
+const serviceImages = allServices.map((_, index) => `/images/services/generated/service-${index}.png`);
+
+
+
 export function ServicesDirectory({ onContact }: { onContact: () => void }) {
+  const introRef = useRef<HTMLElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const processRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const list = processRef.current;
+    if (!list || !('IntersectionObserver' in window)) return;
+    const steps = Array.from(list.querySelectorAll<HTMLElement>('ol > li'));
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).dataset.reveal = 'visible';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    steps.forEach(step => { step.dataset.reveal = 'pending'; observer.observe(step); });
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const bounds = list.getBoundingClientRect();
+      const wide = window.innerWidth > 800;
+      steps.forEach((step, index) => {
+        const rect = step.getBoundingClientRect();
+        const progress = wide
+          ? ((window.innerHeight * 0.85 - bounds.top) / (window.innerHeight * 0.55)) * steps.length - index
+          : (window.innerHeight * 0.85 - rect.top) / Math.max(rect.height, 1);
+        step.style.setProperty('--step-progress', String(preference.matches ? 1 : Math.max(0, Math.min(1, progress))));
+      });
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    preference.addEventListener('change', schedule);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      preference.removeEventListener('change', schedule);
+      steps.forEach(step => { delete step.dataset.reveal; step.style.removeProperty('--step-progress'); });
+    };
+  }, []);
+  useEffect(() => {
+    const cards = Array.from(servicesRef.current?.querySelectorAll<HTMLElement>('[data-service-card]') ?? []);
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      cards.forEach((card, index) => {
+        const next = cards[index + 1];
+        const progress = preference.matches || !next ? 0 : Math.max(0, Math.min(1, (window.innerHeight - next.getBoundingClientRect().top) / window.innerHeight));
+        card.style.setProperty('--card-scale', String(1 - progress * 0.09));
+        card.style.setProperty('--card-dim', String(progress * 0.65));
+      });
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    preference.addEventListener('change', schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      preference.removeEventListener('change', schedule);
+    };
+  }, []);
+  useEffect(() => {
+    const section = introRef.current;
+    if (!section || !('IntersectionObserver' in window)) return;
+    section.dataset.reveal = 'pending';
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        section.dataset.reveal = 'visible';
+        observer.disconnect();
+      }
+    }, { threshold: 0.15, rootMargin: '0px 0px -12% 0px' });
+    observer.observe(section);
+    return () => {
+      observer.disconnect();
+      delete section.dataset.reveal;
+    };
+  }, []);
+
   return (
-    <div className="w-full px-5 pb-12 pt-28 text-[#121D50] sm:px-8 sm:pt-32 lg:px-12 [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-4 [&_a:focus-visible]:outline-[#1F45E4] [&_button:focus-visible]:outline-2 [&_button:focus-visible]:outline-offset-4 [&_button:focus-visible]:outline-[#1F45E4]">
-      <header className="grid items-center gap-8 border-b border-[#EDF0F3] pb-10 lg:grid-cols-2 lg:gap-16">
-        <div className="max-w-xl">
-          <p className="mb-3 text-sm font-medium text-[#0E33CB]">Our services</p>
-          <h1 className="text-3xl font-semibold leading-tight tracking-[-0.045em] sm:text-4xl lg:text-5xl">Technology built around your business.</h1>
-          <p className="mt-5 max-w-lg text-sm leading-7 sm:text-base">Design, development, and engineering support for your next product or a better way of working. Find the expertise you need, from planning to launch.</p>
-          <div className="mt-6 flex flex-wrap items-center gap-5">
-            <button type="button" onClick={onContact} className="inline-flex cursor-pointer items-center gap-3 rounded-lg bg-[#EC4621] px-5 py-3 text-sm font-semibold text-white hover:bg-[#0E33CB]">Discuss your project <ArrowUpRight size={17} aria-hidden="true" /></button>
-            <a href="#service-directory" className="inline-flex items-center gap-2 text-sm font-medium">Explore services <ArrowDown size={16} aria-hidden="true" /></a>
-          </div>
-        </div>
-        <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-[#EDF0F3]">
-          <Image src="/full_screen_it_team_bg.jpg" alt="Team working together in a technology office" fill sizes="(max-width: 1023px) 90vw, 48vw" className="object-cover" priority />
+    <div className={styles.page}>
+      <a href="#services-content" className={styles.skip}>Skip to services</a>
+      <AppleStyleDock className={styles.restoredNav} />
+      <header className={styles.hero}>
+        <Image src="/full_screen_it_team_bg.jpg" alt="Engineers collaborating in a technology studio" fill sizes="100vw" className={styles.heroImage} loading="eager" fetchPriority="high" />
+        <div className={styles.heroCopy}>
+          <h1>Our services.</h1>
+          <p>Ideas into software.<br />Ambition into impact.</p>
         </div>
       </header>
-      <nav aria-label="Service categories" className="flex flex-wrap gap-3 border-b border-[#EDF0F3] py-5">
-        {groups.map(group => <a key={group.id} href={`#${group.id}`} className="rounded-full border border-[#EDF0F3] px-4 py-2 text-xs font-medium hover:border-[#1F45E4] hover:text-[#0E33CB]">{group.title}</a>)}
-      </nav>
-      <div id="service-directory" className="scroll-mt-28">
-        {groups.map(group => (
-          <section key={group.id} id={group.id} aria-labelledby={`${group.id}-title`} className="grid scroll-mt-28 gap-7 border-b border-[#EDF0F3] py-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:py-12">
-            <div>
-              <h2 id={`${group.id}-title`} className="text-2xl font-semibold tracking-tight sm:text-3xl">{group.title}</h2>
-              <p className="mb-5 mt-2 text-sm leading-relaxed">{group.description}</p>
-              <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-[#EDF0F3]">
-                <Image src={group.image} alt={group.alt} fill sizes="(max-width: 1023px) 90vw, 43vw" className="object-cover" />
+
+      <main id="services-content" className={styles.content}>
+        <section ref={introRef} className={`${styles.intro} ${styles.cinemaIntro}`} aria-labelledby="intro-title">
+          <h2 id="intro-title" className={styles.cinemaTitle}>
+            <span className={styles.revealLine}><span>BUILD</span></span>
+            <span className={styles.cinemaTitleAside}><span className={styles.revealLine}><span>WHAT</span></span><span className={styles.revealLine}><span>COMES</span></span><span className={styles.revealLine}><span>NEXT.</span></span></span>
+          </h2>
+          <p className={styles.cinemaIntroCaption}>Nine services. From the first idea to the next possibility.</p>
+          <a href="#digital-products" className={styles.cinemaExplore}>Explore our expertise <ArrowDown size={20} aria-hidden="true" /></a>
+        </section>
+        <div ref={servicesRef} className={styles.cinemaStack}>
+          {allServices.map((service, index) => (
+            <article key={service.title} id={service.anchor} data-service-card className={styles.cinemaCard} aria-labelledby={`service-title-${index}`}>
+              <div className={styles.cinemaSurface}>
+                <Image src={serviceImages[index]} alt="" fill sizes="100vw" className={styles.cinemaImage} />
+                <div className={styles.cinemaShade} />
+                <div className={styles.cinemaCopy}>
+                  <h2 id={`service-title-${index}`}>{service.title}</h2>
+                  <button onClick={onContact} className={styles.cinemaButton} aria-label={`Discuss ${service.title}`}>Discuss your project <ArrowUpRight size={18} aria-hidden="true" /></button>
+                </div>
+                <div className={styles.cinemaDim} />
               </div>
-            </div>
-            <div className="divide-y divide-[#EDF0F3]">
-              {group.services.map(service => (
-                <article key={service.title} className="py-6 first:pt-0 last:pb-0">
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="text-lg font-semibold tracking-tight text-[#0E33CB] sm:text-xl">{service.title}</h3>
-                    <button type="button" onClick={onContact} aria-label={`Discuss ${service.title}`} className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[#EDF0F3] text-[#EC4621] hover:bg-[#EDF0F3]"><ArrowUpRight size={18} aria-hidden="true" /></button>
-                  </div>
-                  <p className="mt-2 max-w-xl text-sm leading-6">{service.description}</p>
-                  <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
-                    {service.includes.map(item => <li key={item} className="flex items-center gap-2 text-xs leading-5"><Check size={13} className="shrink-0 text-[#0E33CB]" aria-hidden="true" />{item}</li>)}
-                  </ul>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
-      <section aria-labelledby="delivery-heading" className="py-10 lg:py-14">
-        <div className="mb-7 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-          <h2 id="delivery-heading" className="text-2xl font-semibold tracking-tight sm:text-3xl">From idea to delivery</h2>
-          <p className="max-w-md text-sm leading-6">A clear scope, regular feedback, and a shared view of what comes next.</p>
+            </article>
+          ))}
         </div>
-        <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            ['Understand', 'We discuss your goals, users, existing systems, and constraints to define the problem worth solving.'],
-            ['Plan & design', 'We agree on priorities and shape the experience, technical approach, and delivery milestones.'],
-            ['Build & review', 'We develop in manageable stages, share working progress, and use your feedback to refine the product.'],
-            ['Launch & hand over', 'We test, prepare the release, and walk your team through the product and its ongoing needs.'],
-          ].map(([title, description], index) => <li key={title} className="border-t-2 border-[#EDF0F3] pt-5"><span className="text-sm font-semibold text-[#EC4621]">0{index + 1}</span><h3 className="mb-2 mt-4 text-lg font-semibold">{title}</h3><p className="text-sm leading-6">{description}</p></li>)}
-        </ol>
-      </section>
-      <section aria-labelledby="engagement-heading" className="rounded-2xl bg-[#121D50] p-6 text-white sm:p-8 lg:p-10">
-        <h2 id="engagement-heading" className="text-2xl font-semibold tracking-tight sm:text-3xl">Work with us your way</h2>
-        <p className="mt-3 max-w-xl text-sm leading-6 text-[#EDF0F3]">Choose a starting point that fits your project. We will agree on the scope and working arrangement together.</p>
-        <div className="mt-8 grid gap-8 md:grid-cols-3">
-          {[
-            ['A defined project', 'For a website, application, or system with a clear goal.', 'An agreed scope, delivery milestones, and a focused build.'],
-            ['An extension of your team', 'For teams that need additional engineering capacity.', 'Developers working alongside your people and existing processes.'],
-            ['Ongoing improvements', 'For products that need to keep moving after launch.', 'Prioritized enhancements, maintenance, and support tailored to your needs.'],
-          ].map(([title, fit, detail]) => <article key={title} className="border-t border-[#1F45E4] pt-5"><h3 className="text-lg font-semibold">{title}</h3><p className="mt-3 text-sm leading-6">{fit}</p><p className="mt-2 text-sm leading-6 text-[#EDF0F3]">{detail}</p><button type="button" onClick={onContact} className="mt-5 inline-flex cursor-pointer items-center gap-2 text-sm font-semibold underline decoration-[#EC4621] underline-offset-8 hover:decoration-white">Talk through your needs <ArrowUpRight size={16} aria-hidden="true" /></button></article>)}
+        <div ref={processRef} className={styles.processReuse}>
+          <ProcessSection onContact={onContact} />
         </div>
-      </section>
-      <section aria-labelledby="service-faq-heading" className="grid gap-7 py-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:py-14">
-        <div>
-          <h2 id="service-faq-heading" className="text-2xl font-semibold tracking-tight sm:text-3xl">Before we get started</h2>
-          <p className="mt-3 max-w-sm text-sm leading-6">A few practical answers to help you plan your next step.</p>
+
+        <section className={styles.engagement} aria-labelledby="engagement-title">
+          <p className={styles.sectionLabel}>A way of working that fits</p>
+          <h2 id="engagement-title">Your project.<br />Your pace.</h2>
+          <div className={styles.engagementGrid}>
+            {[
+              ['A focused project', 'A clear goal, an agreed scope, and a dedicated build. For your next website, application, or business platform.'],
+              ['Part of your team', 'Engineers who work alongside your people, fit your workflow, and bring the expertise you need to move forward.'],
+              ['In it for the long run', 'Ongoing improvements, maintenance, and support to keep your product moving after launch.'],
+            ].map(([title, description]) => <article key={title}><h3>{title}</h3><p>{description}</p><button onClick={onContact} className={styles.textLink} aria-label={`Discuss ${title.toLowerCase()}`}>Talk it through <ArrowUpRight size={18} aria-hidden="true" /></button></article>)}
+          </div>
+        </section>
+
+        <section className={styles.faq} aria-labelledby="faq-title">
+          <h2 id="faq-title">Good questions.<br />Clear answers.</h2>
+          <div>
+            {[
+              ['Where should we start?', 'Tell us what you want to achieve and where you are today. We’ll help you choose the right starting point, whether that’s discovery, a focused build, or support for your team.'],
+              ['Can you work with our existing software?', 'Yes. We review your code, architecture, and integrations to understand what can be retained and what needs attention before proposing changes.'],
+              ['How do you estimate cost and timelines?', 'We discuss scope, complexity, integrations, and your priorities first. Then we agree on an estimate and delivery milestones before the build begins.'],
+              ['What happens after launch?', 'We plan handover, documentation, and any maintenance or support with you. The responsibilities and support scope are agreed as part of the engagement.'],
+            ].map(([question, answer]) => <details key={question} className={styles.serviceDetail}><summary>{question}<Plus size={20} aria-hidden="true" /></summary><p className={styles.faqAnswer}>{answer}</p></details>)}
+          </div>
+        </section>
+      </main>
+
+      <footer className={styles.footer}>
+        <div className={styles.footerInvitation}>
+          <div>
+            <p className={styles.sectionLabel}><span /> Have something in mind?</p>
+            <h2>Let’s make<br />it happen.</h2>
+          </div>
+          <div className={styles.footerAction}>
+            <p>Tell us what you’re working on.<br />We’ll help you find the next step.</p>
+            <button onClick={onContact} className={styles.cinemaButton}>Discuss your project <ArrowUpRight size={18} aria-hidden="true" /></button>
+          </div>
         </div>
-        <div className="divide-y divide-[#EDF0F3] border-y border-[#EDF0F3]">
-          {[
-            ['Can you help us choose the right service?', 'Yes. Tell us what you want to achieve and where you are today. We can help identify the right starting point, whether that is a discovery discussion, a focused build, or support for your existing team.'],
-            ['Can you work with our existing software?', 'We can review your current code, architecture, and integrations before proposing changes. That review helps us understand what can be retained and what needs attention.'],
-            ['How are cost and timelines decided?', 'They depend on scope, complexity, integrations, and the availability of content and feedback. We discuss these inputs first and agree on an estimate and milestones before starting the build.'],
-            ['What should we prepare for the first conversation?', 'Bring your goals, any existing website or software, the main challenges you face, and any budget or timing constraints. A detailed specification is helpful, but you do not need one to start.'],
-            ['What happens after launch?', 'We discuss handover, documentation, and any ongoing maintenance or support you need. The responsibilities and support scope are agreed as part of the engagement.'],
-          ].map(([question, answer]) => <details key={question} className="group py-5"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1F45E4] [&::-webkit-details-marker]:hidden">{question}<span aria-hidden="true" className="text-xl font-normal text-[#EC4621] group-open:hidden">+</span><span aria-hidden="true" className="hidden text-xl font-normal text-[#EC4621] group-open:inline">&minus;</span></summary><p className="mt-3 max-w-2xl pr-6 text-sm leading-7">{answer}</p></details>)}
-        </div>
-      </section>
+        <div className={styles.footerBottom}><Link href="/" className={styles.brand} aria-label="Ayyatech home"><Image src="/images/ayya-logo.png" alt="Ayya Technology" width={591} height={197} className={styles.logo} /></Link><p>Technology with purpose.</p><Link href="/case-studies">Explore our work <ArrowUpRight size={16} aria-hidden="true" /></Link></div>
+      </footer>
     </div>
   );
 }
