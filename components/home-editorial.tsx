@@ -27,7 +27,7 @@ export function HomeEditorial({ onContact }: { onContact: () => void }) {
 
       <section className={`${styles.section} ${styles.about}`} id="about" aria-labelledby="about-heading">
         <div className={styles.photo}>
-          <Image src="/it_team_left.jpg" alt="A team collaborating on a software project" fill sizes="(max-width: 760px) 90vw, 45vw" />
+          <Image src="/strategy-meets-craft-vibrant.jpg" alt="Digital product creators collaborating on software architecture and design - Strategy meets craft" fill sizes="(max-width: 760px) 90vw, 45vw" />
           <span>Strategy meets craft.</span>
         </div>
         <div className={styles.aboutCopy}>

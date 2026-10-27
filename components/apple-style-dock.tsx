@@ -60,11 +60,11 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
       <div className="max-w-6xl mx-auto">
         <nav
           aria-label="Main navigation"
-          className={`pointer-events-auto relative isolate flex items-center gap-2 px-3 sm:px-6 py-2.5 sm:py-3 ${logoOnly ? 'w-full justify-between md:w-fit md:justify-start' : 'w-full justify-between'}`}
+          className={`pointer-events-auto relative isolate flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 ${logoOnly ? 'w-fit justify-start' : 'w-full justify-between'}`}
         >
           <div
             aria-hidden="true"
-            className="absolute inset-0 -z-10 rounded-[22px] bg-[#FFFFFF]/95 backdrop-blur-xl border border-[#EDF0F3] shadow-[0_12px_32px_-20px_rgba(18,29,80,0.25)] dark:bg-background/95 dark:border-border"
+            className="absolute inset-0 -z-10 rounded-full bg-white/95 backdrop-blur-xl border border-[#121A50]/10 shadow-[0_8px_30px_-12px_rgba(18,26,80,0.22),inset_0_1px_0_rgba(255,255,255,0.9)]"
           />
           {/* Brand Logo Image */}
           <button
@@ -75,7 +75,7 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
             <img
               src="/images/ayya-logo.png"
               alt="AYYA Technology Logo"
-              className={`${logoOnly ? 'h-7 sm:h-11 md:h-14 lg:h-16' : 'h-7 sm:h-11 lg:h-[46px]'} w-auto object-contain hover:opacity-90 transition-opacity`}
+              className={`${logoOnly ? 'h-12 sm:h-14 lg:h-16' : 'h-9 sm:h-11 lg:h-[46px]'} w-auto object-contain hover:opacity-90 transition-opacity`}
             />
           </button>
 

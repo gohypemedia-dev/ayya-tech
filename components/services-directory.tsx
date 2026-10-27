@@ -20,7 +20,7 @@ const groups = [
   },
   {
     id: 'engineering', title: 'Engineering & expertise', description: 'The systems, people, and direction to move forward.',
-    image: '/it_team_left.jpg', alt: 'Technology team collaborating on a software project',
+    image: '/strategy-meets-craft-vibrant.jpg', alt: 'Digital product creators collaborating on software architecture and design',
     services: [
       { title: 'Custom software development', description: 'Purpose-built software for your operations, customers, and next stage of growth.', includes: ['Business platforms', 'APIs & integrations', 'Testing & maintenance'] },
       { title: 'IT consulting', description: 'Make informed technology decisions with a clear assessment and practical roadmap.', includes: ['Architecture reviews', 'Technology roadmaps', 'Modernization planning'] },

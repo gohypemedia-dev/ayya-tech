@@ -39,7 +39,7 @@ export function ScrollStatement() {
           <motion.span layout={reducedMotion ? false : "position"} transition={{ layout: layoutTransition }} className={styles.swap}>
             <motion.span className={styles.word} style={reducedMotion ? undefined : { opacity: wordOpacity, filter: wordBlur }}>website.</motion.span>
             {!reducedMotion && <motion.span className={styles.website} style={{ opacity: previewOpacity, scale: previewScale, filter: previewBlur }}>
-              <Image src="/images/ayyatech-website-preview.png" alt="" fill loading="eager" sizes="(max-width: 640px) 150px, 280px" className={styles.previewImage} />
+              <Image src="/images/ayyatech-platform-preview-orange.png" alt="Ayyatech software platform preview" fill loading="eager" sizes="(max-width: 640px) 150px, 280px" className={styles.previewImage} />
             </motion.span>}
           </motion.span>
           {words('Smarter automation.')}
