@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowUpRight, ArrowUp } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { ServicesOverview } from './services-overview';
 import { ProjectShowcase } from './project-showcase';
 import { ScrollStatement } from './scroll-statement';
@@ -10,6 +10,7 @@ import { ProjectInvitation } from './project-invitation';
 import { TechnologyMarquee } from './technology-marquee';
 import { ProcessSection } from './process-section';
 import { ReviewsMarquee } from './reviews-marquee';
+import { CinematicFooter } from './ui/motion-footer';
 import ContactWithGlobe from './ui/contact-with-globe';
 import styles from './home-editorial.module.css';
 
@@ -50,11 +51,7 @@ export function HomeEditorial({ onContact }: { onContact: () => void }) {
 
       <ProjectInvitation />
       <ContactWithGlobe className="scroll-mt-[112px]" />
-      <footer className={styles.footer}>
-        <Link href="/" aria-label="Ayyatech home"><Image src="/images/ayya-logo.png" alt="Ayyatech" width={145} height={55} /></Link>
-        <p>Thoughtfully designed. Expertly engineered.</p>
-        <nav aria-label="Footer navigation"><Link href="/services">Services</Link><Link href="/case-studies">Case studies</Link><a href="#home" aria-label="Back to top"><ArrowUp size={20} /></a></nav>
-      </footer>
+      <CinematicFooter showProjectCta={false} />
     </div>
   );
 }

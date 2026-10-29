@@ -1,0 +1,42 @@
+.footer { background: #f7f8fc; color: #121d50; border-top: 1px solid #e4e8f0; }
+.inner { width: min(1320px, calc(100% - 96px)); margin-inline: auto; }
+.invitation { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding-block: 46px; border-bottom: 1px solid #dfe3ed; }
+.invitation p { margin-bottom: 12px; font-size: 14px; }
+.invitation h2 { font-size: clamp(30px, 3.5vw, 48px); font-weight: 600; line-height: 1.1; letter-spacing: -.055em; }
+.action { display: inline-flex; align-items: center; gap: 20px; padding: 15px 22px; border-radius: 10px; background: #ec4621; color: white; font-size: 14px; font-weight: 600; cursor: pointer; }
+.action:hover { background: #0e33cb; }
+.main { display: grid; grid-template-columns: 1.4fr .7fr 1.1fr; gap: 64px; padding-block: 64px; }
+.logo { width: 180px; height: auto; }
+.brand > p { margin-top: 24px; font-size: 21px; line-height: 1.45; font-weight: 500; letter-spacing: -.025em; }
+.brand > span { display: block; max-width: 300px; font-size: 14px; line-height: 1.8; margin-top: 16px; color: #58627c; }
+.main h2 { font-size: 13px; font-weight: 600; color: #58627c; margin-bottom: 22px; }
+.navigation { display: flex; flex-direction: column; align-items: start; }
+.navigation a { padding-block: 8px; font-size: 15px; }
+.navigation a:hover, .email:hover, .textLink:hover { color: #0e33cb; }
+.email { display: inline-flex; align-items: center; gap: 16px; font-size: clamp(16px, 1.7vw, 23px); font-weight: 500; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.email svg { flex-shrink: 0; color: #ec4621; }
+.contact p { margin-block: 20px; font-size: 14px; line-height: 1.8; color: #58627c; }
+.textLink { display: inline-flex; align-items: center; gap: 20px; min-height: 44px; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ec4621; }
+.textLink svg { color: #ec4621; }
+.bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 22px; border-top: 1px solid #dfe3ed; }
+.bottom p { font-size: 12px; color: #58627c; }
+.bottom button { display: inline-flex; align-items: center; gap: 14px; font-size: 12px; cursor: pointer; }
+.bottom button span { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid #dfe3ed; border-radius: 50%; }
+.bottom button:hover span { background: #121d50; color: white; }
+.footer a:focus-visible, .footer button:focus-visible { outline: 3px solid #0e33cb; outline-offset: 5px; }
+@media (max-width: 1000px) { .inner { width: calc(100% - 64px); } .main { gap: 32px; grid-template-columns: 1.1fr .7fr 1.2fr; } }
+@media (max-width: 760px) {
+  .inner { width: calc(100% - 36px); }
+  .main { grid-template-columns: 1fr 1fr; padding-block: 40px; gap: 36px 24px; }
+  .brand { grid-column: 1 / -1; }
+  .invitation { flex-direction: column; align-items: start; padding-block: 32px; }
+  .email { font-size: 16px; }
+}
+@media (max-width: 480px) { .main { grid-template-columns: 1fr; } .bottom { align-items: start; } .bottom p { max-width: 180px; line-height: 1.7; } .bottom button { gap: 8px; white-space: nowrap; } }
+.footer { width: 100%; }
+.footer .inner { width: 100%; max-width: none; padding-inline: clamp(20px, 4vw, 72px); box-sizing: border-box; }
+.footer .main h2 { font-size: 14px; font-weight: 600; line-height: 1.4; letter-spacing: 0; }
+.legal { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 12px; }
+.legal a { padding-block: 8px; }
+.legal a:hover { color: #0e33cb; }
+@media (max-width: 760px) { .bottom { flex-wrap: wrap; } .legal { width: 100%; order: 3; } }

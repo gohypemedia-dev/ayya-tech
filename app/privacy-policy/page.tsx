@@ -1,0 +1,13 @@
+import type { Metadata } from 'next';
+import { LegalPage } from '@/components/legal-page';
+export const metadata: Metadata = { title: 'Privacy Policy | Ayyatech', description: 'Information about contacting Ayyatech, website data, and privacy inquiries.' };
+const sections = [
+  { title: 'Scope', text: 'This notice concerns the Ayyatech website and inquiries sent to contact@ayyatech.com. Separate privacy terms may apply to software or services delivered under a client agreement.' },
+  { title: 'Information you provide', text: 'When you email us, your message may contain your name, email address, company information, and project details. Please share only information needed to discuss your inquiry, and do not include passwords, payment card details, or sensitive personal records.' },
+  { title: 'Contact forms and email', text: 'The contact page prepares a message in your email application. Preparing a draft does not send it: you must send the email yourself. Your email provider handles that message under its own terms. For a reliable way to reach us, email contact@ayyatech.com directly.' },
+  { title: 'How inquiry information is used', text: 'Information in an inquiry is used to understand your request, communicate with you, and discuss possible services. Any subsequent project work, including access to client data, should be addressed in the relevant service agreement.' },
+  { title: 'Website requests and third parties', text: 'Loading a website sends technical information, such as your IP address and browser request details, to the infrastructure serving it. Some visual resources may load from external providers, which receive the requests needed to deliver those resources. Following an external link or opening an email application takes you to a service with its own privacy practices.' },
+  { title: 'Retention and privacy requests', text: 'For information about the records associated with your inquiry, their retention, or the providers involved in handling them, contact us by email. Depending on the law applicable to you, you may have rights to access, correct, delete, or restrict use of personal information, and to raise concerns with a data protection authority. Identify the inquiry concerned without sending unnecessary sensitive information.' },
+  { title: 'Updates', text: 'This page may be revised as website functionality or information-handling arrangements change. The date above identifies the most recent revision.' },
+];
+export default function Page() { return <LegalPage title="Privacy policy" intro="How to understand information shared through this website and contact us about privacy." sections={sections} />; }

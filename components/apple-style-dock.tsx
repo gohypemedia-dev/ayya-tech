@@ -18,7 +18,7 @@ interface AppleStyleDockProps {
 export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProps) {
   const pathname = usePathname();
   const router = useRouter();
-  const activeSection = pathname.startsWith('/contact') ? 'contact' : pathname.startsWith('/services') ? 'services' : pathname.startsWith('/case-studies') ? 'case-studies' : 'home';
+  const activeSection = pathname.startsWith('/contact') ? 'contact' : pathname.startsWith('/services') ? 'services' : pathname.startsWith('/case-studies') ? 'case-studies' : pathname === '/' ? 'home' : null;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [logoOnly, setLogoOnly] = useState(pathname === '/');
   const reduceMotion = useReducedMotion();
