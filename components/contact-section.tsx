@@ -103,11 +103,11 @@ export function ContactSection({ onOpenModal }: ContactSectionProps) {
               {/* Contact Direct Line */}
               <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-[#1C2766]">
                 <a
-                  href="mailto:contact@ayyatech.com"
+                  href="mailto:info@ayyatech.co.uk"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-[#EE461F] transition-colors"
                 >
                   <Mail className="w-4 h-4 text-[#EE461F]" />
-                  <span>contact@ayyatech.com</span>
+                  <span>info@ayyatech.co.uk</span>
                 </a>
                 <div className="flex items-center gap-2 text-xs font-mono text-[#64748B]">
                   <MapPin className="w-3.5 h-3.5 text-[#EE461F]" />

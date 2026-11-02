@@ -35,7 +35,7 @@ export function CinematicFooter({ onQuoteClick, showProjectCta = true }: Cinemat
           </nav>
           <div className={styles.contact}>
             <h2>Let’s talk</h2>
-            <a href="mailto:contact@ayyatech.com" className={styles.email}>contact@ayyatech.com <ArrowUpRight size={19} aria-hidden="true" /></a>
+            <a href="mailto:info@ayyatech.co.uk" className={styles.email}>info@ayyatech.co.uk <ArrowUpRight size={19} aria-hidden="true" /></a>
             <p>Tell us what you’re building.<br />We’ll help you find the next step.</p>
             <Link href="/contact" className={styles.textLink}>Start a conversation <ArrowUpRight size={17} aria-hidden="true" /></Link>
           </div>

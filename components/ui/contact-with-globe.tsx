@@ -4,7 +4,7 @@ import * as React from "react";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Mail, Phone, Headphones } from "lucide-react";
+import { ArrowRight, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
@@ -22,15 +22,10 @@ const smoothEase = [0.25, 0.1, 0.25, 1] as const;
 const CONTACT_LINKS = [
   {
     icon: Mail,
-    label: "contact@ayyatech.com",
-    href: "mailto:contact@ayyatech.com",
+    label: "info@ayyatech.co.uk",
+    href: "mailto:info@ayyatech.co.uk",
   },
-  { icon: Phone, label: "+1 (555) 019-2834", href: "tel:+15550192834" },
-  {
-    icon: Headphones,
-    label: "support@ayyatech.com",
-    href: "mailto:support@ayyatech.com",
-  },
+  { icon: Phone, label: "+44 7933 437170", href: "tel:+447933437170" },
 ];
 
 interface GlobeWireframeProps {

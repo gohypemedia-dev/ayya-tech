@@ -6,6 +6,6 @@ export function LegalPage({ title, intro, sections }: { title: string; intro: st
   return <><AppleStyleDock /><main className={styles.page}>
     <header className={styles.header}><h1>{title}</h1><p className={styles.intro}>{intro}</p><p className={styles.updated}>Last updated <time dateTime="2026-10-29">October 29, 2026</time></p></header>
     {sections.map((section, i) => <section id={`section-${i}`} key={section.title}><h2>{section.title}</h2><p>{section.text}</p></section>)}
-    <section className={styles.contact}><h2>Questions?</h2><p>Contact us at <a href="mailto:contact@ayyatech.com">contact@ayyatech.com</a>.</p></section>
+    <section className={styles.contact}><h2>Questions?</h2><p>Contact us at <a href="mailto:info@ayyatech.co.uk">info@ayyatech.co.uk</a>.</p></section>
   </main><CinematicFooter showProjectCta={false} /></>;
 }

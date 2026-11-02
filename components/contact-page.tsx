@@ -2,11 +2,12 @@
 
 import { useState, type FormEvent } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowUpRight, Mail, Headphones, MessagesSquare } from 'lucide-react';
+import { ArrowUpRight, Mail, Phone, MessagesSquare } from 'lucide-react';
 import { AppleStyleDock } from './apple-style-dock';
 import { CinematicFooter } from './ui/motion-footer';
 import styles from './contact-page.module.css';
+import { ContactChat } from './contact-chat';
+import { OfficeLocations, OfficeAddresses } from './office-locations';
 
 export function ContactPageContent() {
   const [prepared, setPrepared] = useState(false);
@@ -15,7 +16,7 @@ export function ContactPageContent() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const body = `Name: ${data.get('firstName')} ${data.get('lastName')}\nEmail: ${data.get('email')}\nPhone: ${data.get('phone') || 'Not provided'}\nService: ${data.get('service')}\n\n${data.get('message')}`;
-    window.location.href = `mailto:contact@ayyatech.com?subject=${encodeURIComponent('Project inquiry: ' + data.get('service'))}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:info@ayyatech.co.uk?subject=${encodeURIComponent('Project inquiry: ' + data.get('service'))}&body=${encodeURIComponent(body)}`;
     setPrepared(true);
   }
   return (
@@ -23,13 +24,12 @@ export function ContactPageContent() {
       <AppleStyleDock onContactClick={jumpToForm} />
       <main className={styles.page}>
         <section className={styles.hero} aria-labelledby="contact-heading">
-          <div className={styles.heroTitle}><div className={styles.phone} aria-hidden="true"><Image src="/retro-phone.png" alt="" fill sizes="(max-width: 640px) 76px, 110px" /></div><div><span className={styles.eyebrow}>Let&apos;s start a conversation</span><h1 id="contact-heading">We&apos;d love to hear <em>from you.</em></h1></div></div>
-          <div className={styles.heroCopy}><p>Have an idea, a question, or a challenge to solve? Tell us what you have in mind. We&apos;ll help you find the next step.</p><a href="mailto:contact@ayyatech.com">contact@ayyatech.com <ArrowUpRight size={20} /></a></div>
+          <div className={styles.heroTitle}><div><span className={styles.eyebrow}>Let&apos;s start a conversation</span><h1 id="contact-heading">We&apos;d love to hear <em>from you.</em></h1></div></div>
+          <div className={styles.heroCopy}><p>Have an idea, a question, or a challenge to solve? Tell us what you have in mind. We&apos;ll help you find the next step.</p><a href="mailto:info@ayyatech.co.uk">info@ayyatech.co.uk <ArrowUpRight size={20} /></a><a href="tel:+447933437170"><Phone size={18} /> +44 7933 437170</a></div>
         </section>
         <div className={styles.contactCards}>
-          <a href="mailto:contact@ayyatech.com"><Mail /><span>Project inquiries<strong>contact@ayyatech.com</strong></span><ArrowUpRight size={18} /></a>
-          <a href="mailto:support@ayyatech.com"><Headphones /><span>Need a hand?<strong>support@ayyatech.com</strong></span><ArrowUpRight size={18} /></a>
-          <button type="button" onClick={jumpToForm}><MessagesSquare /><span>Start with your idea<strong>Tell us about your project</strong></span><ArrowUpRight size={18} /></button>
+          <a href="mailto:info@ayyatech.co.uk"><Mail /><span>Project inquiry<strong>info@ayyatech.co.uk</strong></span><ArrowUpRight size={18} /></a>
+          <button type="button" onClick={jumpToForm}><MessagesSquare /><span>Get in touch<strong>Tell us about your project</strong></span><ArrowUpRight size={18} /></button>
         </div>
         <section id="contact-form" className={styles.formSection} aria-labelledby="form-heading">
           <div className={styles.formIntro}><span className={styles.eyebrow}>A good project starts here</span><h2 id="form-heading">Get in <em>touch.</em></h2><p>Share a little about your business and what you want to build. A rough idea is a great place to start.</p><div className={styles.next}><strong>What happens next?</strong><p>We discuss your goals, explore the right approach, and agree on a clear scope together.</p></div></div>
@@ -39,10 +39,10 @@ export function ContactPageContent() {
             <label>What can we help with?<select name="service" defaultValue="" required><option value="" disabled>Select a service</option>{['Website development', 'Mobile apps', 'Custom software', 'Cloud & infrastructure', 'AI & automation', 'Something else'].map(service => <option key={service}>{service}</option>)}</select></label>
             <label>Your project<textarea name="message" placeholder="Tell us about your idea, goals, and timeline..." required rows={5} maxLength={5000} /></label>
             <div className={styles.formBottom}><p>This opens your email app with your message ready to send.</p><button type="submit">Prepare your message <ArrowUpRight size={18} /></button></div>
-            {prepared && <p role="status" className={styles.status}>Your email draft is ready. Send it from your email app, or email us directly at <a href="mailto:contact@ayyatech.com">contact@ayyatech.com</a>.</p>}
+            {prepared && <p role="status" className={styles.status}>Your email draft is ready. Send it from your email app, or email us directly at <a href="mailto:info@ayyatech.co.uk">info@ayyatech.co.uk</a>.</p>}
           </form>
         </section>
-        <section className={styles.collaboration}><div><span className={styles.eyebrow}>Built around your team</span><h2>Good collaboration.<br /><em>Wherever you work.</em></h2><p>From the first conversation to the final handover, we keep communication clear. Share your time zone and preferred way to connect when you get in touch.</p><a href="#contact-form">Let&apos;s discuss your project <ArrowUpRight size={18} /></a></div><div className={styles.indiaMap}><Image src="/india-contact-map.svg" alt="India map with city markers for Delhi, Mumbai, Bengaluru, Hyderabad, Kolkata, Chennai, Ahmedabad, and Pune" width={612} height={696} /></div></section>
+        <section className={styles.collaboration}><div><h2>Good collaboration.<br /><em>Wherever you work.</em></h2><p>Across the UK, UAE, and Sudan, we keep communication clear from the first conversation to the final handover. Share your time zone and preferred way to connect when you get in touch.</p><a href="#contact-form">Let&apos;s discuss your project <ArrowUpRight size={18} /></a></div><OfficeLocations /><OfficeAddresses /></section>
         <section className={styles.infoCards} aria-label="Explore Ayyatech">
           <Link href="/services" className={styles.exploreCard}>
             <span className={styles.cardCategory}>Our services <ArrowUpRight size={22} aria-hidden="true" /></span>
@@ -59,6 +59,7 @@ export function ContactPageContent() {
         </section>
       </main>
       <CinematicFooter showProjectCta={false} />
+      <ContactChat />
     </>
   );
 }

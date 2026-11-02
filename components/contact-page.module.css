@@ -2,8 +2,6 @@
 .page > * { width: 100%; max-width: 1440px; margin-inline: auto; }
 .hero { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 40px; padding: 40px 44px; border: 1px solid #f0e2d9; border-radius: 28px; background: linear-gradient(120deg, #fff1e8, #fff 75%); }
 .heroTitle { display: flex; align-items: center; gap: 20px; }
-.phone { position: relative; flex-shrink: 0; width: 110px; height: 190px; }
-.phone img { object-fit: contain; }
 .eyebrow { display: block; font-size: 12px; color: #c63c1c; margin-bottom: 14px; }
 .page h1 { font-size: clamp(30px, 3vw, 46px); font-weight: 750; letter-spacing: -.055em; line-height: 1.08; }
 .page em { color: #EC4621; font-family: Georgia, serif; font-weight: 400; }
@@ -11,7 +9,7 @@
 .page p { font-size: 16px; line-height: 1.75; }
 .heroCopy p { max-width: 440px; }
 .heroCopy a, .collaboration a, .infoCards a { display: inline-flex; align-items: center; gap: 16px; font-size: 14px; font-weight: 600; margin-top: 24px; }
-.contactCards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.contactCards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .contactCards > * { display: flex; align-items: center; gap: 16px; text-align: left; padding: 24px; border: 1px solid #f0e2d9; border-radius: 16px; background: white; cursor: pointer; min-width: 0; }
 .contactCards > * > svg:first-child { color: #EC4621; flex-shrink: 0; width: 22px; }
 .contactCards > * > svg:last-child { margin-left: auto; flex-shrink: 0; }
@@ -37,19 +35,13 @@
 .status a { text-decoration: underline; }
 .collaboration { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; padding: 48px 52px; border-radius: 28px; background: #fff8f3; }
 .collaboration p { margin-top: 22px; max-width: 500px; }
-.indiaMap { width: 100%; max-width: 480px; margin-inline: auto; }
-.indiaMap img { width: 100%; height: auto; }
-.indiaMap p { text-align: center; font-size: 11px; opacity: .7; margin-top: 8px; }
-.globe { display: grid; place-items: center; position: relative; padding: 12px 0 30px; color: #EC4621; }
-.globe > svg { width: min(100%, 300px); height: auto; }
-.globe span { position: absolute; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 14px 20px; background: white; border: 1px solid #f0e2d9; border-radius: 12px; font-size: 13px; color: #121D50; }
 .infoCards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .infoCards article { padding: 32px; border: 1px solid #f0e2d9; border-radius: 22px; }
 .infoCards h3 { font-size: 23px; font-weight: 650; letter-spacing: -.04em; }
 .infoCards p { margin-top: 14px; font-size: 15px; }
 .page :is(a, button):focus-visible { outline: 2px solid #EC4621; outline-offset: 5px; }
-@media (max-width: 1000px) { .hero { padding: 32px; gap: 28px; } .phone { width: 90px; height: 160px; } .formSection { gap: 32px; padding: 32px; } .contactCards { grid-template-columns: 1fr; } .formBottom { flex-direction: column; align-items: stretch; } .formBottom p { max-width: none; } }
-@media (max-width: 640px) { .page { padding: 104px 18px 32px; gap: 20px; } .hero { grid-template-columns: 1fr; padding: 26px 22px; gap: 26px; border-radius: 20px; } .heroTitle { gap: 14px; } .phone { width: 76px; height: 145px; } .page h1 { font-size: 32px; } .page p { font-size: 14px; } .eyebrow { font-size: 11px; } .heroCopy a { font-size: 13px; margin-top: 16px; } .contactCards { gap: 10px; } .contactCards > * { padding: 18px; } .formSection { grid-template-columns: 1fr; gap: 26px; padding: 24px 18px; border-radius: 20px; scroll-margin-top: 100px; } .formIntro > p { margin-top: 14px; } .next { margin-top: 20px; padding-top: 16px; } .row { grid-template-columns: 1fr; gap: 18px; } .formBottom p { font-size: 12px; } .collaboration { grid-template-columns: 1fr; padding: 28px 22px; gap: 24px; } .globe > svg { width: 200px; } .infoCards { grid-template-columns: 1fr; gap: 16px; } .infoCards article { padding: 24px; } }
+@media (max-width: 1000px) { .hero { padding: 32px; gap: 28px; } .formSection { gap: 32px; padding: 32px; } .contactCards { grid-template-columns: 1fr; } .formBottom { flex-direction: column; align-items: stretch; } .formBottom p { max-width: none; } }
+@media (max-width: 640px) { .page { padding: 104px 18px 32px; gap: 20px; } .hero { grid-template-columns: 1fr; padding: 26px 22px; gap: 26px; border-radius: 20px; } .heroTitle { gap: 14px; } .page h1 { font-size: 32px; } .page p { font-size: 14px; } .eyebrow { font-size: 11px; } .heroCopy a { font-size: 13px; margin-top: 16px; } .contactCards { gap: 10px; } .contactCards > * { padding: 18px; } .formSection { grid-template-columns: 1fr; gap: 26px; padding: 24px 18px; border-radius: 20px; scroll-margin-top: 100px; } .formIntro > p { margin-top: 14px; } .next { margin-top: 20px; padding-top: 16px; } .row { grid-template-columns: 1fr; gap: 18px; } .formBottom p { font-size: 12px; } .collaboration { grid-template-columns: 1fr; padding: 28px 22px; gap: 24px; } .infoCards { grid-template-columns: 1fr; gap: 16px; } .infoCards article { padding: 24px; } }
 
 .infoCards .exploreCard { display: flex; flex-direction: column; align-items: flex-start; margin: 0; padding: 30px 32px; border: 1px solid #f0e2d9; border-radius: 22px; background: linear-gradient(120deg, #fff8f2, #fff 80%); color: #121D50; text-decoration: none; transition: border-color 180ms, box-shadow 180ms; }
 .infoCards .exploreCard:nth-child(2) { background: linear-gradient(120deg, #fff, #fff4ec); }
@@ -96,3 +88,14 @@
 .page :is(a, button):focus-visible { outline-color: #1F45E4; }
 .form .status { background: #edf2ff; }
 .cardCategory > svg { color: #EC4621; }
+
+.heroCopy a { display: flex; width: fit-content; }
+
+/* Give the office canvas space without stretching the surrounding copy. */
+.collaboration { grid-template-columns: .9fr 1.1fr; gap: clamp(28px, 4vw, 64px); padding: clamp(28px, 3.5vw, 48px); background: transparent; }
+.collaboration > div:first-child { padding-block: 24px; }
+.collaboration h2 { font-size: clamp(30px, 3vw, 44px); line-height: 1.17; }
+.collaboration > div:first-child > p { max-width: 410px; font-size: 15px; line-height: 1.85; color: #4f5d7c; }
+.collaboration > div:first-child > a { padding-bottom: 7px; border-bottom: 1px solid #aabbeb; }
+@media (max-width: 900px) { .collaboration { grid-template-columns: 1fr; gap: 24px; } .collaboration > div:first-child { padding-block: 0; } .collaboration > div:first-child > p { max-width: 580px; } }
+@media (max-width: 640px) { .collaboration { padding: 24px 16px; } }

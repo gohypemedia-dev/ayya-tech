@@ -1,0 +1,82 @@
+/* Office map: a single canvas with a compact location footer. */
+.offices { min-width: 0; padding: 0; background: transparent; }
+.officeHeader { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 4px 0 18px; }
+.officeHeader h3 { display: flex; align-items: center; gap: 10px; font-size: 20px; letter-spacing: -.035em; font-weight: 650; }
+.officeHeader h3 svg { color: #1f45e4; width: 20px; height: 20px; }
+.officeHeader > span { font-size: 12px; color: #66718f; }
+.locations { display: flex; gap: 24px; margin: 0 0 24px; padding: 0; border-bottom: 1px solid #e1e7f2; background: transparent; }
+.locations button { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 9px; flex: 1; min-height: 48px; padding: 12px 8px 16px; border-radius: 0; font-size: 14px; font-weight: 600; color: #626e8b; background: transparent; cursor: pointer; transition: color 160ms; }
+.locations button::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .35; }
+.locations button::after { content: ''; position: absolute; bottom: -1px; height: 2px; left: 0; right: 0; background: transparent; }
+.locations button:hover { color: #1f45e4; }
+.locations button[aria-pressed='true'] { color: #163bd3; }
+.locations button[aria-pressed='true']::before { opacity: 1; }
+.locations button[aria-pressed='true']::after { background: #1f45e4; }
+.officeMap { position: relative; width: 100%; aspect-ratio: 10 / 7; overflow: hidden; background: transparent; }
+.officeMap svg { display: block; width: 100%; height: 100%; }
+.country { fill: #e4eaf3; stroke: #f7f9fd; stroke-width: .9; }
+.officeCountry { fill: #b4c5ef; stroke: white; stroke-width: 1; }
+.selectedCountry { fill: #6887df; stroke: white; stroke-width: 1; }
+.connections { fill: none; stroke: #5377dc; stroke-width: 1.2; stroke-dasharray: 4 6; opacity: .55; }
+.mapMarker { position: absolute; transform: translate(-50%, -50%); width: 44px; height: 44px; display: grid; place-items: center; cursor: pointer; border-radius: 50%; }
+.markerDot { width: 12px; height: 12px; border: 3px solid white; border-radius: 50%; background: #1f45e4; box-shadow: 0 0 0 5px #1f45e415; }
+.mapMarker[aria-pressed='true'] .markerDot { background: #ec4621; box-shadow: 0 0 0 7px #ec462120; }
+.markerLabel { position: absolute; top: 37px; white-space: nowrap; border-radius: 6px; background: #ffffffed; padding: 5px 9px; font-size: 11px; font-weight: 600; color: #435173; box-shadow: 0 2px 8px #121d5008; }
+.mapMarker[aria-pressed='true'] .markerLabel { color: #121d50; background: white; box-shadow: 0 3px 12px #121d5014; }
+.locationDetails { display: flex; align-items: flex-start; gap: 12px; min-height: 122px; margin-top: 18px; padding: 20px 0; border-top: 1px solid #e8edf6; }
+.addressIcon { display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px; background: #edf2ff; color: #1f45e4; }
+.locationDetails h4 { font-weight: 650; font-size: 14px; line-height: 1.6; }
+.locationDetails address, .locationDetails p { margin: 5px 0 0; font-size: 12px; font-style: normal; line-height: 1.8; color: #62708c; }
+.mapLink { display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; margin: 0 0 0 auto; border: 1px solid #e1e7f5; border-radius: 50%; color: #1f45e4; }
+.mapLink:hover { background: #edf2ff; }
+@media (max-width: 640px) { .officeHeader { align-items: flex-start; } .officeHeader > span { max-width: 100px; text-align: right; line-height: 1.5; } .locationDetails { gap: 8px; } .addressIcon { display: none; } .markerLabel { font-size: 10px; padding: 4px 6px; } }
+@media (prefers-reduced-motion: reduce) { .locations button { transition: none; } }
+.chat { position: fixed; bottom: max(20px, env(safe-area-inset-bottom)); right: 20px; z-index: 60; color: #121d50; max-width: calc(100vw - 32px); }
+.actions { display: flex; gap: 10px; justify-content: flex-end; }
+.actions a, .actions button { display: inline-flex; align-items: center; justify-content: center; gap: 0; border-radius: 999px; padding: 15px; height: 56px; min-width: 56px; flex-shrink: 0; font-size: 13px; font-weight: 600; color: white; background: #1f45e4; border: 1px solid #ffffff25; box-shadow: 0 5px 18px #121d5020; cursor: pointer; transition: transform 320ms ease-in-out, box-shadow 320ms ease-in-out, background 320ms ease-in-out; }
+.actionLabel { display: inline-block; max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap; margin-left: 0; transition: max-width 320ms ease-in-out, opacity 320ms ease-in-out, margin-left 320ms ease-in-out; }
+.actions :is(a, button):focus-visible .actionLabel { max-width: 160px; opacity: 1; margin-left: 10px; }
+@media (hover: hover) { .actions :is(a, button):hover .actionLabel { max-width: 160px; opacity: 1; margin-left: 10px; } }
+.actions .whatsapp { background: #128c4a; }
+.whatsappLogo { display: block; width: 24px; height: 24px; flex-shrink: 0; background: url('/icons/whatsapp.svg') center / contain no-repeat; }
+.actions svg { flex-shrink: 0; }
+@media (hover: hover) { .actions a:hover, .actions button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px #121d5030; } .actions .whatsapp:hover { background: #107d42; } .actions button:hover { background: #1738c5; } }
+.actions a:active, .actions button:active { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .actions a, .actions button { transition: none; transform: none; } }
+.panel { width: 350px; max-width: 100%; margin: 0 0 12px auto; padding: 22px; border: 1px solid #e1e7f5; border-radius: 18px; background: white; box-shadow: 0 8px 40px #121d5020; }
+.panel header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.panel h2 { font-size: 18px; font-weight: 650; }
+.panel button { padding: 8px; cursor: pointer; }
+.panel p { margin: 14px 0; font-size: 14px; line-height: 1.7; }
+.panel a { display: flex; align-items: center; gap: 8px; padding: 12px 0; color: #0e33cb; font-size: 13px; overflow-wrap: anywhere; }
+.chat :is(a,button):focus-visible, .offices :is(a,button):focus-visible { outline: 2px solid #1f45e4; outline-offset: 4px; }
+@media (max-width: 640px) { .chat { right: 16px; bottom: max(12px, env(safe-area-inset-bottom)); } .offices { padding: 0; } }
+
+@media (max-width: 640px) { .officeHeader { gap: 12px; padding-bottom: 14px; } .officeHeader h3 { font-size: 18px; } .locations { gap: 12px; margin-bottom: 20px; } .locations button { font-size: 13px; } }
+
+@media (prefers-reduced-motion: reduce) { .actionLabel { transition: none; } }
+
+.officeMap path { transition: fill 400ms ease-in-out; }
+@media (prefers-reduced-motion: reduce) { .officeMap path { transition: none; } }
+
+.officeAddresses { grid-column: 1 / -1; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 18px; margin-top: 18px; border-top: 1px solid #e8edf6; }
+.officeAddresses .locationDetails { position: relative; display: block; min-width: 0; min-height: 0; margin-top: 0; padding: 20px 0; border-top: 0; }
+.officeAddresses .addressIcon { display: none; }
+.officeAddressHeading { display: flex; align-items: center; gap: 12px; min-height: 36px; }
+.officeAddresses .locationDetails h4 { padding: 0; }
+.officeAddresses .mapLink { position: static; display: grid; margin: 0; width: 36px; height: 36px; }
+@media (max-width: 640px) { .officeAddresses { grid-template-columns: 1fr; gap: 0; } .officeAddresses .locationDetails + .locationDetails { border-top: 1px solid #e8edf6; } }
+
+.officeAddresses .mapLink:focus-visible { outline: 2px solid #1f45e4; outline-offset: 4px; }
+
+/* Quiet motion along the route, with stationary geography and labels. */
+.connections { animation: officeRouteDashes 18s linear infinite; }
+.routeFlow { fill: none; stroke: #1f45e4; stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 3 97; animation: officeRouteFlow 7s linear infinite; pointer-events: none; }
+.markerDot { transition: background 600ms ease-in-out, box-shadow 600ms ease-in-out; }
+.mapMarker[aria-pressed='true']::before { content: ''; position: absolute; width: 24px; height: 24px; border: 1px solid #ec4621; border-radius: 50%; animation: officeMarkerPulse 2.8s ease-out infinite; pointer-events: none; }
+.officeMap path { transition: fill 900ms ease-in-out; }
+.offices:hover .connections, .offices:hover .routeFlow, .offices:focus-within .connections, .offices:focus-within .routeFlow, .offices:hover .mapMarker::before, .offices:focus-within .mapMarker::before { animation-play-state: paused; }
+@keyframes officeRouteDashes { to { stroke-dashoffset: -100; } }
+@keyframes officeRouteFlow { from { stroke-dashoffset: 3; opacity: 0; } 8% { opacity: .9; } 90% { opacity: .9; } to { stroke-dashoffset: -100; opacity: 0; } }
+@keyframes officeMarkerPulse { from { transform: scale(.7); opacity: .55; } to { transform: scale(1.7); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .connections, .routeFlow, .mapMarker[aria-pressed='true']::before { animation: none; } .routeFlow, .mapMarker[aria-pressed='true']::before { display: none; } .officeMap path, .markerDot { transition: none; } }

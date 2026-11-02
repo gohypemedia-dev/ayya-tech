@@ -48,7 +48,7 @@ export function ProjectInvitation() {
       <div className={styles.invitation}>
         <h2 id={`${id}-heading`}>Big plans.<em>Built around you.</em></h2>
         <p>Custom software, shaped around your goals and the way you work.</p>
-        <a className={styles.button} href="mailto:contact@ayyatech.com">Discuss your project <ArrowUpRight size={19} aria-hidden="true" /></a>
+        <a className={styles.button} href="mailto:info@ayyatech.co.uk">Discuss your project <ArrowUpRight size={19} aria-hidden="true" /></a>
         <span className={styles.note}>Tell us your idea. We’ll help define the scope and next steps.</span>
       </div>
     </section>
