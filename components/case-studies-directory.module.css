@@ -57,10 +57,10 @@
 .projectLink { display: flex; align-items: center; justify-content: space-between; font-size: 13px; }
 .projectLink svg { color: #ff916f; }
 .panelFooter { position: absolute; bottom: 30px; left: 4%; right: 4%; display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid #ffffff40; padding-top: 18px; font-size: 11px; color: #d5ddf1; }
-.cta { border-top: 1px solid var(--rule); display: grid; grid-template-columns: 28% minmax(0, 1fr); padding: 70px 0 110px; }
-.cta > p { font-family: Georgia, 'Times New Roman', serif; font-size: 28px; letter-spacing: -.04em; }
-.cta h2 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(42px, 5.2vw, 82px); font-weight: 400; letter-spacing: -.055em; line-height: 1.08; }
-.cta a { display: flex; align-items: center; gap: 32px; width: fit-content; margin-top: 32px; font-size: 16px; }
+.cta { border-top: 1px solid var(--rule); display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; padding: clamp(64px, 6vw, 96px) 0; text-align: center; }
+.cta > div { width: 100%; max-width: 960px; }
+.cta h2 { margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(42px, 4.8vw, 72px); font-weight: 400; letter-spacing: -.055em; line-height: 1.12; text-wrap: balance; }
+.cta a { display: flex; align-items: center; gap: 20px; width: fit-content; margin: 32px auto 0; font-size: 16px; }
 .cta a span { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--orange); color: white; transition: background 180ms; }
 .cta a:hover span { background: var(--blue); }
 .page a:focus-visible { outline: 2px solid var(--blue); outline-offset: 6px; border-radius: 3px; }
@@ -75,7 +75,7 @@
   .projects { margin-inline: -5.56%; }
   .project { min-height: 85svh; padding: 130px 7% 100px; }
   .project h2 { font-size: clamp(50px, 9vw, 80px); }
-  .cta { grid-template-columns: 1fr; gap: 28px; padding: 48px 0 70px; }
+  .cta { padding: 64px 0; }
 }
 @media (max-width: 480px) {
   .hero { padding: 128px 0 58px; }
@@ -90,7 +90,9 @@
   .detailBody { padding: 20px; }
   .results { grid-template-columns: 1fr; gap: 24px; }
   .panelFooter { font-size: 10px; }
-  .cta h2 { font-size: 11vw; }
+  .cta { padding: 52px 0; }
+  .cta h2 { font-size: clamp(30px, 8.5vw, 40px); }
+  .cta a { margin-top: 26px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero h1 { animation: none; }

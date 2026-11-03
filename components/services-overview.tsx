@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { THREE_SECTIONS } from '@/components/agency-services-section';
 import styles from './services-overview.module.css';
+import { serviceHref } from '@/lib/services';
 
 const technologyTags: Record<string, { label: string; logo?: string }[]> = {
   'web-dev': [{ label: 'Next.js', logo: 'nextdotjs' }, { label: 'React', logo: 'react' }, { label: 'TypeScript', logo: 'typescript' }],
@@ -51,8 +52,8 @@ export function ServicesOverview({ onContact, embedded = false }: { onContact: (
             return (
               <article key={service.id} id={index === 0 ? group.id : service.id} className={styles.card} onPointerMove={updateHighlight}>
                 <div className={styles.cardHeading}>
-                  <CardHeading>{title}</CardHeading>
-                  <button type="button" onClick={onContact} className={styles.cardAction} aria-label={`Discuss ${title}`}><ArrowUpRight size={23} aria-hidden="true" /></button>
+                  <CardHeading><Link href={serviceHref(service.id)}>{title}</Link></CardHeading>
+                  <Link href={serviceHref(service.id)} className={styles.cardAction} aria-label={`Explore ${title}`}><ArrowUpRight size={23} aria-hidden="true" /></Link>
                 </div>
                 <p className={styles.description}>{description}</p>
                 <ul className={styles.tags} aria-label={`${title} capabilities`}>
@@ -69,7 +70,7 @@ export function ServicesOverview({ onContact, embedded = false }: { onContact: (
             );
           }))}
           {!embedded && <div className={styles.invitation}>
-            <span className={styles.invitationLabel}>Your next chapter</span>
+            
             <CardHeading>Have something<br /><em>in mind?</em></CardHeading>
             <p>Tell us what you’re building. We’ll find the right way forward, together.</p>
             <button type="button" onClick={onContact} className={styles.cta}>Discuss your project <ArrowUpRight size={19} aria-hidden="true" /></button>

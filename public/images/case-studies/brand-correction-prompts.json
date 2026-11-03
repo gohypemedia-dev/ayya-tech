@@ -1,0 +1,7 @@
+{
+  "tool": "Built-in image_gen",
+  "reference": "public/images/ayya-logo.png",
+  "outputs": ["payments.png", "cloud.png", "ai.png", "commerce.png"],
+  "paymentsPrompt": "Edit the first image only. Replace the invented white triangular Ayyatech logo and text at top left of sidebar with the EXACT supplied AYYA TECHNOLOGY logo from second image, on a small white rectangular backing fitting the existing branding area. Preserve full dashboard composition, all UI, all text, dimensions, colors and layout otherwise. Do not invent or redraw a different logo. Save resulting edited project asset.",
+  "otherImagesPrompt": "Edit first image only: replace its top-left invented Ayyatech brand mark/wordmark with the EXACT AYYA TECHNOLOGY logo in reference image 2, fitting that branding area on a white rectangular backing. Preserve all remaining dashboard/storefront content, composition, colors and text unchanged. No invented logo variants."
+}

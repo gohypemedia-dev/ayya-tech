@@ -29,7 +29,7 @@ export const defaultSlidesData: StorySlide[] = [
     impact: 'Handled 25M+ daily transactions with zero packet drop',
     stack: ['AWS EKS', 'PostgreSQL', 'Kafka', 'Go', 'Redis'],
     image:
-      '/images/case-studies/payments.png',
+      '/images/case-studies/payments-branded-v2.png',
   },
   {
     category: 'CLOUD MODERNIZATION',
@@ -44,7 +44,7 @@ export const defaultSlidesData: StorySlide[] = [
     impact: 'Reduced cloud infrastructure spend by $180,000/year',
     stack: ['GCP Cloud Run', 'Terraform', 'BigQuery', 'Docker', 'PostgreSQL'],
     image:
-      '/images/case-studies/cloud.png',
+      '/images/case-studies/cloud-branded-v2.png',
   },
   {
     category: 'AI & STREAMING SYSTEMS',
@@ -59,7 +59,7 @@ export const defaultSlidesData: StorySlide[] = [
     impact: 'Prevented $4.2M in fraudulent transactions in 90 days',
     stack: ['Apache Flink', 'Python ML', 'Kubernetes', 'ClickHouse', 'gRPC'],
     image:
-      '/images/case-studies/ai.png',
+      '/images/case-studies/ai-branded-v2.png',
   },
   {
     category: 'HIGH-CONCURRENCY COMMERCE',
@@ -74,7 +74,7 @@ export const defaultSlidesData: StorySlide[] = [
     impact: 'Handled 1.2M concurrent shoppers during peak flash sales',
     stack: ['Next.js', 'GraphQL', 'Stripe API', 'Cloudflare Workers', 'Redis'],
     image:
-      '/images/case-studies/commerce.png',
+      '/images/case-studies/commerce-branded-v2.png',
   },
 ];
 

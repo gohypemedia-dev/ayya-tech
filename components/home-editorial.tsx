@@ -32,7 +32,7 @@ export function HomeEditorial({ onContact }: { onContact: () => void }) {
           <span>Strategy meets craft.</span>
         </div>
         <div className={styles.aboutCopy}>
-          <p className={styles.label}>The people behind your next step</p>
+          
           <h2 id="about-heading">Big on ideas.<br /><em>Close to your business.</em></h2>
           <p>We’re Ayyatech. A technology partner for businesses turning a new idea into a product, or making an existing system work better.</p>
           <p>We bring design and engineering together, with clear communication from the first conversation to the final handover.</p>

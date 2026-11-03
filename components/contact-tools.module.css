@@ -12,16 +12,26 @@
 .locations button[aria-pressed='true'] { color: #163bd3; }
 .locations button[aria-pressed='true']::before { opacity: 1; }
 .locations button[aria-pressed='true']::after { background: #1f45e4; }
-.officeMap { position: relative; width: 100%; aspect-ratio: 10 / 7; overflow: hidden; background: transparent; }
-.officeMap svg { display: block; width: 100%; height: 100%; }
+.officeMap { position: relative; width: 100%; aspect-ratio: 10 / 7; margin-bottom: 80px; background: transparent; }
+.mapAddress { position: absolute; right: calc(100% - var(--marker-x) + 28px); top: calc(var(--marker-y) - 10px); width: min(220px, 55%); color: #121d50; }
+.mapAddress h4 { margin: 0; font-size: 14px; line-height: 1.4; font-weight: 600; }
+.mapAddress address { margin-top: 6px; font-size: 12px; font-style: normal; line-height: 1.7; color: #4f5d7c; }
+.offices .mapAddress a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-top: 2px; font-size: 12px; line-height: 1.4; white-space: nowrap; color: #0e33cb; }
+.offices .mapAddress a svg { width: 16px; height: 16px; flex: 0 0 16px; }
+.offices .mapAddress a:hover { color: #ec4621; }
+@media (max-width: 640px) {
+  .officeMap { margin-bottom: 120px; }
+  .mapAddress { top: calc(var(--marker-y) + 24px); right: 0; width: min(260px, 100%); }
+}
+.officeMap > svg { display: block; width: 100%; height: 100%; }
 .country { fill: #e4eaf3; stroke: #f7f9fd; stroke-width: .9; }
 .officeCountry { fill: #b4c5ef; stroke: white; stroke-width: 1; }
-.selectedCountry { fill: #6887df; stroke: white; stroke-width: 1; }
+.selectedCountry { fill: #dce6fa; stroke: #5375ba; stroke-width: 1.25; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .connections { fill: none; stroke: #5377dc; stroke-width: 1.2; stroke-dasharray: 4 6; opacity: .55; }
 .mapMarker { position: absolute; transform: translate(-50%, -50%); width: 44px; height: 44px; display: grid; place-items: center; cursor: pointer; border-radius: 50%; }
 .markerDot { width: 12px; height: 12px; border: 3px solid white; border-radius: 50%; background: #1f45e4; box-shadow: 0 0 0 5px #1f45e415; }
 .mapMarker[aria-pressed='true'] .markerDot { background: #ec4621; box-shadow: 0 0 0 7px #ec462120; }
-.markerLabel { position: absolute; top: 37px; white-space: nowrap; border-radius: 6px; background: #ffffffed; padding: 5px 9px; font-size: 11px; font-weight: 600; color: #435173; box-shadow: 0 2px 8px #121d5008; }
+.markerLabel { position: absolute; top: 37px; white-space: nowrap; border: 1px solid #d7e0f0; border-radius: 8px; background: #ffffffed; padding: 7px 12px; font-size: 12px; font-weight: 600; color: #435173; box-shadow: 0 2px 8px #121d5008; }
 .mapMarker[aria-pressed='true'] .markerLabel { color: #121d50; background: white; box-shadow: 0 3px 12px #121d5014; }
 .locationDetails { display: flex; align-items: flex-start; gap: 12px; min-height: 122px; margin-top: 18px; padding: 20px 0; border-top: 1px solid #e8edf6; }
 .addressIcon { display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px; background: #edf2ff; color: #1f45e4; }

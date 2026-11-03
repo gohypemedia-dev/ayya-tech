@@ -41,7 +41,6 @@ export function ReviewsMarquee() {
   return (
     <section id="reviews" className={styles.section} aria-labelledby="reviews-heading">
       <header className={styles.header}>
-        <span className={styles.badge}>Our partners</span>
         <h2 id="reviews-heading">Don&apos;t just take our<br /><em>word for it.</em></h2>
         <p>We could tell you a lot. Our clients say it better.</p>
       </header>

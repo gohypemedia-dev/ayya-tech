@@ -5,8 +5,10 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { ProcessSection } from '@/components/process-section';
 import { AppleStyleDock } from '@/components/apple-style-dock';
+import { CinematicFooter } from '@/components/ui/motion-footer';
 import { ArrowDown, ArrowUpRight, Plus } from 'lucide-react';
 import styles from './services-directory.module.css';
+import { services as serviceDetails } from '@/lib/services';
 
 const groups = [
   {
@@ -29,7 +31,7 @@ const groups = [
   },
   {
     id: 'connected-systems', title: 'Cloud, AI & connected systems', description: 'Turn infrastructure and data into useful capabilities.',
-    image: '/images/case-studies/cloud.png', alt: 'Illustrative cloud infrastructure dashboard',
+    image: '/images/case-studies/cloud-branded-v2.png', alt: 'Illustrative cloud infrastructure dashboard',
     services: [
       { title: 'Cloud infrastructure', description: 'Build a reliable foundation for your applications and simplify day-to-day operations.', includes: ['Cloud migration', 'Infrastructure automation', 'Monitoring & DevOps'] },
       { title: 'AI-powered software', description: 'Bring useful intelligence into your products and internal workflows.', includes: ['AI assistants', 'Knowledge search', 'Data-driven workflows'] },
@@ -159,7 +161,7 @@ export function ServicesDirectory({ onContact }: { onContact: () => void }) {
                 <div className={styles.cinemaShade} />
                 <div className={styles.cinemaCopy}>
                   <h2 id={`service-title-${index}`}>{service.title}</h2>
-                  <button onClick={onContact} className={styles.cinemaButton} aria-label={`Discuss ${service.title}`}>Discuss your project <ArrowUpRight size={18} aria-hidden="true" /></button>
+                  <Link href={`/services/${serviceDetails[index].slug}`} className={styles.cinemaButton} aria-label={`Explore ${service.title}`}>Explore this service <ArrowUpRight size={18} aria-hidden="true" /></Link>
                 </div>
                 <div className={styles.cinemaDim} />
               </div>
@@ -171,7 +173,7 @@ export function ServicesDirectory({ onContact }: { onContact: () => void }) {
         </div>
 
         <section className={styles.engagement} aria-labelledby="engagement-title">
-          <p className={styles.sectionLabel}>A way of working that fits</p>
+          
           <h2 id="engagement-title">Your project.<br />Your pace.</h2>
           <div className={styles.engagementGrid}>
             {[
@@ -195,10 +197,10 @@ export function ServicesDirectory({ onContact }: { onContact: () => void }) {
         </section>
       </main>
 
-      <footer className={styles.footer}>
+      <section className={styles.footer} aria-label="Discuss your project">
         <div className={styles.footerInvitation}>
           <div>
-            <p className={styles.sectionLabel}><span /> Have something in mind?</p>
+            
             <h2>Let’s make<br />it happen.</h2>
           </div>
           <div className={styles.footerAction}>
@@ -206,8 +208,10 @@ export function ServicesDirectory({ onContact }: { onContact: () => void }) {
             <button onClick={onContact} className={styles.cinemaButton}>Discuss your project <ArrowUpRight size={18} aria-hidden="true" /></button>
           </div>
         </div>
-        <div className={styles.footerBottom}><Link href="/" className={styles.brand} aria-label="Ayyatech home"><Image src="/images/ayya-logo.png" alt="Ayya Technology" width={591} height={197} className={styles.logo} /></Link><p>Technology with purpose.</p><Link href="/case-studies">Explore our work <ArrowUpRight size={16} aria-hidden="true" /></Link></div>
-      </footer>
+      </section>
+      <div className={styles.siteFooter}>
+        <CinematicFooter showProjectCta={false} />
+      </div>
     </div>
   );
 }

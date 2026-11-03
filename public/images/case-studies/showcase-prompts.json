@@ -1,0 +1,13 @@
+{
+  "tool": "Built-in image_gen",
+  "images": [
+    {
+      "file": "booking-showcase.png",
+      "prompt": "Create a premium wide 3:2 portfolio case-study image for a software agency. Product mockup of a fictional wellness booking website called Forma on a beautifully rendered silver laptop, with a small mobile screen beside it. Website design: off-white, sage green, editorial serif heading 'Space to feel better', beautiful tranquil spa interior photography, clean treatment cards and a small appointment date picker. Studio backdrop pale warm grey, soft daylight, realistic shadows. Screen is the focus, legible polished composition, no extraneous floating decorations, no claims or metrics, no watermark. This is a concept interface, not an existing client screenshot."
+    },
+    {
+      "file": "operations-showcase.png",
+      "prompt": "Use case: product-mockup. Create a premium wide 3:2 portfolio image for a fictional business software concept named Orbit. A large slim desktop monitor on a clean pale blue-grey studio surface, three-quarter view, showing a beautifully designed navy and white project management interface. Left sidebar, project board with three columns titled Planned, In progress, Done, elegant small task cards, team avatar circles, compact workload chart on the right. Small tablet in foreground showing the same team workload. Restrained electric blue accents and a tiny orange highlight. Soft daylight, realistic product photography, very clear large interface, generous breathing room around hardware. No exaggerated metrics, no third-party logos, no watermark. Concept product visualization for a software agency case study."
+    }
+  ]
+}

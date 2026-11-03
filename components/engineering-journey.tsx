@@ -85,7 +85,7 @@ export function EngineeringJourney() {
   return (
     <section id="engineering-journey" ref={ref} className={styles.journey} aria-labelledby="engineering-journey-title">
       <header className={styles.heading}>
-        <p>Behind every case study</p>
+        
         <h1 id="engineering-journey-title">Great systems.<br />Built step by step.</h1>
         <div className={styles.leadIn}>
           <p>From the first question to a system ready for the real world. Here’s how we bring it all together.</p>

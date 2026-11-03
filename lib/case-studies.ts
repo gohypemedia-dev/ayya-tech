@@ -12,7 +12,7 @@ const projects: StorySlide[] = [
     metrics: 'Service discovery and appointment scheduling',
     impact: 'Concept approach: bring services, availability, and booking into one flow so visitors can plan a visit without switching between tools.',
     stack: ['Service pages', 'Booking calendar', 'Time selection', 'Responsive design'],
-    image: '/images/case-studies/booking-concept.png',
+    image: '/images/case-studies/booking-showcase.png',
   },
   {
     tag: 'operations-concept', category: 'Software development',
@@ -21,12 +21,26 @@ const projects: StorySlide[] = [
     metrics: 'Project planning and team visibility',
     impact: 'Concept approach: connect task ownership, project status, and capacity in one workspace to help teams coordinate their next steps.',
     stack: ['Project boards', 'Task ownership', 'Team workload', 'Reporting'],
-    image: '/images/case-studies/operations-concept.png',
+    image: '/images/case-studies/operations-showcase.png',
   },
 ];
 
 
-export const caseStudies = projects.map((project, index) => ({ ...project, slug: artwork[index], heading: headings[index], service: categories[index], concept: !project.metricValue }));
+// Match the work described in each study; do not infer services from similar UI.
+const serviceIdsByStudy: Record<string, string[]> = {
+  payments: ['software-dev'],
+  cloud: ['cloud-infra'],
+  ai: ['ai-software', 'software-dev'],
+  commerce: ['web-dev'],
+  booking: ['web-dev'],
+  operations: ['software-dev'],
+};
+
+export const caseStudies = projects.map((project, index) => ({ ...project, slug: artwork[index], heading: headings[index], service: categories[index], concept: !project.metricValue, serviceIds: serviceIdsByStudy[artwork[index]] ?? [] }));
+
+export function getCaseStudiesForService(serviceId: string) {
+  return caseStudies.filter(project => project.serviceIds.includes(serviceId));
+}
 
 export const caseStudyNarratives: Record<string, { challenge: string; approach: string[] }> = {
   payments: {

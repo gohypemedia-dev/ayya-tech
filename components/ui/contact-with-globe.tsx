@@ -725,18 +725,6 @@ export function ContactWithGlobe({
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center w-full mx-auto mb-8 sm:mb-14">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: smoothEase }}
-            className="flex items-center gap-2 mb-3"
-          >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#EC4621]" />
-            <span className="text-xs font-bold uppercase tracking-wider text-[#121D50]">
-              Get In Touch
-            </span>
-          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}

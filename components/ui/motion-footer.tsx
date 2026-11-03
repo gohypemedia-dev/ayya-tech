@@ -15,7 +15,7 @@ export function CinematicFooter({ onQuoteClick, showProjectCta = true }: Cinemat
     <footer className={styles.footer}>
       <div className={styles.inner}>
         {showProjectCta && <div className={styles.invitation}>
-          <div><p>Have something in mind?</p><h2>Let’s make it happen.</h2></div>
+          <div><h2>Let’s make it happen.</h2></div>
           {onQuoteClick
             ? <button type="button" onClick={onQuoteClick} className={styles.action}>Discuss your project <ArrowUpRight size={19} aria-hidden="true" /></button>
             : <Link href="/contact" className={styles.action}>Discuss your project <ArrowUpRight size={19} aria-hidden="true" /></Link>}
