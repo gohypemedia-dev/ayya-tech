@@ -74,7 +74,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
         </div>
         <section className={styles.cta} aria-labelledby="project-invitation">
-          <div><h2 id="project-invitation">Let’s build your<br />next project.</h2><p>Tell us what you want to build. We’ll help you define the next step.</p></div>
+          <div><h2 id="project-invitation">Let’s build your<br />next project</h2><p>Tell us what you want to build We’ll help you define the next step</p></div>
           <Link href="/contact">Discuss your project <ArrowUpRight size={20} aria-hidden="true" /></Link>
         </section>
         <nav className={styles.next} aria-label="More case studies">

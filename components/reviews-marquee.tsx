@@ -41,8 +41,8 @@ export function ReviewsMarquee() {
   return (
     <section id="reviews" className={styles.section} aria-labelledby="reviews-heading">
       <header className={styles.header}>
-        <h2 id="reviews-heading">Don&apos;t just take our<br /><em>word for it.</em></h2>
-        <p>We could tell you a lot. Our clients say it better.</p>
+        <h2 id="reviews-heading">Don&apos;t just take our<br /><em>word for it</em></h2>
+        <p>We could tell you a lot Our clients say it better</p>
       </header>
       <div className={styles.constellation} onKeyDown={event => { if (event.key === 'Escape') setOpen(null); }}>
         <svg className={styles.waves} viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
@@ -103,7 +103,7 @@ export function ReviewsMarquee() {
           ))}
         </div>
       </div>
-      <div className={styles.footer}><div className={styles.avatarStack} aria-hidden="true">{reviews.slice(0, 4).map(review => <span className={styles.avatar} key={review.id}><Portrait review={review} /></span>)}</div><p>Software built together.<br /><strong>Partnerships that last.</strong></p></div>
+      <div className={styles.footer}><div className={styles.avatarStack} aria-hidden="true">{reviews.slice(0, 4).map(review => <span className={styles.avatar} key={review.id}><Portrait review={review} /></span>)}</div><p>Software built together<br /><strong>Partnerships that last</strong></p></div>
     </section>
   );
 }

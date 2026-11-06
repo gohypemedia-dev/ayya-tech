@@ -16,15 +16,15 @@ const technologyTags: Record<string, { label: string; logo?: string }[]> = {
 };
 
 const copy: Record<string, [string, string]> = {
-  'web-dev': ['Websites', 'A considered first impression. Fast, intuitive websites that build trust and turn visitors into your next customers.'],
-  'mobile-dev': ['Mobile apps', 'From the first tap to the everyday essentials. iOS and Android apps that feel natural and keep people coming back.'],
-  'lowcode-dev': ['Low-code & automation', 'Bring your idea to market sooner. Practical tools and connected workflows so your team can focus on what matters.'],
-  'software-dev': ['Custom software', 'Software built around your business. From internal tools to ambitious digital products, we turn complex needs into simple experiences.'],
-  'it-staffing': ['Engineering teams', 'The right people to move your product forward. Experienced engineers who work alongside your team and take ownership of delivery.'],
-  'it-consultancy': ['Technology consulting', 'Clarity before the next big decision. Assess your systems, choose your direction, and build a practical technology roadmap.'],
-  'cloud-infra': ['Cloud infrastructure', 'A dependable foundation for what comes next. Secure, scalable cloud systems designed to grow with your business.'],
-  'ai-software': ['AI & intelligent tools', 'Put your knowledge to work. AI assistants, search, and intelligent workflows that solve real problems for your people.'],
-  'iot-dev': ['Connected devices', 'Connect the physical and digital. Smart devices and real-time insights that help you understand and act on what’s happening.'],
+  'web-dev': ['Websites', 'A considered first impression Fast, intuitive websites that build trust and turn visitors into your next customers'],
+  'mobile-dev': ['Mobile apps', 'From the first tap to the everyday essentials iOS and Android apps that feel natural and keep people coming back'],
+  'lowcode-dev': ['Low-code & automation', 'Bring your idea to market sooner Practical tools and connected workflows so your team can focus on what matters'],
+  'software-dev': ['Custom software', 'Software built around your business From internal tools to ambitious digital products, we turn complex needs into simple experiences'],
+  'it-staffing': ['Engineering teams', 'The right people to move your product forward Experienced engineers who work alongside your team and take ownership of delivery'],
+  'it-consultancy': ['Technology consulting', 'Clarity before the next big decision Assess your systems, choose your direction, and build a practical technology roadmap'],
+  'cloud-infra': ['Cloud infrastructure', 'A dependable foundation for what comes next Secure, scalable cloud systems designed to grow with your business'],
+  'ai-software': ['AI & intelligent tools', 'Put your knowledge to work AI assistants, search, and intelligent workflows that solve real problems for your people'],
+  'iot-dev': ['Connected devices', 'Connect the physical and digital Smart devices and real-time insights that help you understand and act on what’s happening'],
 };
 
 export function ServicesOverview({ onContact, embedded = false }: { onContact: () => void; embedded?: boolean }) {
@@ -43,7 +43,7 @@ export function ServicesOverview({ onContact, embedded = false }: { onContact: (
       <div className={styles.container}>
         <header className={styles.intro}>
           <Heading id="services-heading" className={styles.heading}>High-quality<span>software solutions</span></Heading>
-          <p className={styles.introCopy}>Websites, apps, and custom software.<br />Built around your business.</p>
+          <p className={styles.introCopy}>Websites, apps, and custom software<br />Built around your business</p>
         </header>
         <div id="service-directory" className={styles.grid}>
           {THREE_SECTIONS.flatMap(group => group.services.filter(service => !embedded || ['web-dev', 'mobile-dev', 'lowcode-dev', 'software-dev'].includes(service.id)).map((service, index) => {
@@ -72,12 +72,12 @@ export function ServicesOverview({ onContact, embedded = false }: { onContact: (
           {!embedded && <div className={styles.invitation}>
             
             <CardHeading>Have something<br /><em>in mind?</em></CardHeading>
-            <p>Tell us what you’re building. We’ll find the right way forward, together.</p>
+            <p>Tell us what you’re building We’ll find the right way forward, together</p>
             <button type="button" onClick={onContact} className={styles.cta}>Discuss your project <ArrowUpRight size={19} aria-hidden="true" /></button>
           </div>}
         </div>
         <div className={styles.bottom}>
-          {embedded ? <Link href="/services" className={styles.allServices}>Explore all services <ArrowUpRight size={18} aria-hidden="true" /></Link> : <p>Good ideas deserve great execution.</p>}
+          {embedded ? <Link href="/services" className={styles.allServices}>Explore all services <ArrowUpRight size={18} aria-hidden="true" /></Link> : <p>Good ideas deserve great execution</p>}
           <button type="button" onClick={onContact} className={styles.cta}>Let’s build something <ArrowUpRight size={19} aria-hidden="true" /></button>
         </div>
       </div>

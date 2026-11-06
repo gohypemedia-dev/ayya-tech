@@ -9,7 +9,7 @@ import styles from './case-study-banners.module.css';
 export function CaseStudyBanners() {
   return (
     <section id="selected-work" className={styles.section} aria-labelledby="selected-work-title">
-      <header className={styles.heading}><h2 id="selected-work-title">Selected case studies</h2><p>Complex challenges.<br />Real-world results.</p></header>
+      <header className={styles.heading}><h2 id="selected-work-title">Selected case studies</h2><p>Complex challenges<br />Real-world results</p></header>
       <div className={styles.stack}>
         {caseStudies.map((project) => (
           <article className={styles.banner} key={project.tag} aria-labelledby={`banner-${project.slug}`}>

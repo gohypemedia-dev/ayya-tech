@@ -97,12 +97,12 @@ export function AboutAgencyBannerSection({ onCtaClick }: AboutAgencyBannerSectio
 
             {/* Sub-headline Brand Orange Text */}
             <h3 className="text-xs sm:text-sm lg:text-[15px] font-extrabold tracking-wide text-[#EE461F] leading-relaxed mb-5 max-w-2xl">
-              We are committed to delivering scalable cloud architecture, AI systems &amp; high-performance software for enterprises.
+              We are committed to delivering scalable cloud architecture, AI systems &amp; high-performance software for enterprises
             </h3>
 
             {/* Paragraph Text */}
             <p className="text-sm sm:text-base text-[#475569] leading-relaxed mb-7 max-w-xl font-normal">
-              Our team of senior tech architects continuously leverages cutting-edge frameworks, microservices, and AI models to ensure our enterprise clients maintain a decisive competitive advantage.
+              Our team of senior tech architects continuously leverages cutting-edge frameworks, microservices, and AI models to ensure our enterprise clients maintain a decisive competitive advantage
             </p>
 
             {/* Checkmark Feature List */}

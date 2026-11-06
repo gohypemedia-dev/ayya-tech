@@ -28,10 +28,10 @@ function TechnologyLogo({ name }: { name: string }) {
   return <Layers size={26} aria-hidden="true" />;
 }
 const caseStudySummary: Record<string, string> = {
-  commerce: 'A connected storefront and checkout experience designed around browsing, buying, and changing customer demand.',
-  payments: 'Distributed payment services, banking integrations, and a foundation for dependable transaction processing.',
-  cloud: 'A coordinated approach to cloud migration, infrastructure automation, and multi-region delivery.',
-  ai: 'Connecting event streams and machine learning to make operational signals useful in real time.',
+  commerce: 'A connected storefront and checkout experience designed around browsing, buying, and changing customer demand',
+  payments: 'Distributed payment services, banking integrations, and a foundation for dependable transaction processing',
+  cloud: 'A coordinated approach to cloud migration, infrastructure automation, and multi-region delivery',
+  ai: 'Connecting event streams and machine learning to make operational signals useful in real time',
 };
 export function generateStaticParams() { return services.map(({ slug }) => ({ slug })); }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -85,7 +85,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         })}</div>
       </section>
       {projects.length > 0 && <section className={styles.projects} aria-labelledby="projects-heading">
-        <div className={styles.projectHeading}><div><h2 id="projects-heading">{service.name}<br /><em>in practice.</em></h2></div><Link href="/case-studies">Explore all work <ArrowUpRight size={18} aria-hidden="true" /></Link></div>
+        <div className={styles.projectHeading}><div><h2 id="projects-heading">{service.name}<br /><em>in practice</em></h2></div><Link href="/case-studies">Explore all work <ArrowUpRight size={18} aria-hidden="true" /></Link></div>
         <div className={styles.projectGrid}>{projects.map(project => <article key={project.slug}>
           <Link href={`/case-studies/${project.slug}`} className={styles.projectImage} aria-label={`Explore ${project.heading}`}><Image src={project.image} alt={`${project.heading} — illustrative interface concept`} fill sizes="(max-width: 640px) 90vw, 44vw" /></Link>
           <h3><Link href={`/case-studies/${project.slug}`}>{project.heading}</Link></h3>
@@ -94,14 +94,14 @@ export default async function ServiceDetailPage({ params }: Props) {
         </article>)}</div>
       </section>}
       <section className={styles.process}>
-        <div><h2>A clear path.<br /><em>From idea to delivery.</em></h2><p>Shared priorities, regular conversations, and a clear view of what happens next.</p><Link href="/contact">Discuss your requirements <ArrowUpRight size={18} aria-hidden="true" /></Link></div>
+        <div><h2>A clear path<br /><em>From idea to delivery</em></h2><p>Shared priorities, regular conversations, and a clear view of what happens next</p><Link href="/contact">Discuss your requirements <ArrowUpRight size={18} aria-hidden="true" /></Link></div>
         <ol>{service.steps.map((step, index) => <li key={step}><span>0{index + 1}</span><div><h3>{['Understand & define', 'Design & build', 'Validate & hand over'][index]}</h3><p>{step}</p></div></li>)}</ol>
       </section>
-      <section className={styles.faq}><h2>A little more clarity.</h2><div>{service.faqs.map(([question, answer]) => <details key={question}><summary>{question}<Plus size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}<details><summary>How do we get started?<Plus size={18} aria-hidden="true" /></summary><p>Tell us about your goals, existing systems, and any timing or budget constraints. We’ll discuss the scope and agree on a practical next step before any work begins.</p></details></div></section>
+      <section className={styles.faq}><h2>A little more clarity</h2><div>{service.faqs.map(([question, answer]) => <details key={question}><summary>{question}<Plus size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}<details><summary>How do we get started?<Plus size={18} aria-hidden="true" /></summary><p>Tell us about your goals, existing systems, and any timing or budget constraints We’ll discuss the scope and agree on a practical next step before any work begins</p></details></div></section>
       <section className={styles.cta}><div><h2>What could we<br /><em>build together?</em></h2></div><Link href="/contact" className={styles.primary}>Tell us about your project <ArrowUpRight size={20} aria-hidden="true" /></Link></section>
       <nav className={styles.related} aria-label="Related services">
         <div className={styles.relatedHeading}>
-          <h2>Explore more possibilities.</h2>
+          <h2>Explore more possibilities</h2>
           <Link href="/services">All services <ArrowUpRight size={18} aria-hidden="true" /></Link>
         </div>
         <div className={styles.relatedGrid}>{related.map(item => {

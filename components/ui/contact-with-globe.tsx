@@ -698,7 +698,7 @@ export interface ContactWithGlobeProps {
 export function ContactWithGlobe({
   title = "Ready to build what comes next?",
   subtitle = "INITIATE COLLABORATION",
-  description = "Whether you need a dedicated senior engineering pod, distributed cloud architecture, or modern web systems, our team is ready to ship.",
+  description = "Whether you need a dedicated senior engineering pod, distributed cloud architecture, or modern web systems, our team is ready to ship",
   className,
   onSubmit,
 }: ContactWithGlobeProps) {
@@ -741,7 +741,7 @@ export function ContactWithGlobe({
             transition={{ duration: 0.6, delay: 0.15, ease: smoothEase }}
             className="text-sm sm:text-base text-[#121D50] mt-3"
           >
-            Have a project or inquiry? Fill in the details below or reach out directly.
+            Have a project or inquiry? Fill in the details below or reach out directly
           </motion.p>
         </div>
 
@@ -761,7 +761,7 @@ export function ContactWithGlobe({
                 Get in touch
               </h3>
               <p className="text-sm text-[#121D50] leading-relaxed max-w-sm">
-                Reach out via any channel below. We typically reply within one business day.
+                Reach out via any channel below We typically reply within one business day
               </p>
             </div>
 
@@ -825,7 +825,7 @@ export function ContactWithGlobe({
                 TELL US ABOUT YOUR PROJECT
               </h3>
               <p className="text-sm text-[#121D50]">
-                Tell us what you are looking to build.
+                Tell us what you are looking to build
               </p>
             </div>
 
@@ -838,7 +838,7 @@ export function ContactWithGlobe({
                   Message Sent
                 </h4>
                 <p className="text-xs text-[#121D50] mb-6">
-                  Thank you. We will get back to you within one business day.
+                  Thank you We will get back to you within one business day
                 </p>
                 <Button
                   onClick={() => setFormSubmitted(false)}

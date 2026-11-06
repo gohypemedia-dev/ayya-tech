@@ -8,7 +8,7 @@ import {
   X,
   ArrowRight
 } from 'lucide-react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 interface AppleStyleDockProps {
   onContactClick?: () => void;
@@ -19,17 +19,18 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
   const pathname = usePathname();
   const router = useRouter();
   const activeSection = pathname.startsWith('/contact') ? 'contact' : pathname.startsWith('/services') ? 'services' : pathname.startsWith('/case-studies') ? 'case-studies' : pathname === '/' ? 'home' : null;
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [logoOnly, setLogoOnly] = useState(pathname === '/');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const reduceMotion = useReducedMotion();
   const transition = { duration: reduceMotion ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] as const };
 
   useEffect(() => {
+    setMobileMenuOpen(false);
     const handleScroll = () => {
       const videoSection = document.getElementById('hero-video');
-      const overVideo = window.matchMedia('(min-width: 768px)').matches && !!videoSection && videoSection.getBoundingClientRect().bottom > 0;
+      const overVideo = !!videoSection && videoSection.getBoundingClientRect().bottom > 0;
       setLogoOnly(overVideo);
-      if (overVideo) setMobileMenuOpen(false);
+      if (overVideo || window.matchMedia('(min-width: 768px)').matches) setMobileMenuOpen(false);
 
     };
 
@@ -56,7 +57,7 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
   };
 
   return (
-    <header className={`fixed top-3 sm:top-5 left-0 right-0 z-[100] px-3 sm:px-6 pointer-events-none ${className || ''}`}>
+    <header onKeyDown={event => { if (event.key === 'Escape') { setMobileMenuOpen(false); document.getElementById('mobile-navigation-toggle')?.focus(); } }} className={`fixed top-3 sm:top-5 left-0 right-0 z-[100] px-3 sm:px-6 pointer-events-none ${className || ''}`}>
       <div className="max-w-6xl mx-auto">
         <nav
           aria-label="Main navigation"
@@ -92,7 +93,6 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
                 <Link
                   key={item.id}
                   href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
                   aria-current={isActive ? 'page' : undefined}
                   className={`text-xs sm:text-sm tracking-[-0.02em] transition-colors duration-200 cursor-pointer relative py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1F45E4] ${
                     isActive
@@ -113,12 +113,12 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
             })}
           </motion.div>
 
-          {/* Right Action CTA & Mobile Menu Toggle */}
+          {/* Contact action and mobile navigation after the hero */}
           <motion.div
             initial={false}
             animate={{ opacity: 1 }}
             transition={{ ...transition, delay: reduceMotion ? 0 : 0.24 }}
-            className={`flex items-center gap-2 sm:gap-3 ${logoOnly ? 'md:hidden' : ''}`}
+            className={`${logoOnly ? 'hidden' : 'flex'} items-center gap-2 sm:gap-3`}
           >
             <button
               onClick={contact}
@@ -127,12 +127,12 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
               <span>Get a Quote</span>
               <ArrowRight className="w-3.5 h-3.5 motion-safe:group-hover:translate-x-0.5 transition-transform motion-reduce:transition-none duration-200" />
             </button>
-
-            {/* Mobile Hamburger Toggle Button */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 rounded-xl bg-[#EDF0F3] text-[#121D50] hover:bg-[#EDF0F3] dark:bg-muted dark:text-foreground dark:hover:bg-accent transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F45E4]"
-              aria-label="Toggle Navigation Menu"
+              id="mobile-navigation-toggle"
+              type="button"
+              onClick={() => setMobileMenuOpen(open => !open)}
+              className="md:hidden p-2.5 rounded-xl bg-[#EDF0F3] text-[#121D50] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F45E4]"
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"
             >
@@ -140,39 +140,24 @@ export function AppleStyleDock({ onContactClick, className }: AppleStyleDockProp
             </button>
           </motion.div>
         </nav>
-
-        {/* Mobile Navigation Drawer Dropdown */}
-        <AnimatePresence>
-          {mobileMenuOpen && !logoOnly && (
-            <motion.div
-              id="mobile-navigation"
-              initial={{ opacity: 0, y: -15, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -15, scale: 0.96 }}
-              transition={{ duration: reduceMotion ? 0 : 0.2 }}
-              className="pointer-events-auto md:hidden mt-3 p-4 rounded-[22px] bg-[#FFFFFF]/95 dark:bg-background/95 backdrop-blur-2xl border border-[#EDF0F3] dark:border-border shadow-[0_12px_32px_-20px_rgba(18,29,80,0.25)] flex flex-col gap-2"
+        <nav
+          id="mobile-navigation"
+          aria-label="Mobile navigation"
+          hidden={!mobileMenuOpen || logoOnly}
+          className="pointer-events-auto md:hidden mt-3 p-4 rounded-[22px] bg-white/95 backdrop-blur-xl border border-[#EDF0F3] shadow-lg"
+        >
+          {navItems.map(item => (
+            <Link
+              key={item.id}
+              href={item.href}
+              onClick={() => setMobileMenuOpen(false)}
+              aria-current={activeSection === item.id ? 'page' : undefined}
+              className={`block rounded-xl px-4 py-3 text-sm font-medium text-[#121D50] hover:bg-[#EDF0F3] focus-visible:outline-2 focus-visible:outline-[#1F45E4] ${activeSection === item.id ? 'bg-[#EDF0F3]' : ''}`}
             >
-              {navItems.map((item) => {
-                const isActive = activeSection === item.id;
-                return (
-                  <Link
-                    key={item.id}
-                    href={item.href}
-                    aria-current={isActive ? 'page' : undefined}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`w-full px-4 py-3 rounded-xl text-sm font-medium flex items-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F45E4] ${
-                      isActive
-                        ? 'bg-[#EDF0F3] text-[#121D50] dark:bg-muted dark:text-[#EDF0F3]'
-                        : 'text-[#121D50] hover:bg-[#EDF0F3] hover:text-[#121D50] dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-foreground'
-                    }`}
-                  >
-                    <span>{item.title}</span>
-                  </Link>
-                );
-              })}
-            </motion.div>
-          )}
-        </AnimatePresence>
+              {item.title}
+            </Link>
+          ))}
+        </nav>
       </div>
     </header>
   );

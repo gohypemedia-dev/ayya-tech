@@ -57,17 +57,17 @@ export function AgencyStatsAndFeaturesSection() {
     {
       icon: Layers,
       title: 'Total Design & Architecture Freedom',
-      description: 'Bespoke systems and modular microservices with zero vendor lock-in.',
+      description: 'Bespoke systems and modular microservices with zero vendor lock-in',
     },
     {
       icon: Zap,
       title: 'Agile Enterprise Software Development',
-      description: 'Rapid sprint cycles delivering production-ready, test-covered code.',
+      description: 'Rapid sprint cycles delivering production-ready, test-covered code',
     },
     {
       icon: Cloud,
       title: 'Cloud-Native Scalability & 24/7 DevOps',
-      description: 'Multi-cloud Kubernetes clusters with automated CI/CD and 99.9% uptime SLAs.',
+      description: 'Multi-cloud Kubernetes clusters with automated CI/CD and 99.9% uptime SLAs',
     },
   ];
 
@@ -112,11 +112,11 @@ export function AgencyStatsAndFeaturesSection() {
             </div>
 
             <h3 className="text-2xl sm:text-3xl font-extrabold text-[#121A50] tracking-tight leading-snug mb-3">
-              Delivering high-velocity, production-grade solutions that fuel enterprise growth.
+              Delivering high-velocity, production-grade solutions that fuel enterprise growth
             </h3>
 
             <p className="text-sm text-slate-600 leading-relaxed mb-6">
-              We combine deep technical architecture with rapid execution, empowering businesses to outpace competition and scale fearlessly.
+              We combine deep technical architecture with rapid execution, empowering businesses to outpace competition and scale fearlessly
             </p>
 
             {/* Capabilities List */}
@@ -154,11 +154,11 @@ export function AgencyStatsAndFeaturesSection() {
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#121A50] tracking-tight leading-tight mb-3">
-              Trusted by more than <span className="text-[#EE461F]">1,500</span> clients worldwide.
+              Trusted by more than <span className="text-[#EE461F]">1,500</span> clients worldwide
             </h2>
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 max-w-2xl">
-              Global leaders and high-growth scale-ups rely on our engineering squads to modernize legacy architectures, launch mission-critical systems, and drive measurable revenue impact.
+              Global leaders and high-growth scale-ups rely on our engineering squads to modernize legacy architectures, launch mission-critical systems, and drive measurable revenue impact
             </p>
 
             {/* Bottom Row: Team Image & Verified Checklist */}

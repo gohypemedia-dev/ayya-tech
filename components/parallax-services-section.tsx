@@ -54,7 +54,7 @@ const serviceCards: ServiceCardData[] = [
     title: 'Enterprise High-Throughput Architecture',
     subtitle: 'Event-Driven Microservices • Sub-10ms Latency • Multi-Region Scaling',
     description:
-      'Engineered for maximum resilience and extreme scale. We architect fault-tolerant distributed systems capable of handling 100,000+ transactions per second with zero packet loss.',
+      'Engineered for maximum resilience and extreme scale We architect fault-tolerant distributed systems capable of handling 100,000+ transactions per second with zero packet loss',
     statValue: '100K+',
     statLabel: 'Req / Sec Capacity',
     badgeBg: 'bg-[#EE461F]/10',
@@ -78,7 +78,7 @@ const serviceCards: ServiceCardData[] = [
     title: 'Real-Time AI & Predictive ML Pipelines',
     subtitle: 'Autonomous AI Agents • Anomaly Isolation • Custom LLM Vector RAG',
     description:
-      'Embed real-time machine learning inference engines directly into your core workflow. Detect fraud instantly, automate decisioning, and search unstructured data with sub-12ms precision.',
+      'Embed real-time machine learning inference engines directly into your core workflow Detect fraud instantly, automate decisioning, and search unstructured data with sub-12ms precision',
     statValue: '< 12ms',
     statLabel: 'Decision Latency',
     badgeBg: 'bg-[#1433D1]/10',
@@ -102,7 +102,7 @@ const serviceCards: ServiceCardData[] = [
     title: 'Next-Gen Full-Stack Web & SaaS Platforms',
     subtitle: 'Headless Commerce • Sub-Second Page Loads • Serverless Edge APIs',
     description:
-      'Crafting lightning-fast digital experiences with Next.js 15, dynamic server-side rendering, and headless API architecture designed to convert visitors into loyal customers.',
+      'Crafting lightning-fast digital experiences with Next.js 15, dynamic server-side rendering, and headless API architecture designed to convert visitors into loyal customers',
     statValue: '3.4x',
     statLabel: 'Speed Improvement',
     badgeBg: 'bg-[#10B981]/10',
@@ -126,7 +126,7 @@ const serviceCards: ServiceCardData[] = [
     title: 'Zero-Trust Infrastructure & Cloud Audits',
     subtitle: 'SOC-2 Type II Certified • Encrypted Data Vaults • Threat Mitigation',
     description:
-      'Fortify your enterprise applications with zero-trust access controls, continuous vulnerability monitoring, and automated infrastructure compliance built for strict global standards.',
+      'Fortify your enterprise applications with zero-trust access controls, continuous vulnerability monitoring, and automated infrastructure compliance built for strict global standards',
     statValue: '99.99%',
     statLabel: 'Uptime SLA',
     badgeBg: 'bg-[#8B5CF6]/10',
@@ -446,7 +446,7 @@ export function ParallaxServicesSection({ onCtaClick }: ParallaxServicesSectionP
           </h2>
 
           <p className="text-base sm:text-xl text-slate-600 font-normal leading-relaxed max-w-3xl">
-            Explore our specialized engineering capabilities. Built for high throughput, sub-second SLAs, and zero-downtime enterprise operations.
+            Explore our specialized engineering capabilities Built for high throughput, sub-second SLAs, and zero-downtime enterprise operations
           </p>
 
         </div>
@@ -472,7 +472,7 @@ export function ParallaxServicesSection({ onCtaClick }: ParallaxServicesSectionP
             Need a Custom Architecture Blueprint?
           </h3>
           <p className="text-sm sm:text-base text-slate-600 max-w-2xl mb-6">
-            Schedule a technical deep-dive with our senior engineering architects to evaluate your legacy migration or new platform rollout.
+            Schedule a technical deep-dive with our senior engineering architects to evaluate your legacy migration or new platform rollout
           </p>
 
           <button

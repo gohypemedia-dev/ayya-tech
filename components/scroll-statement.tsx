@@ -33,16 +33,16 @@ export function ScrollStatement() {
     <section className={styles.section} aria-label="Our approach to digital products">
       <div className={styles.stage}>
       <LayoutGroup><p ref={statement} className={styles.statement}>
-        <span className={styles.srOnly}>A better website. Smarter automation. Less busywork for your team, and more time for the things that move your business forward.</span>
+        <span className={styles.srOnly}>A better website Smarter automation Less busywork for your team, and more time for the things that move your business forward</span>
         <span aria-hidden="true" className={styles.flow}>
           {words('A better')}
           <motion.span layout={reducedMotion ? false : "position"} transition={{ layout: layoutTransition }} className={styles.swap}>
-            <motion.span className={styles.word} style={reducedMotion ? undefined : { opacity: wordOpacity, filter: wordBlur }}>website.</motion.span>
+            <motion.span className={styles.word} style={reducedMotion ? undefined : { opacity: wordOpacity, filter: wordBlur }}>website</motion.span>
             {!reducedMotion && <motion.span className={styles.website} style={{ opacity: previewOpacity, scale: previewScale, filter: previewBlur }}>
               <Image src="/images/ayyatech-platform-preview-orange.png" alt="Ayyatech software platform preview" fill loading="eager" sizes="(max-width: 640px) 150px, 280px" className={styles.previewImage} />
             </motion.span>}
           </motion.span>
-          {words('Smarter automation.')}
+          {words('Smarter automation')}
           <AnimatePresence initial={false} mode="popLayout">
             {!reducedMotion && expanded && <motion.span key="automation" layout="position" initial={{ opacity: 0, scale: 0.7, y: 8, rotate: -8 }} animate={{ opacity: 1, scale: 1, y: 0, rotate: 0 }} exit={{ opacity: 0, scale: 0.8, y: 4 }} transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], layout: layoutTransition }} className={styles.automation}><Workflow aria-hidden="true" /></motion.span>}
           </AnimatePresence>
@@ -76,7 +76,7 @@ export function ScrollStatement() {
           >
             <motion.span layout={reducedMotion ? false : 'position'} transition={{ layout: { ...layoutTransition, duration: reducedMotion ? 0 : 0.75 } }} className={styles.highlightedText}>
               <motion.span className={styles.highlightWash} style={{ scaleX: reducedMotion ? 1 : closingHighlight, opacity: reducedMotion ? 1 : closingHighlight }} />
-              <span className={styles.highlightLabel}>your business forward.</span>
+              <span className={styles.highlightLabel}>your business forward</span>
             </motion.span>
           </motion.span>
         </span>

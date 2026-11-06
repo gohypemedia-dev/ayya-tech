@@ -29,13 +29,13 @@ export function HomeEditorial({ onContact }: { onContact: () => void }) {
       <section className={`${styles.section} ${styles.about}`} id="about" aria-labelledby="about-heading">
         <div className={styles.photo}>
           <Image src="/strategy-meets-craft-vibrant.jpg" alt="Digital product creators collaborating on software architecture and design - Strategy meets craft" fill sizes="(max-width: 760px) 90vw, 45vw" />
-          <span>Strategy meets craft.</span>
+          <span>Strategy meets craft</span>
         </div>
         <div className={styles.aboutCopy}>
           
-          <h2 id="about-heading">Big on ideas.<br /><em>Close to your business.</em></h2>
-          <p>We’re Ayyatech. A technology partner for businesses turning a new idea into a product, or making an existing system work better.</p>
-          <p>We bring design and engineering together, with clear communication from the first conversation to the final handover.</p>
+          <h2 id="about-heading">Big on ideas<br /><em>Close to your business</em></h2>
+          <p>We’re Ayyatech A technology partner for businesses turning a new idea into a product, or making an existing system work better</p>
+          <p>We bring design and engineering together, with clear communication from the first conversation to the final handover</p>
           <button className={`${styles.textLink} ${styles.brandLink}`} onClick={onContact}>Let’s get to know your project <ArrowUpRight size={19} /></button>
         </div>
       </section>

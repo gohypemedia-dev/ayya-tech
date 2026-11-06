@@ -5,12 +5,12 @@ import { ArrowUpRight, Plus } from 'lucide-react';
 import styles from './project-invitation.module.css';
 
 const inclusions = [
-  ['Custom concept', 'Together, we turn your idea into a concrete plan: what your software should do, who will use it, and which workflows it should simplify. A clear foundation for everything we build.'],
-  ['Thoughtful UI & UX design', 'Clear journeys, considered layouts, and an interface that feels natural. We shape the experience around the people who will use it every day.'],
-  ['Fast, responsive frontend', 'A smooth experience on phones, tablets, and desktops. We build with performance, accessibility, and everyday usability in mind.'],
-  ['Secure, scalable backend', 'A reliable foundation for your data, integrations, and business logic, with access controls and an architecture designed for your needs.'],
-  ['Quality assurance before launch', 'We check the important user journeys, responsive layouts, and integrations before release, and resolve issues ahead of handover.'],
-  ['Personal handover & guidance', 'Understand how your product works, how to manage it, and what comes next. We walk you through the essentials and discuss ongoing support.'],
+  ['Custom concept', 'Together, we turn your idea into a concrete plan: what your software should do, who will use it, and which workflows it should simplify A clear foundation for everything we build'],
+  ['Thoughtful UI & UX design', 'Clear journeys, considered layouts, and an interface that feels natural We shape the experience around the people who will use it every day'],
+  ['Fast, responsive frontend', 'A smooth experience on phones, tablets, and desktops We build with performance, accessibility, and everyday usability in mind'],
+  ['Secure, scalable backend', 'A reliable foundation for your data, integrations, and business logic, with access controls and an architecture designed for your needs'],
+  ['Quality assurance before launch', 'We check the important user journeys, responsive layouts, and integrations before release, and resolve issues ahead of handover'],
+  ['Personal handover & guidance', 'Understand how your product works, how to manage it, and what comes next We walk you through the essentials and discuss ongoing support'],
 ];
 
 function subscribeToMobile(onChange: () => void) {
@@ -46,10 +46,10 @@ export function ProjectInvitation() {
         ))}
       </div>
       <div className={styles.invitation}>
-        <h2 id={`${id}-heading`}>Big plans.<em>Built around you.</em></h2>
-        <p>Custom software, shaped around your goals and the way you work.</p>
+        <h2 id={`${id}-heading`}>Big plans<em>Built around you</em></h2>
+        <p>Custom software, shaped around your goals and the way you work</p>
         <a className={styles.button} href="mailto:info@ayyatech.co.uk">Discuss your project <ArrowUpRight size={19} aria-hidden="true" /></a>
-        <span className={styles.note}>Tell us your idea. We’ll help define the scope and next steps.</span>
+        <span className={styles.note}>Tell us your idea We’ll help define the scope and next steps</span>
       </div>
     </section>
   );

@@ -70,7 +70,7 @@ export function ContactSection({ onOpenModal }: ContactSectionProps) {
               </h2>
 
               <p className="text-base sm:text-lg text-[#94A3B8] leading-relaxed max-w-xl mb-10">
-                Whether you need a dedicated senior engineering pod, distributed cloud architecture, or a high-converting digital experience, our team is ready to ship.
+                Whether you need a dedicated senior engineering pod, distributed cloud architecture, or a high-converting digital experience, our team is ready to ship
               </p>
 
               {/* Direct Value Cards */}
@@ -82,7 +82,7 @@ export function ContactSection({ onOpenModal }: ContactSectionProps) {
                   <div>
                     <h4 className="text-sm font-bold text-white mb-0.5">Rapid Onboarding & Execution</h4>
                     <p className="text-xs text-[#94A3B8] leading-relaxed">
-                      First sprint kickoff within 5 business days. Guaranteed response time under 2 hours.
+                      First sprint kickoff within 5 business days Guaranteed response time under 2 hours
                     </p>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ export function ContactSection({ onOpenModal }: ContactSectionProps) {
                   <div>
                     <h4 className="text-sm font-bold text-white mb-0.5">100% IP Transfer & Transparency</h4>
                     <p className="text-xs text-[#94A3B8] leading-relaxed">
-                      Full code repository ownership, strict mutual NDA protection, and zero vendor lock-in.
+                      Full code repository ownership, strict mutual NDA protection, and zero vendor lock-in
                     </p>
                   </div>
                 </div>
@@ -141,7 +141,7 @@ export function ContactSection({ onOpenModal }: ContactSectionProps) {
                   </div>
                   <h4 className="text-xl font-bold text-white mb-2">Inquiry Received</h4>
                   <p className="text-sm text-[#94A3B8] max-w-sm mx-auto mb-6">
-                    Thank you, {formState.name || 'Partner'}. A senior technical architect will review your project and get back to you within 2 business hours.
+                    Thank you, {formState.name || 'Partner'}. A senior technical architect will review your project and get back to you within 2 business hours
                   </p>
                   <button
                     type="button"
@@ -287,7 +287,7 @@ export function ContactSection({ onOpenModal }: ContactSectionProps) {
 
           {/* Copyright */}
           <div className="text-xs text-[#64748B] font-mono">
-            © {new Date().getFullYear()} Ayyatech Inc. All rights reserved.
+            © {new Date().getFullYear()} Ayyatech Inc All rights reserved
           </div>
         </div>
       </footer>

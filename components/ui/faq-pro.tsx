@@ -265,7 +265,7 @@ export function FaqPro({
               initial={{ opacity: 0 }}
               key="empty"
             >
-              No FAQs match your search query.
+              No FAQs match your search query
             </motion.p>
           )}
         </AnimatePresence>

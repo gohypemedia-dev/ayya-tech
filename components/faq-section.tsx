@@ -14,61 +14,61 @@ const faqData: FaqItem[] = [
     id: 'faq-1',
     question: 'What does your agency specialize in?',
     answer:
-      'We specialize in helping startups design, build, and scale AI-powered products. Our expertise includes AI strategy, UX/UI design, automation tools, and product development for SaaS, tech, and data-driven businesses.',
+      'We specialize in helping startups design, build, and scale AI-powered products Our expertise includes AI strategy, UX/UI design, automation tools, and product development for SaaS, tech, and data-driven businesses',
   },
   {
     id: 'faq-2',
     question: 'Do you work with early-stage startups?',
     answer:
-      'Yes, absolutely! We partner with early-stage founders as well as fast-growing scale-ups. Whether you need rapid MVP development to validate product-market fit or a dedicated engineering squad to scale your platform, we tailor our process to your stage.',
+      'Yes, absolutely! We partner with early-stage founders as well as fast-growing scale-ups Whether you need rapid MVP development to validate product-market fit or a dedicated engineering squad to scale your platform, we tailor our process to your stage',
   },
   {
     id: 'faq-3',
     question: 'How long does a typical project take?',
     answer:
-      'Timelines depend on project complexity and scope. Rapid MVP sprints and custom integrations typically deliver within 3 to 6 weeks, while large-scale enterprise platforms and migrations range from 8 to 14 weeks with continuous bi-weekly deployment milestones.',
+      'Timelines depend on project complexity and scope Rapid MVP sprints and custom integrations typically deliver within 3 to 6 weeks, while large-scale enterprise platforms and migrations range from 8 to 14 weeks with continuous bi-weekly deployment milestones',
   },
   {
     id: 'faq-4',
     question: 'Can you integrate AI into my existing product?',
     answer:
-      'Yes. We build custom Retrieval-Augmented Generation (RAG) pipelines, fine-tuned LLM systems, and intelligent automated workflows that integrate seamlessly via secure APIs into your existing tech stack without disrupting ongoing operations.',
+      'Yes We build custom Retrieval-Augmented Generation (RAG) pipelines, fine-tuned LLM systems, and intelligent automated workflows that integrate seamlessly via secure APIs into your existing tech stack without disrupting ongoing operations',
   },
   {
     id: 'faq-5',
     question: 'What do you need from me to get started?',
     answer:
-      'All we need is a high-level overview of your business goals, target deliverables, and any existing design or technical specs. From there, we schedule a discovery call, define a clear milestone roadmap, and can kick off development within 48 to 72 hours.',
+      'All we need is a high-level overview of your business goals, target deliverables, and any existing design or technical specs From there, we schedule a discovery call, define a clear milestone roadmap, and can kick off development within 48 to 72 hours',
   },
   {
     id: 'faq-6',
     question: 'How do you ensure quality?',
     answer:
-      'We enforce rigorous automated testing, comprehensive CI/CD pipelines, strict code reviews, SOC 2 / ISO-aligned security practices, and a guaranteed 99.9% uptime SLA with full client IP and source code ownership.',
+      'We enforce rigorous automated testing, comprehensive CI/CD pipelines, strict code reviews, SOC 2 / ISO-aligned security practices, and a guaranteed 99.9% uptime SLA with full client IP and source code ownership',
   },
   {
     id: 'faq-7',
     question: 'What project engagement models do you offer?',
     answer:
-      'We offer three flexible models: Fixed-Price Sprints for well-defined deliverables, Dedicated Agile Pods for continuous product velocity, and Senior Staff Augmentation to rapidly scale your existing engineering team.',
+      'We offer three flexible models: Fixed-Price Sprints for well-defined deliverables, Dedicated Agile Pods for continuous product velocity, and Senior Staff Augmentation to rapidly scale your existing engineering team',
   },
   {
     id: 'faq-8',
     question: 'Do you provide 24/7 post-launch maintenance and SLA support?',
     answer:
-      'Yes, we provide round-the-clock monitoring, 24/7 proactive security updates, performance optimizations, and dedicated SLA support post-deployment.',
+      'Yes, we provide round-the-clock monitoring, 24/7 proactive security updates, performance optimizations, and dedicated SLA support post-deployment',
   },
   {
     id: 'faq-9',
     question: 'How do you handle IP ownership and Non-Disclosure Agreements (NDAs)?',
     answer:
-      'We sign strict mutual NDAs prior to any technical discovery. Upon milestone completion and delivery, 100% of all intellectual property, source code, designs, and assets are fully transferred and owned by your organization.',
+      'We sign strict mutual NDAs prior to any technical discovery Upon milestone completion and delivery, 100% of all intellectual property, source code, designs, and assets are fully transferred and owned by your organization',
   },
   {
     id: 'faq-10',
     question: 'Can your team integrate into our existing Git workflows and toolchains?',
     answer:
-      'Yes. Our engineers integrate seamlessly into your preferred stack and agile toolchain, including GitHub, GitLab, Jira, Linear, Slack, AWS, GCP, and custom Docker/Kubernetes deployment pipelines.',
+      'Yes Our engineers integrate seamlessly into your preferred stack and agile toolchain, including GitHub, GitLab, Jira, Linear, Slack, AWS, GCP, and custom Docker/Kubernetes deployment pipelines',
   },
 ];
 

@@ -184,7 +184,7 @@ export const THREE_SECTIONS: SectionGroup[] = [
     title: 'Web & Mobile Development',
     subtitle: 'Digital Frontend Systems',
     description:
-      'Engineered for maximum speed, pixel-perfect UX, and seamless cross-platform performance across web, iOS, and Android.',
+      'Engineered for maximum speed, pixel-perfect UX, and seamless cross-platform performance across web, iOS, and Android',
     accentColor: 'from-blue-600 via-indigo-600 to-purple-600',
     badgeBg: 'bg-blue-50 text-blue-600 border-blue-200',
     icon: Globe,
@@ -198,21 +198,21 @@ export const THREE_SECTIONS: SectionGroup[] = [
       {
         id: 'web-dev',
         title: 'Website Development',
-        description: 'Next.js 16, React 19, Headless CMS & sub-second Core Web Vitals.',
+        description: 'Next.js 16, React 19, Headless CMS & sub-second Core Web Vitals',
         icon: Globe,
         tags: ['Next.js 16', 'Headless CMS', 'Core Web Vitals'],
       },
       {
         id: 'mobile-dev',
         title: 'Mobile Development',
-        description: 'High-performance React Native & Flutter iOS / Android apps.',
+        description: 'High-performance React Native & Flutter iOS / Android apps',
         icon: Smartphone,
         tags: ['iOS & Android', 'React Native / Flutter', 'Offline Sync'],
       },
       {
         id: 'lowcode-dev',
         title: 'Low-Code / No-Code Applications',
-        description: 'Rapid deployment with Webflow, Retool, Bubble & automated workflows.',
+        description: 'Rapid deployment with Webflow, Retool, Bubble & automated workflows',
         icon: Layers,
         tags: ['Rapid MVP', 'Webflow/Bubble', 'Automated Workflows'],
       },
@@ -224,7 +224,7 @@ export const THREE_SECTIONS: SectionGroup[] = [
     title: 'Software Engineering & Talent',
     subtitle: 'Enterprise Systems & Squads',
     description:
-      'Custom full-stack software development, strategic CTO advisory, and immediate on-demand senior developer talent.',
+      'Custom full-stack software development, strategic CTO advisory, and immediate on-demand senior developer talent',
     accentColor: 'from-purple-600 via-indigo-600 to-cyan-500',
     badgeBg: 'bg-purple-50 text-purple-600 border-purple-200',
     icon: Code2,
@@ -238,21 +238,21 @@ export const THREE_SECTIONS: SectionGroup[] = [
       {
         id: 'software-dev',
         title: 'Software Development',
-        description: 'Custom enterprise software, API ecosystems & scalable platforms.',
+        description: 'Custom enterprise software, API ecosystems & scalable platforms',
         icon: Code2,
         tags: ['Bespoke Full-Stack', 'Microservices', 'CI/CD Pipelines'],
       },
       {
         id: 'it-staffing',
         title: 'IT Resources & Staff Augmentation',
-        description: 'Dedicated senior developers, DevOps engineers & agile squads.',
+        description: 'Dedicated senior developers, DevOps engineers & agile squads',
         icon: Users,
         tags: ['Senior Talent', 'Dedicated Pods', '48h Onboarding'],
       },
       {
         id: 'it-consultancy',
         title: 'IT Consultancy Services',
-        description: 'Strategic tech roadmaps, digital transformation & enterprise architecture.',
+        description: 'Strategic tech roadmaps, digital transformation & enterprise architecture',
         icon: Briefcase,
         tags: ['CTO Advisory', 'Digital Strategy', 'Tech Audits'],
       },
@@ -264,7 +264,7 @@ export const THREE_SECTIONS: SectionGroup[] = [
     title: 'Cloud-Native & AI Systems',
     subtitle: 'Autonomous Cloud Intelligence',
     description:
-      'Resilient multi-cloud infrastructure, custom enterprise LLM integration, and real-time IoT hardware telemetry streams.',
+      'Resilient multi-cloud infrastructure, custom enterprise LLM integration, and real-time IoT hardware telemetry streams',
     accentColor: 'from-indigo-600 via-cyan-500 to-emerald-500',
     badgeBg: 'bg-indigo-50 text-indigo-600 border-indigo-200',
     icon: Cloud,
@@ -278,21 +278,21 @@ export const THREE_SECTIONS: SectionGroup[] = [
       {
         id: 'cloud-infra',
         title: 'Cloud-Native Architecture',
-        description: 'AWS, Azure, Kubernetes, serverless & 99.99% uptime infra.',
+        description: 'AWS, Azure, Kubernetes, serverless & 99.99% uptime infra',
         icon: Cloud,
         tags: ['Multi-Cloud', 'Kubernetes', 'Infrastructure as Code'],
       },
       {
         id: 'ai-software',
         title: 'AI-Powered Software',
-        description: 'Custom LLM integrations, predictive RAG & intelligent agents.',
+        description: 'Custom LLM integrations, predictive RAG & intelligent agents',
         icon: Bot,
         tags: ['Custom LLMs', 'RAG Pipeline', 'Autonomous Agents'],
       },
       {
         id: 'iot-dev',
         title: 'IoT (Internet of Things)',
-        description: 'Connected sensors, smart edge devices & real-time analytics.',
+        description: 'Connected sensors, smart edge devices & real-time analytics',
         icon: Cpu,
         tags: ['Connected Sensors', 'Edge Computing', 'MQTT / Telemetry'],
       },
@@ -527,7 +527,7 @@ export function AgencyServicesSection({
             transition={{ duration: 0.6 }}
             className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#0F172A] leading-[1.1]"
           >
-            End-To-End Services To Ship &amp; Scale.
+            End-To-End Services To Ship &amp; Scale
           </motion.h2>
         </div>
 

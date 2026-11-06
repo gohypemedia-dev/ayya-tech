@@ -1,0 +1,20 @@
+{
+  "tool": "Built-in image_gen",
+  "assets": [
+    "payments-branded-v3.png",
+    "cloud-branded-v3.png",
+    "ai-branded-v3.png",
+    "commerce-branded-v3.png"
+  ],
+  "initialPrompt": "Edit this application screenshot only: remove the white rectangular background plate behind the AYYA TECHNOLOGY logo at top left, seamlessly continue the surrounding sidebar/header background behind the logo. Preserve the exact logo shape and orange accents; on dark sidebar use white for dark blue logo strokes so it remains readable. Preserve all other UI layout, text, charts, imagery, colors and image dimensions. Remove sentence-ending full stops in UI headings and descriptive sentences, preserve decimals and URLs. Return the complete screenshot, not a logo cutout.",
+  "aiFinalPrompt": "Remove ONLY the white rectangular backing plate behind the AYYA TECHNOLOGY logo in the upper left of this screenshot. Continue the pale lavender sidebar background behind the logo. CRITICAL preserve the existing DARK NAVY BLUE and ORANGE logo colors exactly, do not make any part white, the logo must be dark and readable against the pale sidebar. Keep the complete screenshot and all other details, dimensions and text unchanged.",
+  "cloudAndPaymentsCorrection": {
+    "tool": "Built-in image_gen",
+    "reference": "../ayya-logo.png",
+    "assets": [
+      "cloud-branded-v3.png",
+      "payments-branded-v3.png"
+    ],
+    "prompt": "Image 1 is the screenshot to edit. Image 2 is the exact official AYYA TECHNOLOGY logo reference. Replace ONLY the top left logo in image 1 with the exact logo from image 2, preserve its navy blue and orange colors and exact letter geometry and TECHNOLOGY text. Do NOT recolor it white or redesign it. Remove the white background from the reference logo so the existing dark sidebar shows behind it. Keep the entire rest of image 1 completely unchanged, same dimensions and composition. Output full screenshot."
+  }
+}

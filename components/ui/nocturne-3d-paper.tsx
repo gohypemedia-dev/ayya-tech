@@ -71,13 +71,13 @@ function createFrontCertificateTexture(): THREE.CanvasTexture {
 
     ctx.font = "bold 52px Inter, sans-serif";
     ctx.fillStyle = "#EE461F";
-    ctx.fillText("& Software Agency.", 96, 325);
+    ctx.fillText("& Software Agency", 96, 325);
 
     // Subtitle Paragraph
     ctx.font = "400 22px Inter, sans-serif";
     ctx.fillStyle = "rgba(190, 190, 205, 0.85)";
     ctx.fillText("Empowering enterprise clients with scalable cloud architecture,", 96, 395);
-    ctx.fillText("custom AI systems, and high-performance full-stack applications.", 96, 430);
+    ctx.fillText("custom AI systems, and high-performance full-stack applications", 96, 430);
 
     // Capabilities Divider
     ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
@@ -94,7 +94,7 @@ function createFrontCertificateTexture(): THREE.CanvasTexture {
 
     ctx.font = "400 19px Inter, sans-serif";
     ctx.fillStyle = "rgba(220, 220, 230, 0.85)";
-    ctx.fillText("Enterprise AWS/GCP Kubernetes clusters, serverless pipelines, and low-code velocity.", 96, 570);
+    ctx.fillText("Enterprise AWS/GCP Kubernetes clusters, serverless pipelines, and low-code velocity", 96, 570);
 
     // Capability 02
     ctx.font = "bold 20px Inter, sans-serif";
@@ -103,7 +103,7 @@ function createFrontCertificateTexture(): THREE.CanvasTexture {
 
     ctx.font = "400 19px Inter, sans-serif";
     ctx.fillStyle = "rgba(220, 220, 230, 0.85)";
-    ctx.fillText("Custom LLMs, neural model integration, automated decision systems & RAG databases.", 96, 675);
+    ctx.fillText("Custom LLMs, neural model integration, automated decision systems & RAG databases", 96, 675);
 
     // Capability 03
     ctx.font = "bold 20px Inter, sans-serif";
@@ -112,7 +112,7 @@ function createFrontCertificateTexture(): THREE.CanvasTexture {
 
     ctx.font = "400 19px Inter, sans-serif";
     ctx.fillStyle = "rgba(220, 220, 230, 0.85)";
-    ctx.fillText("Modern Next.js platforms with micro-animation velocity, zero-trust security & 99.9% uptime.", 96, 780);
+    ctx.fillText("Modern Next.js platforms with micro-animation velocity, zero-trust security & 99.9% uptime", 96, 780);
 
     // Bottom Box - Official Stamp / Verification
     const boxY = 870;
@@ -131,7 +131,7 @@ function createFrontCertificateTexture(): THREE.CanvasTexture {
     ctx.font = "400 19px Inter, sans-serif";
     ctx.fillStyle = "rgba(180, 180, 195, 0.8)";
     ctx.fillText("Certified by Ayya Tech senior architects team to guarantee high-throughput", 136, boxY + 105);
-    ctx.fillText("scalability, zero-latency microservices, and industry-leading design.", 136, boxY + 138);
+    ctx.fillText("scalability, zero-latency microservices, and industry-leading design", 136, boxY + 138);
 
     // Signature Doodle
     ctx.strokeStyle = "rgba(238, 70, 31, 0.75)";
@@ -205,7 +205,7 @@ function createBackCertificateTexture(): THREE.CanvasTexture {
 
     ctx.font = "bold 52px Inter, sans-serif";
     ctx.fillStyle = "rgba(255, 255, 255, 0.98)";
-    ctx.fillText("Proven Delivery & Stats.", 96, 190);
+    ctx.fillText("Proven Delivery & Stats", 96, 190);
 
     // 3 Key Stat Cards Grid
     const statY = 240;
@@ -307,7 +307,7 @@ function createBackCertificateTexture(): THREE.CanvasTexture {
     ctx.font = "400 21px Inter, sans-serif";
     ctx.fillStyle = "rgba(220, 220, 235, 0.85)";
     ctx.fillText("Get in touch with our senior tech architects to schedule a comprehensive", 140, boxY + 130);
-    ctx.fillText("discovery call and code architecture review for your business.", 140, boxY + 165);
+    ctx.fillText("discovery call and code architecture review for your business", 140, boxY + 165);
 
     // Direct Contact Badges
     ctx.font = "600 22px Inter, sans-serif";

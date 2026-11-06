@@ -13,32 +13,32 @@ const processSteps: ProcessItem[] = [
   {
     number: '01',
     title: 'Discover',
-    description: 'We analyze your business goals, tech stack, and digital objectives.',
+    description: 'We analyze your business goals, tech stack, and digital objectives',
   },
   {
     number: '02',
     title: 'Direction',
-    description: 'We define the system architecture, technical roadmap, and UI strategy.',
+    description: 'We define the system architecture, technical roadmap, and UI strategy',
   },
   {
     number: '03',
     title: 'Design',
-    description: 'We craft high-performance UI/UX, wireframes, and design systems.',
+    description: 'We craft high-performance UI/UX, wireframes, and design systems',
   },
   {
     number: '04',
     title: 'Develop',
-    description: 'We engineer scalable microservices, cloud APIs, and web platforms.',
+    description: 'We engineer scalable microservices, cloud APIs, and web platforms',
   },
   {
     number: '05',
     title: 'Launch',
-    description: 'Rigorous security audits, automated testing, and zero-downtime deploy.',
+    description: 'Rigorous security audits, automated testing, and zero-downtime deploy',
   },
   {
     number: '06',
     title: 'Improve',
-    description: 'Continuous cloud optimization, monitoring, and proactive updates.',
+    description: 'Continuous cloud optimization, monitoring, and proactive updates',
   },
 ];
 
@@ -61,15 +61,15 @@ export function ProvenDeliveryProcessSection() {
               MAKE
               <br />
               <span className="font-serif italic font-normal uppercase tracking-tight text-[#EE461F] inline-block pt-1">
-                THINGS.
+                THINGS
               </span>
             </h2>
           </div>
 
           {/* Subtitle / Philosophy Notes */}
           <div className="space-y-1 text-sm sm:text-base text-black/70 font-normal leading-relaxed border-l-2 border-[#EE461F]/40 pl-3">
-            <p className="font-medium text-[#111111]">Clear enough to trust.</p>
-            <p>Loose enough for transformative engineering ideas.</p>
+            <p className="font-medium text-[#111111]">Clear enough to trust</p>
+            <p>Loose enough for transformative engineering ideas</p>
           </div>
 
         </div>

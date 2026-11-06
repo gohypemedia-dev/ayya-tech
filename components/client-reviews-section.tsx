@@ -33,7 +33,7 @@ export const reviews: Review[] = [
     rating: 5,
     badge: 'Cloud & FinTech',
     content:
-      'Ayya Tech engineered our multi-currency clearing services with zero downtime during peak trading. World-class technical precision and speed.',
+      'Ayya Tech engineered our multi-currency clearing services with zero downtime during peak trading World-class technical precision and speed',
   },
   {
     id: 'rev-2',
@@ -47,11 +47,11 @@ export const reviews: Review[] = [
     rating: 5,
     badge: 'Enterprise Cloud',
     content:
-      'Migrated our core infrastructure to event-driven cloud microservices ahead of schedule under strict FCA compliance. Exceptional delivery.',
+      'Migrated our core infrastructure to event-driven cloud microservices ahead of schedule under strict FCA compliance Exceptional delivery',
   },
   {
     id: 'rev-3',
-    name: 'Dr. Rashid Al-Zaabi',
+    name: 'Dr Rashid Al-Zaabi',
     role: 'VP of Engineering & AI',
     company: 'Ghadan Digital Solutions',
     city: 'Abu Dhabi',
@@ -61,7 +61,7 @@ export const reviews: Review[] = [
     rating: 5,
     badge: 'Enterprise AI & RAG',
     content:
-      'Custom RAG and AI pipelines streamlined our institutional workflows across Abu Dhabi. Genuinely our most trusted tech partner.',
+      'Custom RAG and AI pipelines streamlined our institutional workflows across Abu Dhabi Genuinely our most trusted tech partner',
   },
   {
     id: 'rev-4',
@@ -75,7 +75,7 @@ export const reviews: Review[] = [
     rating: 5,
     badge: 'Web & Mobile',
     content:
-      'Reduced our patient onboarding overhead by 65% with custom mobile platforms and pristine full-stack code standards.',
+      'Reduced our patient onboarding overhead by 65% with custom mobile platforms and pristine full-stack code standards',
   },
   {
     id: 'rev-5',
@@ -89,7 +89,7 @@ export const reviews: Review[] = [
     rating: 5,
     badge: 'Next.js Commerce',
     content:
-      'Our digital storefront achieved sub-300ms load times, doubling mobile conversions across the GCC. World-class engineering.',
+      'Our digital storefront achieved sub-300ms load times, doubling mobile conversions across the GCC World-class engineering',
   },
   {
     id: 'rev-6',
@@ -103,7 +103,7 @@ export const reviews: Review[] = [
     rating: 5,
     badge: 'IoT & Edge Systems',
     content:
-      'Ultra-low-latency IoT telemetry handling over 12M daily events with flawless uptime. Bulletproof enterprise reliability.',
+      'Ultra-low-latency IoT telemetry handling over 12M daily events with flawless uptime Bulletproof enterprise reliability',
   },
 ];
 

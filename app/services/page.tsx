@@ -3,7 +3,7 @@ import { ServicePageContent } from '@/components/service-pages';
 
 export const metadata: Metadata = {
   title: 'Services | Ayyatech',
-  description: 'Explore Ayyatech software engineering, cloud, AI, and digital transformation services.',
+  description: 'Explore Ayyatech software engineering, cloud, AI, and digital transformation services',
 };
 
 export default function ServicesPage() {

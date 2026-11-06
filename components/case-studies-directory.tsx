@@ -19,7 +19,7 @@ export function CaseStudiesDirectory({ onContact }: { onContact: () => void }) {
 
         <section id="next-project" className={styles.cta} aria-labelledby="next-project-title">
           <div>
-            <h2 id="next-project-title">A challenge in mind?<br />Let’s build what’s next.</h2>
+            <h2 id="next-project-title">A challenge in mind?<br />Let’s build what’s next</h2>
             <Link href="/contact">Start a project <span><ArrowUpRight size={24} aria-hidden="true" /></span></Link>
           </div>
         </section>

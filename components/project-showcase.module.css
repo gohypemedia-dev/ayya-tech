@@ -1,69 +1,48 @@
-.section { width: min(1320px, calc(100% - 96px)); margin-inline: auto; padding-block: 45px; color: #121D50; scroll-margin-top: 120px; }
-.header { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 20px; }
-.header > p { font-size: clamp(16px, 1.44vw, 22px); line-height: 1.5; padding-bottom: 10px; }
-.section .header h2 { text-align: right; font-size: clamp(32px, 3.6vw, 54px); line-height: 1.02; letter-spacing: -.075em; font-weight: 800; }
-.header h2 em { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -.06em; }
-.projects { --pin-top: 120px; width: 100%; margin-inline: auto; position: relative; isolation: isolate; }
-.project { position: sticky; top: var(--pin-top); height: calc(100svh - var(--pin-top)); min-height: 510px; display: flex; align-items: center; padding-block: 36px; scroll-margin-top: var(--pin-top); background: #FFFFFF; }
-.card { width: 100%; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 60px); align-items: center; transform-origin: center; }
-.project:focus-within .card { opacity: 1 !important; transform: none !important; }
-.visual { min-width: 0; transform-origin: center bottom; }
-.preview { display: block; position: relative; width: 100%; aspect-ratio: 1.6; max-height: 56svh; overflow: hidden; border-radius: 8px; background: transparent; }
-.preview img { object-fit: contain; object-position: center; }
-.description { display: flex; flex-direction: column; align-items: start; min-width: 0; padding-block: 0 10px; }
-.number { font-size: clamp(29px, 2.8vw, 42px); line-height: 1; font-weight: 500; letter-spacing: -.06em; color: #EC4621; margin-bottom: 20px; }
-.category { font-size: 13px; margin-bottom: 14px; color: #0E33CB; }
-.project h3 { font-size: clamp(21px, 2.16vw, 30px); font-weight: 650; line-height: 1.08; letter-spacing: -.055em; margin: 0; }
-.summary { font-size: 15px; line-height: 1.75; margin-top: 16px; max-width: 37ch; }
-.caseLink { display: inline-flex; align-items: center; gap: 24px; font-size: 14px; font-weight: 650; margin-top: 18px; padding-block: 10px; border-bottom: 1px solid #EC4621; }
+.section { width: min(1320px, calc(100% - 96px)); margin-inline: auto; padding-block: 48px; color: #121D50; scroll-margin-top: 120px; }
+.header { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: end; gap: clamp(28px, 4vw, 60px); margin-bottom: 36px; }
+.section .header h2 { margin: 0; font-size: clamp(32px, 3.2vw, 48px); line-height: 1.16; letter-spacing: -.04em; font-weight: 650; text-wrap: balance; }
+.header > p { margin: 0; max-width: 32ch; font-size: 16px; line-height: 1.65; color: #4F5875; }
+.projects { --pin-top: 120px; position: relative; isolation: isolate; }
+.project { position: sticky; top: var(--pin-top); padding-bottom: 72px; scroll-margin-top: var(--pin-top); background: #FFFFFF; }
+.card { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 60px); align-items: center; }
+.visual { min-width: 0; }
+.preview { display: block; position: relative; width: 100%; aspect-ratio: 1.6; overflow: hidden; border-radius: 8px; }
+.preview img { object-fit: contain; }
+.description { display: flex; flex-direction: column; align-items: start; min-width: 0; padding-block: 12px; }
+.number { font-size: 28px; line-height: 1; font-weight: 500; letter-spacing: -.03em; color: #EC4621; margin-bottom: 24px; }
+.category { font-size: 13px; margin-bottom: 12px; color: #0E33CB; }
+.project h3 { font-size: clamp(24px, 2.16vw, 32px); font-weight: 600; line-height: 1.2; letter-spacing: -.035em; margin: 0; }
+.summary { font-size: 15px; line-height: 1.75; margin-top: 16px; max-width: 40ch; color: #4F5875; }
+.caseLink { display: inline-flex; align-items: center; gap: 24px; min-height: 44px; font-size: 14px; font-weight: 600; margin-top: 20px; padding-block: 10px; border-bottom: 1px solid #EC4621; }
 .caseLink svg { transition: transform 200ms; }
-.bottom { display: flex; justify-content: center; align-items: center; margin-top: 8px; }
+.bottom { display: flex; justify-content: center; margin-top: 0; }
 .bottom a { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 46px; padding: 12px 20px; border-radius: 10px; background: #EC4621; color: #FFFFFF; font-size: 14px; font-weight: 600; transition: background 180ms ease; }
 .bottom a:hover { background: #0E33CB; }
 .section a:focus-visible { outline: 3px solid #1F45E4; outline-offset: 5px; }
-.project:focus-within .visual { clip-path: none !important; }
-.project:focus-within .description { opacity: 1 !important; }
 @media (hover: hover) { .caseLink:hover svg { transform: translate(3px, -3px); } }
-@media (max-width: 1000px) { .section { width: calc(100% - 64px); } .card { gap: 30px; } .preview { aspect-ratio: 1.6; } .number { margin-bottom: 24px; } }
+@media (max-width: 1000px) {
+  .section { width: calc(100% - 64px); }
+  .header, .card { gap: 30px; }
+}
 @media (max-width: 800px) {
-  .section { width: calc(100% - 36px); padding-block: 24px 32px; }
-  .header { flex-direction: column-reverse; align-items: start; gap: 12px; margin-bottom: 18px; }
-  .section .header h2 { text-align: left; font-size: clamp(30px, 6.4vw, 43px); }
-  .projects { --pin-top: 96px; }
-  .project { height: calc(100svh - var(--pin-top)); min-height: min-content; align-items: center; padding-block: 20px; }
-  .card { grid-template-columns: minmax(0, 1fr); gap: 16px; max-width: none; margin-inline: auto; }
-  .preview { aspect-ratio: auto; height: clamp(125px, 25svh, 230px); max-height: none; }
-  .description { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; }
-  .number { font-size: 30px; margin: 0; }
-  .project h3 { font-size: clamp(21px, 4.8vw, 27px); }
-  .summary { margin-top: 10px; max-width: none; font-size: 14px; line-height: 1.55; }
+  .section { width: calc(100% - 36px); padding-block: 32px; }
+  .header { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-bottom: 24px; }
+  .section .header h2 { font-size: clamp(25px, 6.4vw, 40px); }
+  .header > p { max-width: 36ch; font-size: 14px; line-height: 1.6; }
+  .project { position: relative; top: auto; padding-bottom: 48px; }
+  .card { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .preview { width: 100%; aspect-ratio: 1.6; }
+  .description { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 14px; padding: 0; }
+  .number { font-size: 25px; margin: 0; }
   .category { font-size: 12px; margin-bottom: 8px; }
-  .caseLink { min-height: 44px; margin-top: 8px; }
-  .header > p { padding-bottom: 0; }
-  .bottom { margin-top: 8px; }
+  .project h3 { font-size: clamp(23px, 4.8vw, 28px); }
+  .summary { margin-top: 12px; max-width: none; font-size: 14px; line-height: 1.65; }
+  .caseLink { margin-top: 12px; }
 }
-@media (prefers-reduced-motion: reduce) { .card, .visual, .description { transform: none !important; clip-path: none !important; opacity: 1 !important; } .preview img, .caseLink svg { transition: none; } .preview:hover img, .caseLink:hover svg { transform: none; } }
-
-/* Keep every link reachable when the viewport cannot contain a complete card. */
-@media (max-height: 440px), (prefers-reduced-motion: reduce) {
-  .projects { padding-bottom: 0; }
-  .project { position: relative; top: auto; height: auto; min-height: 0; padding-block: 40px; }
+@media (max-height: 600px), (prefers-reduced-motion: reduce) {
+  .project { position: relative; top: auto; }
 }
-
-@media (prefers-reduced-motion: reduce) { .bottom a { transition: none; } }
-
-.header h2 em { color: #0E33CB; background: linear-gradient(100deg, #0E33CB, #1F45E4); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-@media (max-width: 800px) and (min-height: 600px) and (prefers-reduced-motion: no-preference) {
-  .header { transform: translateY(var(--title-exit, 0px)); position: sticky; top: 84px; z-index: 10; height: 96px; box-sizing: border-box; justify-content: center; gap: 8px; margin-bottom: 0; padding-block: 10px; background: #FFFFFF; }
-  .section .header h2 { font-size: 25px; line-height: 1.12; }
-  .header h2 br { display: none; }
-  .header h2 em { margin-left: .2em; }
-  .header > p { font-size: 13px; }
-  .projects { --pin-top: 180px; margin-top: 0; }
-  .project { padding-block: 14px; }
-  .preview { height: clamp(115px, 21svh, 185px); }
-  .card { gap: 12px; }
-  .summary { font-size: 13px; line-height: 1.5; }
-  .project h3 { font-size: 21px; }
+@media (prefers-reduced-motion: reduce) {
+  .caseLink svg, .bottom a { transition: none; }
+  .caseLink:hover svg { transform: none; }
 }

@@ -5,10 +5,10 @@ import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import styles from './engineering-journey.module.css';
 
 const steps = [
-  { first: 'Think', last: 'it through', icon: 'target', text: 'Understand the challenge. Map the requirements. Find the right way forward.' },
-  { first: 'Design', last: 'the system', icon: 'blocks', text: 'Shape an architecture that connects every part and leaves room to grow.' },
-  { first: 'Build', last: 'with care', icon: 'code', text: 'Turn the plan into working software. Test, refine, and make every detail count.' },
-  { first: 'Launch', last: '& scale', icon: 'rocket', text: 'Ship with confidence. Monitor the real world. Keep making the system better.' },
+  { first: 'Think', last: 'it through', icon: 'target', text: 'Understand the challenge Map the requirements Find the right way forward' },
+  { first: 'Design', last: 'the system', icon: 'blocks', text: 'Shape an architecture that connects every part and leaves room to grow' },
+  { first: 'Build', last: 'with care', icon: 'code', text: 'Turn the plan into working software Test, refine, and make every detail count' },
+  { first: 'Launch', last: '& scale', icon: 'rocket', text: 'Ship with confidence Monitor the real world Keep making the system better' },
 ];
 
 function Sketch({ kind }: { kind: string }) {
@@ -86,9 +86,9 @@ export function EngineeringJourney() {
     <section id="engineering-journey" ref={ref} className={styles.journey} aria-labelledby="engineering-journey-title">
       <header className={styles.heading}>
         
-        <h1 id="engineering-journey-title">Great systems.<br />Built step by step.</h1>
+        <h1 id="engineering-journey-title">Great systems<br />Built step by step</h1>
         <div className={styles.leadIn}>
-          <p>From the first question to a system ready for the real world. Here’s how we bring it all together.</p>
+          <p>From the first question to a system ready for the real world Here’s how we bring it all together</p>
         </div>
       </header>
       <div ref={stageRef} className={styles.stage}>

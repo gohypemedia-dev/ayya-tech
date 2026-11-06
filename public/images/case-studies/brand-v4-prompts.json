@@ -1,0 +1,9 @@
+{
+  "tool": "Built-in image_gen",
+  "reference": "../ayya-logo.png",
+  "assets": [
+    "payments-branded-v4.png",
+    "cloud-branded-v4.png"
+  ],
+  "prompt": "Edit image 1 dashboard. Image 2 is the official navbar AYYA TECHNOLOGY logo, an immutable brand reference. The logo currently on the dashboard is WRONG. Replace that logo with an exact flat copy of image 2: identical navy blue and orange colors, white negative-space circuit lines, exact A Y Y A geometry and widely spaced navy TECHNOLOGY lettering. No white recoloring, no metallic shading, no outlines, no reinterpretation. To ensure the original navy logo is readable without a white rectangular logo sticker, change the ENTIRE left navigation sidebar to a very pale neutral gray-white theme with dark navy navigation text/icons and a pale accent selected row. Place the official logo directly on this pale sidebar without a surrounding box or border. Preserve all dashboard content, data, charts, browser frame, canvas dimensions and layout outside the sidebar. This is brand correction, not logo design."
+}
